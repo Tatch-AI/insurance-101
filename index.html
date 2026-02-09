@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insurance 101 — How Harper Works</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F5E6D8;--bg2:#FFF5EE;--bg3:#EDD9C8;--bg4:#E5CBBA;
+  --text:#2D2D3F;--text2:#7A6E65;--text3:#A89A90;
+  --accent:#F47068;--accent2:#F8847D;--accent3:#E05A52;
+  --navy:#2D2D3F;--navy2:#3D3D52;
+  --green:#2D9F6F;--green2:#3DBD85;--green3:#1E7A52;
+  --blue:#4A7FBF;--blue2:#6A9FDF;
+  --red:#E05A52;--red2:#F47068;
+  --orange:#E8923A;--orange2:#F0A852;
+  --violet:#8B6FBF;--violet2:#A888DF;
+  --yellow:#C9A020;--yellow2:#E0B840;
+  --border:#E8D5C4;--border2:#D4BFA8;
+  --radius:10px;
+  --font-display:'Space Grotesk',sans-serif;
+  --font-body:'IBM Plex Sans',sans-serif;
+  --font-mono:'JetBrains Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);line-height:1.7;overflow-x:hidden}
+::selection{background:var(--accent);color:#fff}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+
+/* ── Nav ── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(16px);background:rgba(245,230,216,.92);border-bottom:1px solid var(--border);padding:0 2rem;height:52px;display:flex;align-items:center;gap:1.5rem}
+.nav-logo{font-family:var(--font-display);font-weight:700;font-size:1.05rem;color:var(--accent);letter-spacing:-.01em;white-space:nowrap}
+.nav-links{display:flex;gap:.2rem;overflow-x:auto;scrollbar-width:none;flex:1}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-link{font-size:.75rem;color:var(--text3);padding:.3rem .65rem;border-radius:5px;text-decoration:none;white-space:nowrap;transition:all .15s}
+.nav-link:hover,.nav-link.active{color:var(--text);background:var(--bg3)}
+.nav-progress{position:absolute;bottom:0;left:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--orange));transition:width .3s}
+
+/* ── Hero ── */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:6rem 2rem 4rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 40% 40%,rgba(244,112,104,.08) 0%,transparent 60%),radial-gradient(ellipse at 60% 60%,rgba(74,127,191,.05) 0%,transparent 60%)}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:var(--bg2);border:1px solid var(--border);padding:.35rem .9rem;border-radius:16px;font-size:.78rem;color:var(--accent);margin-bottom:1.5rem}
+.hero h1{font-family:var(--font-display);font-size:clamp(2.8rem,7vw,5.5rem);font-weight:700;line-height:1.08;letter-spacing:-.03em;background:linear-gradient(135deg,var(--navy) 0%,var(--accent) 50%,var(--orange) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1.2rem}
+.hero p{font-size:1.1rem;color:var(--text2);max-width:580px;line-height:1.6}
+.hero-stats{display:flex;gap:2.5rem;margin-top:2.5rem}
+.hero-stat{text-align:center}
+.hero-stat-num{font-family:var(--font-display);font-size:2.2rem;font-weight:700;color:var(--navy)}
+.hero-stat-label{font-size:.75rem;color:var(--text3);margin-top:.2rem}
+
+/* ── Sections ── */
+.section{padding:5rem 2rem;max-width:1100px;margin:0 auto}
+.section-num{font-family:var(--font-mono);font-size:.8rem;color:var(--accent);margin-bottom:.4rem;display:block}
+.section-title{font-family:var(--font-display);font-size:2.2rem;font-weight:700;letter-spacing:-.02em;line-height:1.15;margin-bottom:.75rem;color:var(--navy)}
+.section-desc{font-size:1rem;color:var(--text2);max-width:680px}
+
+.divider{height:1px;background:var(--border);max-width:1100px;margin:0 auto}
+
+/* ── Cards ── */
+.card-grid{display:grid;gap:.75rem;margin-top:1.5rem}
+.cg2{grid-template-columns:repeat(auto-fill,minmax(320px,1fr))}
+.cg3{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+.cg4{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:1.3rem;transition:all .25s;position:relative;overflow:hidden}
+.card:hover{border-color:var(--border2);transform:translateY(-2px);box-shadow:0 8px 28px rgba(45,45,63,.08)}
+.card-t{font-family:var(--font-display);font-weight:600;font-size:1rem;margin-bottom:.4rem;color:var(--navy)}
+.card-d{font-size:.84rem;color:var(--text2);line-height:1.55}
+.card-icon{width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:.75rem}
+
+/* ── Badges ── */
+.badge{display:inline-block;font-size:.62rem;font-family:var(--font-mono);padding:.15rem .5rem;border-radius:3px;font-weight:600;letter-spacing:.02em}
+.b-coral{background:rgba(244,112,104,.15);color:var(--accent3)}
+.b-green{background:rgba(45,159,111,.15);color:var(--green3)}
+.b-blue{background:rgba(74,127,191,.15);color:var(--blue)}
+.b-violet{background:rgba(139,111,191,.15);color:var(--violet)}
+.b-orange{background:rgba(232,146,58,.15);color:var(--orange)}
+.b-red{background:rgba(224,90,82,.15);color:var(--red)}
+.b-navy{background:rgba(45,45,63,.12);color:var(--navy)}
+
+/* ── Flow Diagram ── */
+.flow{display:flex;align-items:center;gap:.4rem;flex-wrap:wrap;padding:1.2rem;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);margin:1.2rem 0}
+.flow-n{padding:.45rem .85rem;border-radius:6px;font-size:.78rem;font-weight:600;font-family:var(--font-display);background:var(--bg3);color:var(--navy);border:1px solid var(--border)}
+.flow-n.coral{background:rgba(244,112,104,.12);border-color:rgba(244,112,104,.25);color:var(--accent3)}
+.flow-n.green{background:rgba(45,159,111,.12);border-color:rgba(45,159,111,.25);color:var(--green3)}
+.flow-n.blue{background:rgba(74,127,191,.12);border-color:rgba(74,127,191,.25);color:var(--blue)}
+.flow-n.orange{background:rgba(232,146,58,.12);border-color:rgba(232,146,58,.25);color:var(--orange)}
+.flow-n.navy{background:rgba(45,45,63,.1);border-color:rgba(45,45,63,.2);color:var(--navy)}
+.flow-n.violet{background:rgba(139,111,191,.12);border-color:rgba(139,111,191,.25);color:var(--violet)}
+.flow-a{color:var(--text3);font-size:.8rem;font-weight:600}
+
+/* ── Table ── */
+.table-wrap{overflow-x:auto;margin:1.2rem 0;border-radius:var(--radius);border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:.82rem}
+th{background:var(--bg3);color:var(--navy);font-family:var(--font-display);font-weight:600;text-align:left;padding:.7rem .9rem;border-bottom:1px solid var(--border)}
+td{padding:.65rem .9rem;border-bottom:1px solid var(--border);color:var(--text2)}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:rgba(244,112,104,.03)}
+
+/* ── Deep Dive / Callout ── */
+.deep{background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:0 var(--radius) var(--radius) 0;padding:1.2rem 1.4rem;margin:1.2rem 0}
+.deep.warn{border-left-color:var(--orange)}
+.deep.info{border-left-color:var(--blue)}
+.deep.ok{border-left-color:var(--green)}
+.deep-title{font-family:var(--font-display);font-weight:600;font-size:.9rem;margin-bottom:.35rem;color:var(--navy)}
+.deep-body{font-size:.84rem;color:var(--text2);line-height:1.6}
+
+/* ── Architecture Diagram ── */
+.arch{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;margin:1.2rem 0;display:flex;flex-direction:column;align-items:center;gap:.6rem}
+.arch-row{display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center}
+.arch-box{padding:.6rem 1rem;border-radius:8px;font-size:.78rem;font-weight:600;font-family:var(--font-display);text-align:center;border:1px solid var(--border);background:var(--bg);min-width:100px}
+.arch-box small{display:block;font-weight:400;font-size:.68rem;color:var(--text3);margin-top:.2rem;font-family:var(--font-body)}
+.arch-box.primary{background:rgba(244,112,104,.1);border-color:rgba(244,112,104,.3);color:var(--accent3)}
+.arch-box.ext{background:rgba(74,127,191,.08);border-color:rgba(74,127,191,.2);color:var(--blue)}
+.arch-box.data{background:rgba(45,159,111,.08);border-color:rgba(45,159,111,.2);color:var(--green3)}
+.arch-box.warn{background:rgba(232,146,58,.1);border-color:rgba(232,146,58,.25);color:var(--orange)}
+.arch-arrow{color:var(--text3);font-size:1.1rem;font-weight:700}
+
+/* ── Steps ── */
+.steps{margin:1.5rem 0;display:flex;flex-direction:column;gap:.6rem}
+.step{display:flex;gap:1rem;align-items:flex-start;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.2rem;transition:all .25s}
+.step:hover{border-color:var(--border2);transform:translateY(-1px);box-shadow:0 4px 16px rgba(45,45,63,.06)}
+.step-num{flex-shrink:0;width:32px;height:32px;border-radius:50%;background:var(--accent);color:#fff;font-family:var(--font-display);font-weight:700;font-size:.82rem;display:flex;align-items:center;justify-content:center}
+.step-content{flex:1}
+.step-title{font-family:var(--font-display);font-weight:600;font-size:.9rem;color:var(--navy);margin-bottom:.2rem}
+.step-desc{font-size:.82rem;color:var(--text2);line-height:1.55}
+
+/* ── Key-value pairs ── */
+.kv{display:flex;gap:.5rem;align-items:baseline;margin:.3rem 0}
+.kv-k{font-family:var(--font-mono);font-size:.72rem;color:var(--accent);min-width:120px;flex-shrink:0}
+.kv-v{font-size:.82rem;color:var(--text2)}
+
+/* ── Inline highlight ── */
+.hl{font-weight:600;color:var(--navy)}
+.hl-coral{font-weight:600;color:var(--accent3)}
+.hl-green{font-weight:600;color:var(--green3)}
+.hl-blue{font-weight:600;color:var(--blue)}
+.hl-orange{font-weight:600;color:var(--orange)}
+
+/* ── Footer ── */
+.footer{text-align:center;padding:3rem 2rem;color:var(--text3);font-size:.82rem;border-top:1px solid var(--border)}
+
+/* ── Responsive ── */
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hero h1{font-size:2.2rem}
+  .hero-stats{flex-direction:column;gap:1rem}
+  .section{padding:3rem 1.2rem}
+  .card-grid.cg2,.card-grid.cg3{grid-template-columns:1fr}
+  .flow{flex-direction:column;align-items:flex-start}
+  .flow-a{transform:rotate(90deg)}
+  .arch-row{flex-direction:column;align-items:center}
+  .table-wrap{font-size:.75rem}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════ NAV ══════════════════ -->
+<nav class="nav">
+  <div class="nav-logo">Insurance 101</div>
+  <div class="nav-links">
+    <a class="nav-link" href="#revenue">Revenue</a>
+    <a class="nav-link" href="#lifecycle">Lifecycle</a>
+    <a class="nav-link" href="#policy-types">Policy Types</a>
+    <a class="nav-link" href="#money-flow">Money Flow</a>
+    <a class="nav-link" href="#bind-process">Bind Process</a>
+    <a class="nav-link" href="#subjectivities">Subjectivities</a>
+    <a class="nav-link" href="#mep">MEP</a>
+    <a class="nav-link" href="#coi">COIs</a>
+    <a class="nav-link" href="#eo">E&amp;O</a>
+    <a class="nav-link" href="#sales">Sales</a>
+  </div>
+  <div class="nav-progress" id="progress"></div>
+</nav>
+
+<!-- ══════════════════ HERO ══════════════════ -->
+<section class="hero">
+  <div class="hero-badge">Harper Internal Training</div>
+  <h1>Insurance 101</h1>
+  <p>How Harper makes money, the lifecycle of every account, and why every detail in the process matters — from lead to renewal.</p>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-num">2</div>
+      <div class="hero-stat-label">Revenue Streams</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">6</div>
+      <div class="hero-stat-label">Lifecycle Stages</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">14k+</div>
+      <div class="hero-stat-label">Competing Agencies</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">7–9yr</div>
+      <div class="hero-stat-label">Ideal Retention</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════ 01 / REVENUE ══════════════════ -->
+<section class="section" id="revenue">
+  <span class="section-num">01 / REVENUE</span>
+  <h2 class="section-title">How Harper Makes Money</h2>
+  <p class="section-desc">Harper generates revenue through exactly two channels. Understanding these is fundamental to every decision in sales, service, and renewals.</p>
+
+  <div class="card-grid cg2">
+    <div class="card">
+      <div class="card-icon" style="background:rgba(45,159,111,.12);color:var(--green)">$</div>
+      <div class="card-t">Commissions</div>
+      <div class="card-d">Paid by the <span class="hl">insurance carrier</span> to Harper for selling the policy. Typically around <span class="hl-green">10%</span> of the premium. Received roughly <span class="hl">two months</span> after the policy is sold on agency bill; received <span class="hl">instantly</span> from the down payment on direct bill.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:rgba(244,112,104,.12);color:var(--accent)">%</div>
+      <div class="card-t">Broker Fees</div>
+      <div class="card-d">Charged by Harper directly to the <span class="hl">customer</span> at the beginning of the policy. This is immediate revenue. On agency bill policies, broker fees can be split into <span class="hl-coral">earned</span> (collected upfront) and <span class="hl-coral">unearned</span> (spread over 10 payments).</div>
+    </div>
+  </div>
+
+  <div class="deep" style="margin-top:1.5rem">
+    <div class="deep-title">Earned vs Unearned Broker Fees</div>
+    <div class="deep-body">
+      <span class="hl-coral">Earned</span> broker fees are collected immediately — it's money in the door today. <span class="hl-blue">Unearned</span> broker fees are spread across the 10 monthly payments. You can adjust the earned/unearned split to lower a customer's down payment. If you make the broker fee <em>all earned</em>, the customer pays less upfront because that fee rolls into the monthly payments. But if they miss a payment and cancel, you lose that unearned portion.
+    </div>
+  </div>
+
+  <h3 style="font-family:var(--font-display);font-size:1.15rem;font-weight:600;margin:2rem 0 .8rem;color:var(--navy)">Example: $1,000 Policy at 10% Commission</h3>
+  <div class="card" style="max-width:520px">
+    <div class="kv"><span class="kv-k">PREMIUM</span><span class="kv-v">$1,000</span></div>
+    <div class="kv"><span class="kv-k">COMMISSION</span><span class="kv-v">$100 (10% of premium)</span></div>
+    <div class="kv"><span class="kv-k">BROKER FEE</span><span class="kv-v">$100 (charged to customer)</span></div>
+    <div class="kv"><span class="kv-k">CUSTOMER PAYS</span><span class="kv-v">$200 today ($100 down + $100 fee)</span></div>
+    <div class="kv"><span class="kv-k">TOTAL REVENUE</span><span class="kv-v">$200 ($100 fee today + $100 commission in ~2 months)</span></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════ 02 / LIFECYCLE ══════════════════ -->
+<section class="section" id="lifecycle">
+  <span class="section-num">02 / LIFECYCLE</span>
+  <h2 class="section-title">Account Lifecycle</h2>
+  <p class="section-desc">Every customer follows this journey. The goal is to move them through cleanly and keep them on the books for 7–9 years.</p>
+
+  <div class="flow" style="margin-top:1.5rem">
+    <div class="flow-n coral">Lead</div>
+    <div class="flow-a">&rarr;</div>
+    <div class="flow-n orange">Intake</div>
+    <div class="flow-a">&rarr;</div>
+    <div class="flow-n navy">Mid Funnel</div>
+    <div class="flow-a">&rarr;</div>
+    <div class="flow-n blue">Sales</div>
+    <div class="flow-a">&rarr;</div>
+    <div class="flow-n green">Service</div>
+    <div class="flow-a">&rarr;</div>
+    <div class="flow-n violet">Renewals</div>
+  </div>
+
+  <div class="card-grid cg3" style="margin-top:1.5rem">
+    <div class="card">
+      <span class="badge b-coral">LEAD</span>
+      <div class="card-t" style="margin-top:.6rem">Lead Acquisition</div>
+      <div class="card-d">Leads come in through Tivoli and other marketing channels. Each lead has an acquisition cost — sometimes $80, sometimes $500. Traditional agencies rely on free referrals; Harper invests heavily in paid leads.</div>
+    </div>
+    <div class="card">
+      <span class="badge b-orange">INTAKE</span>
+      <div class="card-t" style="margin-top:.6rem">Intake</div>
+      <div class="card-d">Gather all information from the customer. Ask about insurance requirements, landlord contracts, and additional insured needs. Speed matters — customers don't want to be on the phone for 30 minutes.</div>
+    </div>
+    <div class="card">
+      <span class="badge b-navy">MID FUNNEL</span>
+      <div class="card-t" style="margin-top:.6rem">Mid Funnel</div>
+      <div class="card-d">The most critical bottleneck. Job is to get the quote — either through instant quote or the E&S market. <span class="hl-coral">50% of leads are lost here</span> due to slow callbacks and follow-up. This stage must be airtight.</div>
+    </div>
+    <div class="card">
+      <span class="badge b-blue">SALES</span>
+      <div class="card-t" style="margin-top:.6rem">Sales</div>
+      <div class="card-d">Pitch the quote to the customer, handle adjustments, and close the deal. Instant quotes can be pitched same-day. E&S quotes take longer. Sales should always check subjectivities and insurance requirements before closing.</div>
+    </div>
+    <div class="card">
+      <span class="badge b-green">SERVICE</span>
+      <div class="card-t" style="margin-top:.6rem">Service</div>
+      <div class="card-d">Handle endorsements, certificates of insurance, and any policy changes. Service catches everything that went wrong upstream. If service is perfect, renewals follow. If not, the customer walks.</div>
+    </div>
+    <div class="card">
+      <span class="badge b-violet">RENEWALS</span>
+      <div class="card-t" style="margin-top:.6rem">Renewals</div>
+      <div class="card-d">Where the real profit lives. After year one, the account cycles between service and renewals indefinitely. Losing a customer in year 1–2 means the acquisition cost was wasted. Ideal retention: <span class="hl-green">7–9 years</span>.</div>
+    </div>
+  </div>
+
+  <div class="deep warn" style="margin-top:1.5rem">
+    <div class="deep-title">Why Mid Funnel is the Biggest Risk</div>
+    <div class="deep-body">
+      Harper does ~200 intakes per day. If 50% are lost in mid funnel because of slow callbacks and no follow-up, no amount of sales effort can make up for it. Every employee's time who touched that lead — intake, engineering, service — is also wasted. The mid funnel team must push instant quotes out same-day and always try the admitted market first before going to E&S.
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════ 03 / POLICY TYPES ══════════════════ -->
+<section class="section" id="policy-types">
+  <span class="section-num">03 / POLICY TYPES</span>
+  <h2 class="section-title">Direct Bill vs Agency Bill</h2>
+  <p class="section-desc">There are two types of policies Harper sells. Everything about the process — speed, cost, complexity — depends on which bucket the policy falls into.</p>
+
+  <!-- Architecture diagrams side by side -->
+  <h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:600;margin:2rem 0 .8rem;color:var(--navy)">Direct Bill (DB) — The Simple Path</h3>
+  <div class="arch">
+    <div class="arch-row">
+      <div class="arch-box ext">Insured (Customer)</div>
+    </div>
+    <div class="arch-arrow">&darr;</div>
+    <div class="arch-row">
+      <div class="arch-box primary">Harper</div>
+    </div>
+    <div class="arch-arrow">&darr;</div>
+    <div class="arch-row">
+      <div class="arch-box data">Insurance Carrier<small>NeXT, Coterie, Progressive</small></div>
+    </div>
+  </div>
+  <p style="font-size:.85rem;color:var(--text2);margin-top:.8rem">The insured pays the insurance company directly. No brokers in between. Policies are issued quickly, coverage is better, and there are <span class="hl-green">no taxes or fees</span>. This is the ideal path.</p>
+
+  <h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:600;margin:2.5rem 0 .8rem;color:var(--navy)">Agency Bill (AB) — The E&S Path</h3>
+  <div class="arch">
+    <div class="arch-row">
+      <div class="arch-box ext">Insured (Customer)</div>
+    </div>
+    <div class="arch-arrow">&darr;</div>
+    <div class="arch-row">
+      <div class="arch-box primary">Harper</div>
+    </div>
+    <div class="arch-arrow">&darr;</div>
+    <div class="arch-row">
+      <div class="arch-box warn">Wholesale Broker<small>RT Specialties, etc.</small></div>
+    </div>
+    <div class="arch-arrow">&darr;</div>
+    <div class="arch-row">
+      <div class="arch-box data">Insurance Carrier<small>Kinsale, etc.</small></div>
+    </div>
+  </div>
+  <p style="font-size:.85rem;color:var(--text2);margin-top:.8rem">An extra layer — the wholesale broker — slows everything down. This is why quotes take longer, there are taxes and fees, and everything is more complicated. The broker has to make money too, which adds cost.</p>
+
+  <h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:600;margin:2.5rem 0 .8rem;color:var(--navy)">Side-by-Side Comparison</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Attribute</th><th>Direct Bill (DB)</th><th>Agency Bill / E&S (AB)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="hl">Flow</td><td>Insured &rarr; Harper &rarr; Carrier</td><td>Insured &rarr; Harper &rarr; Broker &rarr; Carrier</td></tr>
+        <tr><td class="hl">Quote Speed</td><td>Instant or same-day</td><td>24–48+ hours</td></tr>
+        <tr><td class="hl">Taxes &amp; Fees</td><td>None</td><td>Yes — always</td></tr>
+        <tr><td class="hl">Coverage Quality</td><td>Better — standard forms, fewer exclusions</td><td>Worse — more exclusions, tighter terms</td></tr>
+        <tr><td class="hl">Cancellation</td><td>Easy — maybe $10–20 in fees</td><td>25% minimum earned premium — non-refundable</td></tr>
+        <tr><td class="hl">Premium Financing</td><td>Not usually needed</td><td>Required — 15% down, 10 payments</td></tr>
+        <tr><td class="hl">Bind Documents</td><td>Minimal paperwork</td><td>Applications + finance agreement + subjectivities</td></tr>
+        <tr><td class="hl">Examples</td><td>Accountants, UPS stores, restaurants</td><td>Bars, security guards, group homes, adult care</td></tr>
+        <tr><td class="hl">Carriers</td><td>NeXT, Coterie, Progressive</td><td>Kinsale, various E&S carriers</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="deep info" style="margin-top:1.5rem">
+    <div class="deep-title">What is "Main Street America"?</div>
+    <div class="deep-body">
+      Think of it as walking down a typical street: a restaurant, a UPS store, a Staples, a grocery store. These are simple, low-exposure businesses that standard carriers are happy to insure — they go <span class="hl-green">direct bill</span>. Anything more complicated — a bar, a group home, a security company — standard carriers don't want the risk, so it goes to the <span class="hl-coral">E&S market</span> (Excess & Surplus Lines).
+    </div>
+  </div>
+
+  <div class="deep info">
+    <div class="deep-title">Admitted vs Non-Admitted Carriers</div>
+    <div class="deep-body">
+      Direct bill carriers are typically <span class="hl-green">admitted</span> — meaning they are regulated by the state and follow standard forms. E&S carriers are typically <span class="hl-coral">non-admitted</span> — they decide what they want to write, what exclusions to apply, and can be much more restrictive. Always try the admitted market first before going to E&S.
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════ 04 / MONEY FLOW ══════════════════ -->
+<section class="section" id="money-flow">
+  <span class="section-num">04 / MONEY FLOW</span>
+  <h2 class="section-title">Premium Financing &amp; Chargebacks</h2>
+  <p class="section-desc">How money actually moves between the customer, Harper, the broker, and the carrier — and how we lose it.</p>
+
+  <h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:600;margin:2rem 0 .8rem;color:var(--navy)">Premium Financing (Agency Bill)</h3>
+  <p style="font-size:.85rem;color:var(--text2);margin-bottom:1rem">For E&S policies, the insurance carrier must be paid in full to issue the policy. Most customers can't pay $10,000+ upfront, so we use premium financing through a company called <span class="hl">GoToPrint</span>.</p>
+
+  <div class="flow">
+    <div class="flow-n coral">Customer pays 15% down</div>
+    <div class="flow-a">&rarr;</div>
+    <div class="flow-n navy">Harper takes commission + broker fee</div>
+    <div class="flow-a">&rarr;</div>
+    <div class="flow-n orange">GoToPrint finances the rest</div>
+    <div class="flow-a">&rarr;</div>
+    <div class="flow-n green">Carrier &amp; broker get paid in full</div>
+  </div>
+
+  <div class="card" style="margin-top:1rem;max-width:520px">
+    <div class="card-t">Payment Structure</div>
+    <div class="kv"><span class="kv-k">DOWN PAYMENT</span><span class="kv-v">15% of total premium</span></div>
+    <div class="kv"><span class="kv-k">MONTHLY</span><span class="kv-v">10 equal payments for the remaining 85%</span></div>
+    <div class="kv"><span class="kv-k">FINANCE CO.</span><span class="kv-v">GoToPrint — funds carrier &amp; broker upfront</span></div>
+    <div class="kv"><span class="kv-k">IF MISSED</span><span class="kv-v">Finance company sends insured to collections</span></div>
+  </div>
+
+  <h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:600;margin:2.5rem 0 .8rem;color:var(--navy)">How Harper Loses Money: Chargebacks</h3>
+  <p style="font-size:.85rem;color:var(--text2);margin-bottom:1rem">When a customer cancels mid-term, Harper has to return the unearned portion of the commission back to the carrier.</p>
+
+  <div class="card" style="max-width:520px">
+    <div class="card-t" style="color:var(--red)">Chargeback Example</div>
+    <div class="kv"><span class="kv-k">POLICY START</span><span class="kv-v">Jan 1 — $1,000 premium, 10% commission = $100</span></div>
+    <div class="kv"><span class="kv-k">CANCEL DATE</span><span class="kv-v">Jul 1 — 6 months in, $500 unearned</span></div>
+    <div class="kv"><span class="kv-k">CHARGEBACK</span><span class="kv-v">$50 (10% of $500 unearned premium)</span></div>
+    <div class="kv"><span class="kv-k">NET EARNED</span><span class="kv-v">$50 instead of $100</span></div>
+  </div>
+
+  <div class="deep warn" style="margin-top:1.5rem">
+    <div class="deep-title">Revenue Accuracy Matters</div>
+    <div class="deep-body">
+      Chargebacks are the primary way Harper loses revenue. This is why the accounting piece is critical — the team must track revenue accurately and account for potential chargebacks at all times. The carriers and brokers will always get their money, no matter what. If we don't get it right, we eat the loss.
+    </div>
+  </div>
+
+  <div class="card-grid cg2" style="margin-top:1.5rem">
+    <div class="card">
+      <div class="card-t">Direct Bill Revenue Collection</div>
+      <div class="card-d">Commission is taken <span class="hl-green">instantly</span> from the down payment. Broker fee is charged at purchase — immediate revenue. Simple, fast, and predictable.</div>
+    </div>
+    <div class="card">
+      <div class="card-t">Agency Bill Revenue Collection</div>
+      <div class="card-d">Commission arrives roughly <span class="hl-coral">two months later</span> from the carrier. Broker fee can be split earned/unearned. More complex and harder to track, but often larger policies.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════ 05 / BIND PROCESS ══════════════════ -->
+<section class="section" id="bind-process">
+  <span class="section-num">05 / BIND PROCESS</span>
+  <h2 class="section-title">The Bind Process (E&S)</h2>
+  <p class="section-desc">Once the customer agrees to a quote, this is the step-by-step process to actually get the policy issued. For instant quotes, most of this is automatic. For E&S — it's all manual.</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <div class="step-title">Quote Received from Broker</div>
+        <div class="step-desc">The wholesale broker (e.g., RT Specialties) sends back a quote from the carrier (e.g., Kinsale). The quote includes coverage details, premium, and a list of <span class="hl">subjectivities</span> — requirements that must be met to issue the policy.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <div class="step-title">Create Bind Documents</div>
+        <div class="step-desc">Includes the <span class="hl">applications</span>, <span class="hl">finance agreement</span>, and all required forms. The bind docs should be sent to the customer <span class="hl-coral">within 2 hours</span> of the sale. RT Connector creates the binder automatically, but Harper still creates the separate finance agreement.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <div class="step-title">Customer Signs</div>
+        <div class="step-desc">The customer must sign both the binder documents and the finance agreement. Both signatures are required before moving forward.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <div class="step-title">Harper Signs</div>
+        <div class="step-desc">After the customer signs, Harper co-signs the documents to authorize the bind.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-content">
+        <div class="step-title">Send Request to Bind</div>
+        <div class="step-desc">Harper tells the broker: "We have the insured's money, all documents are signed — buy it." Two critical pieces: <span class="hl-coral">the effective date</span> (when coverage starts) and <span class="hl-coral">all subjectivity documents</span> must be collected.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">6</div>
+      <div class="step-content">
+        <div class="step-title">Binder Confirmation</div>
+        <div class="step-desc">The insurance carrier confirms the customer officially has coverage. This is the green light.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">7</div>
+      <div class="step-content">
+        <div class="step-title">COI + Finance Upload</div>
+        <div class="step-desc">Harper sends out the <span class="hl">Certificate of Insurance</span> and uploads the finance agreement so the premium finance company can fund the carrier and broker.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="deep ok">
+    <div class="deep-title">Instant Quote vs E&S Timeline</div>
+    <div class="deep-body">
+      <span class="hl-green">Instant quotes</span> skip most of these steps — the policy is issued immediately, no bind documents needed, no subjectivities to worry about. That's why the mid funnel team always tries the admitted market first.<br><br>
+      <span class="hl-coral">E&S policies</span> realistically take 24–48 hours to issue even after the customer pays. The customer must be told this upfront so they're not surprised.
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════ 06 / SUBJECTIVITIES ══════════════════ -->
+<section class="section" id="subjectivities">
+  <span class="section-num">06 / SUBJECTIVITIES</span>
+  <h2 class="section-title">Subjectivities &amp; Compliance</h2>
+  <p class="section-desc">Subjectivities are the requirements that a carrier demands before they'll issue a policy. Miss one, and the entire process restarts.</p>
+
+  <div class="card-grid cg2" style="margin-top:1.5rem">
+    <div class="card">
+      <div class="card-icon" style="background:rgba(244,112,104,.12);color:var(--accent)">&#128196;</div>
+      <div class="card-t">Loss Runs</div>
+      <div class="card-d">A document showing claims history for the past 2–5 years. If the customer has been in business 2 years and had insurance, they should have 2 years of loss runs. No claims = ideal. Claims found after sale = quote may change and the whole process restarts.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:rgba(74,127,191,.12);color:var(--blue)">&#128203;</div>
+      <div class="card-t">State Licenses</div>
+      <div class="card-d">Required for certain industries. The carrier needs proof the insured is licensed to operate in their state. Missing this can trigger a notice of cancellation — even after the policy is issued.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:rgba(45,159,111,.12);color:var(--green)">&#128100;</div>
+      <div class="card-t">Resumes</div>
+      <div class="card-d">Owner/operator resumes showing relevant experience. If the customer doesn't have one, Harper can offer to build one with a 5-minute phone call — ask about school, work experience, achievements.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:rgba(139,111,191,.12);color:var(--violet)">&#128209;</div>
+      <div class="card-t">NPDB &amp; Other Docs</div>
+      <div class="card-d">National Practitioner Data Bank reports (for medical), due diligence forms, state-specific surplus lines forms, and any other carrier-specific requirements listed on the quote.</div>
+    </div>
+  </div>
+
+  <div class="deep warn" style="margin-top:1.5rem">
+    <div class="deep-title">When to Communicate Subjectivities</div>
+    <div class="deep-body">
+      There are two schools of thought:<br><br>
+      <span class="hl-coral">Old approach:</span> Mention subjectivities after payment to avoid scaring the customer. This caused cancellations and angry customers who felt blindsided.<br><br>
+      <span class="hl-green">Current approach:</span> Mention the main subjectivities during the pitch while breaking down the policy. Prep the customer so there are no surprises. This leads to better service outcomes, fewer cancellations, and happier renewals.<br><br>
+      As a Series A company, Harper must be transparent from the beginning. Customers need to know what they'll need before they pay.
+    </div>
+  </div>
+
+  <div class="deep info">
+    <div class="deep-title">Surplus Lines Form</div>
+    <div class="deep-body">
+      Whenever a policy goes through the E&S market, a <span class="hl">surplus lines affidavit</span> is required. This form proves that the agent tried the admitted market first, got denied by at least three standard carriers, and then went to E&S as a last resort. It's a legal requirement showing due diligence.
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════ 07 / MEP ══════════════════ -->
+<section class="section" id="mep">
+  <span class="section-num">07 / MINIMUM EARNED PREMIUM</span>
+  <h2 class="section-title">MEP — The 25% Rule</h2>
+  <p class="section-desc">On agency bill / E&S policies, 25% of the premium is fully earned the moment the policy is issued. No refunds. No exceptions.</p>
+
+  <div class="card-grid cg2" style="margin-top:1.5rem">
+    <div class="card" style="border-left:3px solid var(--red)">
+      <div class="card-t">Agency Bill / E&S</div>
+      <div class="card-d">
+        <span class="hl-coral">25% minimum earned premium</span> — non-refundable from day one. If the customer's policy is $10,000, then $2,500 is locked in the moment it's issued. Even if the customer only paid a 15% down payment ($1,500), the finance company loses 10% and sends the customer to collections. This is why getting it right the first time is critical.
+      </div>
+    </div>
+    <div class="card" style="border-left:3px solid var(--green)">
+      <div class="card-t">Direct Bill</div>
+      <div class="card-d">
+        <span class="hl-green">Easy cancellation</span> — the customer might lose $10–20 in fees. Maybe a full refund if they cancel the same day. The process is simple and low-risk compared to agency bill.
+      </div>
+    </div>
+  </div>
+
+  <div class="deep" style="margin-top:1.5rem">
+    <div class="deep-title">Real Example: Security Guard Policy</div>
+    <div class="deep-body">
+      A security guard company was sold a policy. The customer sent their insurance requirements (from a contract) an hour <em>after</em> everything was issued. The policy couldn't meet the requirements. The customer lost <span class="hl-coral">$500</span> with no possible refund due to the 25% MEP. She filed a complaint with the insurance commissioner. Harper had all call logs and did everything right — but the outcome still hurt. This is why sales must verify all requirements <em>before</em> the bind.
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════ 08 / COI ══════════════════ -->
+<section class="section" id="coi">
+  <span class="section-num">08 / CERTIFICATES OF INSURANCE</span>
+  <h2 class="section-title">COIs &amp; Additional Insured</h2>
+  <p class="section-desc">A Certificate of Insurance (COI) is proof that the customer has insurance. It's sent to third parties — landlords, clients, contract partners — to prove coverage.</p>
+
+  <div class="card-grid cg2" style="margin-top:1.5rem">
+    <div class="card">
+      <div class="card-t">What's on a COI</div>
+      <div class="card-d">The insured's name, coverage types, coverage limits, effective dates, and any additional insured or certificate holders. For example: "Aarfan LLC needs Anunni LLC listed as a certificate holder at 181 South Park."</div>
+    </div>
+    <div class="card">
+      <div class="card-t">Who Requests COIs</div>
+      <div class="card-d">Landlords, general contractors, clients, government agencies — anyone who needs proof that a business is insured before letting them operate, sign a lease, or fulfill a contract.</div>
+    </div>
+  </div>
+
+  <div class="deep" style="margin-top:1.5rem;border-left-color:var(--red)">
+    <div class="deep-title">Blanket vs Specifically Listed Additional Insured</div>
+    <div class="deep-body">
+      These are <span class="hl-coral">two completely different things</span>. A <span class="hl">blanket additional insured</span> provides general coverage. A <span class="hl">specifically listed additional insured</span> names a particular entity. If someone requests specifically listed and you put blanket — and send the wrong COI — <span class="hl-coral">that could be a lawsuit</span>. Every COI the VAs create gets double-checked by someone onshore because this must be perfect.
+    </div>
+  </div>
+
+  <h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:600;margin:2rem 0 .8rem;color:var(--navy)">Additional Insured by Carrier</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Carrier</th><th>When to Add</th><th>Cost</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="hl">NeXT</td><td>After binding</td><td>Free</td><td>Add after purchase — no issues</td></tr>
+        <tr><td class="hl">Coterie</td><td>Before binding</td><td>Free if pre-bind</td><td>Adding after bind requires endorsement — takes 3–5 days</td></tr>
+        <tr><td class="hl">E&S Carriers</td><td>Varies</td><td>~$250+</td><td>May charge per additional insured — customer often surprised</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════ 09 / E&O ══════════════════ -->
+<section class="section" id="eo">
+  <span class="section-num">09 / ERRORS &amp; OMISSIONS</span>
+  <h2 class="section-title">Why Accuracy is Everything</h2>
+  <p class="section-desc">One wrong number on a document can expose Harper to a lawsuit. This is called Errors &amp; Omissions (E&O) — and it's the scariest risk in insurance brokerage.</p>
+
+  <div class="deep" style="margin-top:1.5rem;border-left-color:var(--red)">
+    <div class="deep-title">The Coverage Limit Nightmare</div>
+    <div class="deep-body">
+      <strong>Scenario:</strong> A customer buys a policy with <span class="hl">$1M / $2M</span> coverage limits. They request <span class="hl">$1M / $3M</span>. A COI gets sent out showing $1M / $3M. The customer gives it to the state, gets approved, and operates for two months.<br><br>
+      <strong>Then:</strong> A claim happens — a kid slips, falls, breaks a tooth. Parents sue. The claim exceeds $2M.<br><br>
+      <strong>The problem:</strong> The COI showed $3M aggregate, but the actual policy only has $2M. The carrier says: "This is your mistake. We issued $1M/$2M." Any lawyer will argue the customer was under the impression they had $3M because of the COI Harper sent. Harper is now on the hook for the extra $1M.<br><br>
+      <span class="hl-coral">This is why every single COI is double-checked. Every coverage limit must match the actual policy. No exceptions.</span>
+    </div>
+  </div>
+
+  <div class="card-grid cg3" style="margin-top:1.5rem">
+    <div class="card">
+      <div class="card-icon" style="background:rgba(224,90,82,.12);color:var(--red)">&#9888;</div>
+      <div class="card-t">Wrong Coverages</div>
+      <div class="card-d">If coverage on a COI doesn't match the actual policy, the entire sale may need to be unwound. Lead goes back to mid funnel, everything restarts, and the deal is invalidated.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:rgba(232,146,58,.12);color:var(--orange)">&#128269;</div>
+      <div class="card-t">Double-Check Everything</div>
+      <div class="card-d">Every COI created by VAs offshore is reviewed by someone onshore. Even a blank COI with no coverage listed is a risk — it went out, and someone could rely on it.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:rgba(74,127,191,.12);color:var(--blue)">&#128230;</div>
+      <div class="card-t">Validated Deals</div>
+      <div class="card-d">Sales reps who "validate" deals that don't actually close properly lose their commission. If something is wrong, the deal gets refunded and unvalidated. Selling right the first time matters more than volume.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════ 10 / SALES ══════════════════ -->
+<section class="section" id="sales">
+  <span class="section-num">10 / SALES PRINCIPLES</span>
+  <h2 class="section-title">How to Sell at Harper</h2>
+  <p class="section-desc">Practical advice from the training session on building relationships, closing deals, and avoiding common pitfalls.</p>
+
+  <div class="card-grid cg2" style="margin-top:1.5rem">
+    <div class="card">
+      <div class="card-icon" style="background:rgba(45,159,111,.12);color:var(--green)">&#129309;</div>
+      <div class="card-t">Build Relationships Fast</div>
+      <div class="card-d">You have 3–5 minutes to pitch and build a relationship. The customer can't just be a number on the board. Find common ground quickly. The guy who started at $3K with one limo now has 350 cars and a $1M+ policy — and he left the agency the moment his trusted rep left. Relationships are everything.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:rgba(244,112,104,.12);color:var(--accent)">&#128247;</div>
+      <div class="card-t">Respond Like Crazy</div>
+      <div class="card-d">Every text message, every phone call, every email — respond the same day, including Saturdays and Sundays. Response time is the #1 differentiator between Harper and every other broker. Nobody else gives attention to the $500 policy customer. We do.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:rgba(232,146,58,.12);color:var(--orange)">&#128176;</div>
+      <div class="card-t">Always Be Closing (ABC)</div>
+      <div class="card-d">Your job all day long: email customers, pitch quotes, close deals. Check Big Brother for quotes, pitch them, follow up. If an E&S quote looks like it might fit instant quote — ask mid funnel to try. A cheaper instant quote beats a slow E&S one every time.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:rgba(139,111,191,.12);color:var(--violet)">&#128640;</div>
+      <div class="card-t">Prep the Customer</div>
+      <div class="card-d">Tell them about subjectivities during the pitch. Tell them if additional insured may cost extra. Tell them E&S policies take 24–48 hours. If they're prepped, service goes well, and they renew. If they're blindsided, they cancel — and you lose commission.</div>
+    </div>
+  </div>
+
+  <div class="deep warn" style="margin-top:1.5rem">
+    <div class="deep-title">Buyers Are Liars</div>
+    <div class="deep-body">
+      Customers will underreport revenue to get a cheaper quote. A gas station owner said he sold 15,000 gallons/month — the minimum contract requires 40,000. He actually did 42,000. He went from 15K to 42K in one conversation.<br><br>
+      <span class="hl-coral">You must verify.</span> Ask for P&Ls. Check if the numbers make sense. If two brokers quote the same customer with different revenue numbers, carriers like USLI will flag it and reject the bind. Harper looks bad, the deal dies, and you've wasted everyone's time.<br><br>
+      When you misrepresent information — even based on what the customer told you — Harper is liable because we presented it to the carrier. All calls are recorded. Be honest, verify everything, and never stuff a policy into a bucket it doesn't belong in just to get a cheaper quote.
+    </div>
+  </div>
+
+  <div class="deep ok">
+    <div class="deep-title">The USLI Cross-Quote Problem</div>
+    <div class="deep-body">
+      If two brokers submit different revenue numbers for the same customer to USLI, the carrier will flag both quotes. They'll reject the lower one and demand proof (P&L) before issuing either. This stops the entire bind process and can result in a lost deal. Always ask: "Would you be able to show me a P&L that confirms this revenue?" It protects everyone.
+    </div>
+  </div>
+
+  <h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:600;margin:2.5rem 0 .8rem;color:var(--navy)">The Golden Rules</h3>
+  <div class="card-grid cg3">
+    <div class="card" style="border-top:3px solid var(--accent);text-align:center">
+      <div style="font-size:1.5rem;margin-bottom:.5rem">&#128172;</div>
+      <div class="card-t">Build the Relationship</div>
+      <div class="card-d">3–5 min to connect. Every customer matters — today's $500 policy could be tomorrow's $1M account.</div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--green);text-align:center">
+      <div style="font-size:1.5rem;margin-bottom:.5rem">&#9889;</div>
+      <div class="card-t">Respond Instantly</div>
+      <div class="card-d">Same-day replies on everything — texts, calls, emails. Weekends included. Speed wins deals.</div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--blue);text-align:center">
+      <div style="font-size:1.5rem;margin-bottom:.5rem">&#128270;</div>
+      <div class="card-t">Verify Everything</div>
+      <div class="card-d">Check P&Ls, validate revenue, confirm subjectivities. Buyers are liars — protect yourself and Harper.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ FOOTER ══════════════════ -->
+<div class="footer">
+  <p style="color:var(--navy)">Insurance 101 — Harper Internal Training Guide</p>
+  <p style="margin-top:.4rem">From Ammar's teaching session &middot; Feb 9, 2026</p>
+</div>
+
+<!-- ══════════════════ SCRIPTS ══════════════════ -->
+<script>
+// Scroll progress
+window.addEventListener('scroll', () => {
+  const p = document.getElementById('progress');
+  p.style.width = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100) + '%';
+});
+
+// Active nav link
+const sects = document.querySelectorAll('section[id]');
+const navs = document.querySelectorAll('.nav-link');
+window.addEventListener('scroll', () => {
+  let c = '';
+  sects.forEach(s => { if (window.scrollY >= s.offsetTop - 100) c = s.id; });
+  navs.forEach(n => { n.classList.toggle('active', n.getAttribute('href') === '#' + c); });
+});
+
+// Scroll animations
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: .1 });
+document.querySelectorAll('.card,.deep,.step,.arch').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(8px)';
+  el.style.transition = 'opacity .4s ease, transform .4s ease';
+  obs.observe(el);
+});
+</script>
+</body>
+</html>
