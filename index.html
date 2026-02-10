@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Insurance 101 — How Harper Works</title>
+<title>Insurance 101 &amp; 102 — How Harper Works</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -161,7 +161,7 @@ tr:hover td{background:rgba(244,112,104,.03)}
 
 <!-- ══════════════════ NAV ══════════════════ -->
 <nav class="nav">
-  <div class="nav-logo">Insurance 101</div>
+  <div class="nav-logo">Insurance 101 &amp; 102</div>
   <div class="nav-links">
     <a class="nav-link" href="#revenue">Revenue</a>
     <a class="nav-link" href="#lifecycle">Lifecycle</a>
@@ -172,6 +172,9 @@ tr:hover td{background:rgba(244,112,104,.03)}
     <a class="nav-link" href="#mep">MEP</a>
     <a class="nav-link" href="#coi">COIs</a>
     <a class="nav-link" href="#eo">E&amp;O</a>
+    <a class="nav-link" href="#coverage-types">Coverage Types</a>
+    <a class="nav-link" href="#workers-comp">Workers' Comp</a>
+    <a class="nav-link" href="#specialized">Specialized</a>
     <a class="nav-link" href="#sales">Sales</a>
   </div>
   <div class="nav-progress" id="progress"></div>
@@ -180,8 +183,8 @@ tr:hover td{background:rgba(244,112,104,.03)}
 <!-- ══════════════════ HERO ══════════════════ -->
 <section class="hero">
   <div class="hero-badge">Harper Internal Training</div>
-  <h1>Insurance 101</h1>
-  <p>How Harper makes money, the lifecycle of every account, and why every detail in the process matters — from lead to renewal.</p>
+  <h1>Insurance 101 &amp; 102</h1>
+  <p>How Harper makes money, the lifecycle of every account, every coverage type you need to know, and why every detail in the process matters — from lead to renewal.</p>
   <div class="hero-stats">
     <div class="hero-stat">
       <div class="hero-stat-num">2</div>
@@ -597,23 +600,48 @@ tr:hover td{background:rgba(244,112,104,.03)}
 <section class="section" id="coi">
   <span class="section-num">08 / CERTIFICATES OF INSURANCE</span>
   <h2 class="section-title">COIs &amp; Additional Insured</h2>
-  <p class="section-desc">A Certificate of Insurance (COI) is proof that the customer has insurance. It's sent to third parties — landlords, clients, contract partners — to prove coverage.</p>
+  <p class="section-desc">A Certificate of Insurance (COI) is a one-page document that condenses a 120-page policy into a summary showing proof of coverage. It does not grant coverage — it's information only. But what's listed on it determines what the certificate holder knows and relies on.</p>
 
   <div class="card-grid cg2" style="margin-top:1.5rem">
     <div class="card">
       <div class="card-t">What's on a COI</div>
-      <div class="card-d">The insured's name, coverage types, coverage limits, effective dates, and any additional insured or certificate holders. For example: "Aarfan LLC needs Anunni LLC listed as a certificate holder at 181 South Park."</div>
+      <div class="card-d">The insured's name, coverage types, coverage limits, effective dates, and any additional insured or certificate holders. The <span class="hl">description of operations</span> section contains critical coverage details — this is where certificate holders look for proof of additional insured, waiver of subrogation, and primary &amp; non-contributory status.</div>
     </div>
     <div class="card">
       <div class="card-t">Who Requests COIs</div>
-      <div class="card-d">Landlords, general contractors, clients, government agencies — anyone who needs proof that a business is insured before letting them operate, sign a lease, or fulfill a contract.</div>
+      <div class="card-d">Landlords, general contractors, clients, government agencies (e.g., the DMV for DLIMP plates). They need the <span class="hl">specific entity name</span> listed as certificate holder, and specific items in the description section. It's essentially an insurance ID card — proof of purchase.</div>
     </div>
   </div>
 
-  <div class="deep" style="margin-top:1.5rem;border-left-color:var(--red)">
+  <h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:600;margin:2rem 0 .8rem;color:var(--navy)">Additional Insured (AI)</h3>
+
+  <div class="deep" style="margin-top:.5rem;border-left-color:var(--red)">
     <div class="deep-title">Blanket vs Specifically Listed Additional Insured</div>
     <div class="deep-body">
-      These are <span class="hl-coral">two completely different things</span>. A <span class="hl">blanket additional insured</span> provides general coverage. A <span class="hl">specifically listed additional insured</span> names a particular entity. If someone requests specifically listed and you put blanket — and send the wrong COI — <span class="hl-coral">that could be a lawsuit</span>. Every COI the VAs create gets double-checked by someone onshore because this must be perfect.
+      These are <span class="hl-coral">two completely different things</span> — lawsuits have happened from getting this wrong.<br><br>
+      <span class="hl">Blanket AI</span> — the policy automatically extends additional insured status to anyone who has a written contract with the insured. No need to list them individually.<br><br>
+      <span class="hl">Specific AI</span> — must list the exact entity name and full address. You must also document the relationship (landlord, business partner, etc.) and notify the carrier. Majority of the time, <span class="hl-coral">specific AI is what's required</span>.
+    </div>
+  </div>
+
+  <h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:600;margin:2rem 0 .8rem;color:var(--navy)">Policy Modification Terms</h3>
+  <p style="font-size:.85rem;color:var(--text2);margin-bottom:1rem">These terms appear in the "description of operations" section of a COI. Certificate holders rely on these to understand how coverage applies to them.</p>
+
+  <div class="card-grid cg3">
+    <div class="card">
+      <div class="card-icon" style="background:rgba(74,127,191,.12);color:var(--blue)">&#9878;</div>
+      <div class="card-t">Waiver of Subrogation</div>
+      <div class="card-d">The carrier agrees <span class="hl-blue">not to sue</span> a specific party on the policy. If your partner is listed with waiver of subrogation, the insurance company can't come after them to recover claim costs — even if they were partly at fault.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:rgba(45,159,111,.12);color:var(--green)">&#9312;</div>
+      <div class="card-t">Primary &amp; Non-Contributory</div>
+      <div class="card-d"><span class="hl-green">Your policy pays first, mine pays second.</span> If there's a claim, the primary policy covers it before the other party's insurance has to chip in. Common requirement in contracts between businesses.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:rgba(244,112,104,.12);color:var(--accent)">&#128196;</div>
+      <div class="card-t">Description of Operations</div>
+      <div class="card-d">The section on the COI where all modifications are listed. Certificate holders look here for proof of AI status, waiver of subrogation, PNC, and any other special terms. <span class="hl-coral">This must be accurate.</span></div>
     </div>
   </div>
 
@@ -671,9 +699,160 @@ tr:hover td{background:rgba(244,112,104,.03)}
 
 <div class="divider"></div>
 
-<!-- ══════════════════ 10 / SALES ══════════════════ -->
+<!-- ══════════════════ 10 / COVERAGE TYPES ══════════════════ -->
+<section class="section" id="coverage-types">
+  <span class="section-num">10 / COVERAGE TYPES</span>
+  <h2 class="section-title">Core Liability Coverage</h2>
+  <p class="section-desc">The main coverage types you'll see on every COI and sell every day. You must know these to pitch, answer customer questions, and validate quotes.</p>
+
+  <div class="card-grid cg3" style="margin-top:1.5rem">
+    <div class="card" style="border-top:3px solid var(--blue)">
+      <div class="card-icon" style="background:rgba(74,127,191,.12);color:var(--blue)">&#9888;</div>
+      <div class="card-t">General Liability (GL)</div>
+      <div class="card-d">Covers <span class="hl-blue">third-party</span> bodily injury and property damage. A customer slips and falls at a restaurant, someone breaks a client's property — that's GL. It does <em>not</em> cover workers' comp or first-party damage (your own stuff). Anytime you hear "liability" — it covers the <em>other</em> person, not you.</div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--violet)">
+      <div class="card-icon" style="background:rgba(139,111,191,.12);color:var(--violet)">&#128203;</div>
+      <div class="card-t">Professional Liability (E&amp;O)</div>
+      <div class="card-d">Protects against financial harm from <span class="hl">professional work errors</span>. An accountant files taxes wrong, a med spa botches Botox, an insurance agent sends the wrong COI — E&O covers it. Essential for accountants, consultants, IT, med spas, and <span class="hl-coral">insurance agents like Harper</span>.</div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--green)">
+      <div class="card-icon" style="background:rgba(45,159,111,.12);color:var(--green)">&#128274;</div>
+      <div class="card-t">Cyber Liability</div>
+      <div class="card-d">Protects against <span class="hl-green">data breaches and hacking</span>. Someone steals credit card info from the POS system, social security numbers get leaked — cyber liability covers it. Needed by literally everyone who stores customer data digitally. Easy upsell.</div>
+    </div>
+  </div>
+
+  <div class="deep info" style="margin-top:1.5rem">
+    <div class="deep-title">Selling Coverage: Tell a Story</div>
+    <div class="deep-body">
+      If a customer asks what GL covers and you don't know the answer, they won't buy from you. When pitching, give them a scenario: "Imagine hot soup drops on a customer's face" or "Someone slips on a wet floor and breaks their arm." Scare them a little — make them understand <em>why</em> they need coverage. That's how you sell.
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════ 11 / WORKERS COMP & PROPERTY ══════════════════ -->
+<section class="section" id="workers-comp">
+  <span class="section-num">11 / WORKERS' COMP &amp; PROPERTY</span>
+  <h2 class="section-title">Workers' Comp &amp; Commercial Property</h2>
+  <p class="section-desc">Two coverage types with critical nuances — payroll accuracy matters for workers' comp, and one letter can mean thousands of dollars on property coverage.</p>
+
+  <div class="card-grid cg2" style="margin-top:1.5rem">
+    <div class="card" style="border-left:3px solid var(--orange)">
+      <div class="card-t">Workers' Compensation</div>
+      <div class="card-d">
+        Covers <span class="hl">employee injuries on the job</span>. Required by law in almost every state — easy upsell. An employee trips and breaks their leg at the office? Workers' comp pays.<br><br>
+        <span class="hl-coral">Key:</span> Clarify upfront whether the <span class="hl">owner is included or excluded</span>. Most say no, but they should be included. If you get hurt on your own job site, do you want to be covered?
+      </div>
+    </div>
+    <div class="card" style="border-left:3px solid var(--blue)">
+      <div class="card-t">Commercial Property &amp; BPP</div>
+      <div class="card-d">
+        <span class="hl">Commercial Property</span> covers the building structure. <span class="hl">Business Personal Property (BPP)</span> covers the contents — desks, monitors, inventory. Think of BPP as inventory coverage.<br><br>
+        If someone knocks over every monitor in the office, BPP pays for it. If the building floods, commercial property covers the structure.
+      </div>
+    </div>
+  </div>
+
+  <div class="deep warn" style="margin-top:1.5rem">
+    <div class="deep-title">Workers' Comp Audits — Payroll Must Be Accurate</div>
+    <div class="deep-body">
+      Workers' comp audits happen <span class="hl-coral">every single year</span>, no exceptions. If the customer said their payroll is $60K but it's actually $200K, they'll get a massive bill for the difference. If they don't pay, they get reported to the national workers' comp board and won't be able to get coverage anywhere in the country. A few thousand off is fine — a $140K discrepancy is not. Make sure they get the payroll right.
+    </div>
+  </div>
+
+  <div class="deep" style="margin-top:1rem;border-left-color:var(--red)">
+    <div class="deep-title">Replacement Cost vs Actual Cash Value (ACV)</div>
+    <div class="deep-body">
+      <span class="hl-green">Replacement Cost</span> — the carrier pays for a brand new item. What it costs to replace it today.<br><br>
+      <span class="hl-coral">Actual Cash Value</span> — the carrier pays what the item is <em>worth</em> after depreciation. A 5-year-old laptop might only be worth $200 even though replacing it costs $1,500.<br><br>
+      On certificates, this is a <span class="hl-coral">single letter difference worth thousands of dollars</span> in claims. Get it right.
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════ 12 / SPECIALIZED COVERAGE ══════════════════ -->
+<section class="section" id="specialized">
+  <span class="section-num">12 / SPECIALIZED COVERAGE &amp; BONDS</span>
+  <h2 class="section-title">Specialized Coverage &amp; Bonds</h2>
+  <p class="section-desc">Additional coverage types you'll encounter regularly — each has specific use cases, upsell opportunities, and pitfalls to watch for.</p>
+
+  <div class="card-grid cg2" style="margin-top:1.5rem">
+    <div class="card">
+      <div class="card-icon" style="background:rgba(139,111,191,.12);color:var(--violet)">&#9969;</div>
+      <div class="card-t">Umbrella Liability</div>
+      <div class="card-d">Excess coverage that kicks in <span class="hl">above primary GL limits</span>. If GL is $1M/$2M and the customer adds a $1M umbrella, they now have $3M total. Last resort coverage for really bad claims. Common in personal lines (protect the house) and commercial (protect against massive lawsuits that could shut down the business).</div>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:rgba(244,112,104,.12);color:var(--accent)">&#127863;</div>
+      <div class="card-t">Liquor Liability</div>
+      <div class="card-d">Covers incidents from <span class="hl-coral">over-serving alcohol</span>. Someone gets drunk at a bar, beats somebody up outside, or gets behind the wheel and kills someone — the establishment is liable. <span class="hl">Push this for ALL restaurants</span> serving any alcohol, even if it's only $1K/month worth. You'll see it on COIs constantly.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:rgba(74,127,191,.12);color:var(--blue)">&#128663;</div>
+      <div class="card-t">Hired &amp; Non-Owned Auto (HNOA)</div>
+      <div class="card-d">Covers <span class="hl-blue">employees driving personal cars for business</span>. Goes under the GL policy. Common contract requirement when a company owns no vehicles. <span class="hl-coral">Must be endorsed before the policy is issued</span> — carriers often won't add it after because it increases exposure. Mid funnel missing this = endorsement nightmare later.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:rgba(232,146,58,.12);color:var(--orange)">&#128188;</div>
+      <div class="card-t">EPLI (Employment Practices)</div>
+      <div class="card-d">Protects against <span class="hl-orange">wrongful termination and retaliation claims</span>. Employee gets fired and says it was wrongful? EPLI covers the legal fight. Important for larger companies. Harper doesn't sell much of it yet, but it's growing.</div>
+    </div>
+  </div>
+
+  <h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:600;margin:2.5rem 0 .8rem;color:var(--navy)">Garage Coverage (Auto Dealers)</h3>
+  <p style="font-size:.85rem;color:var(--text2);margin-bottom:1rem">Harper sells a lot of policies for used car dealers. There are three distinct coverage types — each covers something different.</p>
+
+  <div class="card-grid cg3">
+    <div class="card">
+      <div class="card-t">Garage Liability</div>
+      <div class="card-d">Covers <span class="hl">third parties</span> — same as GL but specific to auto businesses. If a customer gets hurt on the lot, garage liability pays. Remember: liability = covers the other person.</div>
+    </div>
+    <div class="card">
+      <div class="card-t">Garage Keepers</div>
+      <div class="card-d">Covers <span class="hl">customer vehicles in your care, custody, and control</span>. If you're a repair shop and a car gets stolen off your lot, garage keepers pays the customer. Key for any shop holding other people's vehicles.</div>
+    </div>
+    <div class="card">
+      <div class="card-t">Dealer's Physical Damage</div>
+      <div class="card-d">Covers <span class="hl">the dealer's own lot inventory</span>. $100K of cars on the lot and it floods tomorrow? This pays. Dealers always forget about this — big upsell opportunity. "Do you want to lose $100K or pay $1–2K more for coverage?"</div>
+    </div>
+  </div>
+
+  <h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:600;margin:2.5rem 0 .8rem;color:var(--navy)">Surety Bonds</h3>
+  <p style="font-size:.85rem;color:var(--text2);margin-bottom:1rem">A guarantee that you'll do what you promised. Not insurance — it's a financial guarantee.</p>
+
+  <div class="card-grid cg3">
+    <div class="card">
+      <div class="card-t">Bid Bonds</div>
+      <div class="card-d">Guarantees a contractor will follow through on their bid. If they back out, the bond pays the project owner. Required for many government and large commercial projects.</div>
+    </div>
+    <div class="card">
+      <div class="card-t">Dealer Bonds</div>
+      <div class="card-d">Required for used car dealers. If something goes wrong — sell the wrong car, can't pay at auction — the bond covers it. Claims can be filed against the dealer's bond.</div>
+    </div>
+    <div class="card">
+      <div class="card-t">Lottery Bonds</div>
+      <div class="card-d">Required for gas stations and stores selling lotto. If a winning ticket is sold and the store's account goes negative, the state lottery files a claim against the lottery bond to recover what's owed.</div>
+    </div>
+  </div>
+
+  <div class="deep ok" style="margin-top:1.5rem">
+    <div class="deep-title">Why You Need to Know This</div>
+    <div class="deep-body">
+      Customers call asking for coverages after the fact. If you understand what each coverage does, you can: (1) diffuse angry customers by explaining <em>why</em> they need something, (2) upsell at the right moment, and (3) validate quotes correctly. If a customer asks about GL and you can't answer, they won't buy from you. Know the product.
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════ 13 / SALES ══════════════════ -->
 <section class="section" id="sales">
-  <span class="section-num">10 / SALES PRINCIPLES</span>
+  <span class="section-num">13 / SALES PRINCIPLES</span>
   <h2 class="section-title">How to Sell at Harper</h2>
   <p class="section-desc">Practical advice from the training session on building relationships, closing deals, and avoiding common pitfalls.</p>
 
@@ -738,8 +917,8 @@ tr:hover td{background:rgba(244,112,104,.03)}
 
 <!-- ══════════════════ FOOTER ══════════════════ -->
 <div class="footer">
-  <p style="color:var(--navy)">Insurance 101 — Harper Internal Training Guide</p>
-  <p style="margin-top:.4rem">From Ammar's teaching session &middot; Feb 9, 2026</p>
+  <p style="color:var(--navy)">Insurance 101 &amp; 102 — Harper Internal Training Guide</p>
+  <p style="margin-top:.4rem">From Ammar's teaching sessions &middot; Feb 9–10, 2026</p>
 </div>
 
 <!-- ══════════════════ SCRIPTS ══════════════════ -->
