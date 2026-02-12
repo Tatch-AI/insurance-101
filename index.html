@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Insurance 101 &amp; 102 — How Harper Works</title>
+<title>Insurance 201 — Harper Advanced Operations Guide</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -21,6 +21,8 @@
   --yellow:#C9A020;--yellow2:#E0B840;
   --border:#E8D5C4;--border2:#D4BFA8;
   --radius:10px;
+  --sidebar-w:260px;
+  --topbar-h:52px;
   --font-display:'Space Grotesk',sans-serif;
   --font-body:'IBM Plex Sans',sans-serif;
   --font-mono:'JetBrains Mono',monospace;
@@ -32,47 +34,65 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);line-he
 ::-webkit-scrollbar-track{background:var(--bg)}
 ::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
 
-/* ── Nav ── */
-.nav{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(16px);background:rgba(245,230,216,.92);border-bottom:1px solid var(--border);padding:0 2rem;height:52px;display:flex;align-items:center;gap:1.5rem}
-.nav-logo{font-family:var(--font-display);font-weight:700;font-size:1.05rem;color:var(--accent);letter-spacing:-.01em;white-space:nowrap}
-.nav-links{display:flex;gap:.2rem;overflow-x:auto;scrollbar-width:none;flex:1}
-.nav-links::-webkit-scrollbar{display:none}
-.nav-link{font-size:.75rem;color:var(--text3);padding:.3rem .65rem;border-radius:5px;text-decoration:none;white-space:nowrap;transition:all .15s}
-.nav-link:hover,.nav-link.active{color:var(--text);background:var(--bg3)}
-.nav-progress{position:absolute;bottom:0;left:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--orange));transition:width .3s}
+/* ── Top Bar ── */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--topbar-h);background:rgba(245,230,216,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 1.5rem;gap:1rem}
+.topbar-logo{font-family:var(--font-display);font-weight:700;font-size:1.1rem;color:var(--accent);letter-spacing:-.01em;white-space:nowrap}
+.topbar-badge{font-size:.68rem;font-family:var(--font-mono);background:rgba(244,112,104,.12);color:var(--accent3);padding:.15rem .55rem;border-radius:4px;font-weight:600;letter-spacing:.02em}
+.topbar-right{margin-left:auto;font-size:.78rem;color:var(--text3)}
+.topbar-progress{position:absolute;bottom:0;left:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--orange));transition:width .3s;z-index:1}
+
+/* ── Layout ── */
+.layout{display:flex;padding-top:var(--topbar-h)}
+
+/* ── Sidebar ── */
+.sidebar{position:fixed;top:var(--topbar-h);left:0;bottom:0;width:var(--sidebar-w);background:var(--bg2);border-right:1px solid var(--border);overflow-y:auto;z-index:100;padding:1.2rem 0;scrollbar-width:thin;scrollbar-color:var(--border2) transparent}
+.sidebar::-webkit-scrollbar{width:4px}
+.sidebar::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
+.sidebar-group{margin-bottom:1.2rem}
+.sidebar-group-label{font-family:var(--font-mono);font-size:.62rem;font-weight:600;color:var(--text3);letter-spacing:.08em;text-transform:uppercase;padding:.3rem 1.2rem .4rem;display:block}
+.sidebar-link{display:flex;align-items:center;gap:.6rem;padding:.5rem 1.2rem;font-size:.82rem;color:var(--text2);text-decoration:none;transition:all .15s;border-left:3px solid transparent;cursor:pointer}
+.sidebar-link:hover{color:var(--text);background:rgba(244,112,104,.04);border-left-color:var(--border2)}
+.sidebar-link.active{color:var(--accent3);background:rgba(244,112,104,.08);border-left-color:var(--accent);font-weight:600}
+.sidebar-link-icon{font-size:.9rem;width:20px;text-align:center;flex-shrink:0}
+.sidebar-link-num{font-family:var(--font-mono);font-size:.65rem;color:var(--text3);min-width:16px}
+
+/* ── Main Content ── */
+.main{flex:1;margin-left:var(--sidebar-w);min-height:100vh}
 
 /* ── Hero ── */
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:6rem 2rem 4rem;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 40% 40%,rgba(244,112,104,.08) 0%,transparent 60%),radial-gradient(ellipse at 60% 60%,rgba(74,127,191,.05) 0%,transparent 60%)}
-.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:var(--bg2);border:1px solid var(--border);padding:.35rem .9rem;border-radius:16px;font-size:.78rem;color:var(--accent);margin-bottom:1.5rem}
-.hero h1{font-family:var(--font-display);font-size:clamp(2.8rem,7vw,5.5rem);font-weight:700;line-height:1.08;letter-spacing:-.03em;background:linear-gradient(135deg,var(--navy) 0%,var(--accent) 50%,var(--orange) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1.2rem}
-.hero p{font-size:1.1rem;color:var(--text2);max-width:580px;line-height:1.6}
-.hero-stats{display:flex;gap:2.5rem;margin-top:2.5rem}
-.hero-stat{text-align:center}
-.hero-stat-num{font-family:var(--font-display);font-size:2.2rem;font-weight:700;color:var(--navy)}
-.hero-stat-label{font-size:.75rem;color:var(--text3);margin-top:.2rem}
+.hero{padding:4rem 3rem 3rem;position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 30%,rgba(244,112,104,.06) 0%,transparent 60%),radial-gradient(ellipse at 70% 70%,rgba(74,127,191,.04) 0%,transparent 60%)}
+.hero-inner{position:relative;max-width:860px}
+.hero-label{display:inline-flex;align-items:center;gap:.5rem;background:var(--bg);border:1px solid var(--border);padding:.3rem .8rem;border-radius:14px;font-size:.72rem;color:var(--accent);margin-bottom:1.2rem;font-weight:600}
+.hero h1{font-family:var(--font-display);font-size:clamp(2rem,4vw,3.2rem);font-weight:700;line-height:1.1;letter-spacing:-.03em;background:linear-gradient(135deg,var(--navy) 0%,var(--accent) 50%,var(--orange) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:.8rem}
+.hero p{font-size:1rem;color:var(--text2);max-width:640px;line-height:1.65}
+.hero-stats{display:flex;gap:2rem;margin-top:2rem;flex-wrap:wrap}
+.hero-stat{text-align:center;min-width:80px}
+.hero-stat-num{font-family:var(--font-display);font-size:1.8rem;font-weight:700;color:var(--navy)}
+.hero-stat-label{font-size:.7rem;color:var(--text3);margin-top:.15rem}
 
 /* ── Sections ── */
-.section{padding:5rem 2rem;max-width:1100px;margin:0 auto}
-.section-num{font-family:var(--font-mono);font-size:.8rem;color:var(--accent);margin-bottom:.4rem;display:block}
-.section-title{font-family:var(--font-display);font-size:2.2rem;font-weight:700;letter-spacing:-.02em;line-height:1.15;margin-bottom:.75rem;color:var(--navy)}
-.section-desc{font-size:1rem;color:var(--text2);max-width:680px}
+.section{padding:3.5rem 3rem;max-width:960px;scroll-margin-top:calc(var(--topbar-h) + 1rem)}
+.section-num{font-family:var(--font-mono);font-size:.75rem;color:var(--accent);margin-bottom:.3rem;display:block;letter-spacing:.03em}
+.section-title{font-family:var(--font-display);font-size:1.9rem;font-weight:700;letter-spacing:-.02em;line-height:1.15;margin-bottom:.6rem;color:var(--navy)}
+.section-desc{font-size:.95rem;color:var(--text2);max-width:680px;line-height:1.6}
+.sub-title{font-family:var(--font-display);font-size:1.15rem;font-weight:600;margin:2.2rem 0 .8rem;color:var(--navy)}
 
-.divider{height:1px;background:var(--border);max-width:1100px;margin:0 auto}
+.divider{height:1px;background:var(--border);margin:0 3rem}
 
 /* ── Cards ── */
-.card-grid{display:grid;gap:.75rem;margin-top:1.5rem}
-.cg2{grid-template-columns:repeat(auto-fill,minmax(320px,1fr))}
-.cg3{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
-.cg4{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
-.card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:1.3rem;transition:all .25s;position:relative;overflow:hidden}
-.card:hover{border-color:var(--border2);transform:translateY(-2px);box-shadow:0 8px 28px rgba(45,45,63,.08)}
-.card-t{font-family:var(--font-display);font-weight:600;font-size:1rem;margin-bottom:.4rem;color:var(--navy)}
-.card-d{font-size:.84rem;color:var(--text2);line-height:1.55}
-.card-icon{width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:.75rem}
+.card-grid{display:grid;gap:.75rem;margin-top:1.2rem}
+.cg2{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.cg3{grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+.cg4{grid-template-columns:repeat(auto-fill,minmax(190px,1fr))}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;transition:all .25s;position:relative;overflow:hidden}
+.card:hover{border-color:var(--border2);transform:translateY(-2px);box-shadow:0 8px 28px rgba(45,45,63,.07)}
+.card-t{font-family:var(--font-display);font-weight:600;font-size:.95rem;margin-bottom:.35rem;color:var(--navy)}
+.card-d{font-size:.82rem;color:var(--text2);line-height:1.55}
+.card-icon{width:38px;height:38px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;margin-bottom:.65rem}
 
 /* ── Badges ── */
-.badge{display:inline-block;font-size:.62rem;font-family:var(--font-mono);padding:.15rem .5rem;border-radius:3px;font-weight:600;letter-spacing:.02em}
+.badge{display:inline-block;font-size:.6rem;font-family:var(--font-mono);padding:.12rem .45rem;border-radius:3px;font-weight:600;letter-spacing:.02em}
 .b-coral{background:rgba(244,112,104,.15);color:var(--accent3)}
 .b-green{background:rgba(45,159,111,.15);color:var(--green3)}
 .b-blue{background:rgba(74,127,191,.15);color:var(--blue)}
@@ -82,56 +102,63 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);line-he
 .b-navy{background:rgba(45,45,63,.12);color:var(--navy)}
 
 /* ── Flow Diagram ── */
-.flow{display:flex;align-items:center;gap:.4rem;flex-wrap:wrap;padding:1.2rem;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);margin:1.2rem 0}
-.flow-n{padding:.45rem .85rem;border-radius:6px;font-size:.78rem;font-weight:600;font-family:var(--font-display);background:var(--bg3);color:var(--navy);border:1px solid var(--border)}
+.flow{display:flex;align-items:center;gap:.4rem;flex-wrap:wrap;padding:1rem;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);margin:1rem 0}
+.flow-n{padding:.4rem .75rem;border-radius:6px;font-size:.76rem;font-weight:600;font-family:var(--font-display);background:var(--bg3);color:var(--navy);border:1px solid var(--border)}
 .flow-n.coral{background:rgba(244,112,104,.12);border-color:rgba(244,112,104,.25);color:var(--accent3)}
 .flow-n.green{background:rgba(45,159,111,.12);border-color:rgba(45,159,111,.25);color:var(--green3)}
 .flow-n.blue{background:rgba(74,127,191,.12);border-color:rgba(74,127,191,.25);color:var(--blue)}
 .flow-n.orange{background:rgba(232,146,58,.12);border-color:rgba(232,146,58,.25);color:var(--orange)}
 .flow-n.navy{background:rgba(45,45,63,.1);border-color:rgba(45,45,63,.2);color:var(--navy)}
 .flow-n.violet{background:rgba(139,111,191,.12);border-color:rgba(139,111,191,.25);color:var(--violet)}
+.flow-n.red{background:rgba(224,90,82,.12);border-color:rgba(224,90,82,.25);color:var(--red)}
 .flow-a{color:var(--text3);font-size:.8rem;font-weight:600}
 
 /* ── Table ── */
-.table-wrap{overflow-x:auto;margin:1.2rem 0;border-radius:var(--radius);border:1px solid var(--border)}
-table{width:100%;border-collapse:collapse;font-size:.82rem}
-th{background:var(--bg3);color:var(--navy);font-family:var(--font-display);font-weight:600;text-align:left;padding:.7rem .9rem;border-bottom:1px solid var(--border)}
-td{padding:.65rem .9rem;border-bottom:1px solid var(--border);color:var(--text2)}
+.table-wrap{overflow-x:auto;margin:1rem 0;border-radius:var(--radius);border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:.8rem}
+th{background:var(--bg3);color:var(--navy);font-family:var(--font-display);font-weight:600;text-align:left;padding:.65rem .85rem;border-bottom:1px solid var(--border)}
+td{padding:.6rem .85rem;border-bottom:1px solid var(--border);color:var(--text2)}
 tr:last-child td{border-bottom:none}
 tr:hover td{background:rgba(244,112,104,.03)}
 
 /* ── Deep Dive / Callout ── */
-.deep{background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:0 var(--radius) var(--radius) 0;padding:1.2rem 1.4rem;margin:1.2rem 0}
+.deep{background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:0 var(--radius) var(--radius) 0;padding:1.1rem 1.3rem;margin:1rem 0}
 .deep.warn{border-left-color:var(--orange)}
 .deep.info{border-left-color:var(--blue)}
 .deep.ok{border-left-color:var(--green)}
-.deep-title{font-family:var(--font-display);font-weight:600;font-size:.9rem;margin-bottom:.35rem;color:var(--navy)}
-.deep-body{font-size:.84rem;color:var(--text2);line-height:1.6}
+.deep.danger{border-left-color:var(--red)}
+.deep-title{font-family:var(--font-display);font-weight:600;font-size:.88rem;margin-bottom:.3rem;color:var(--navy)}
+.deep-body{font-size:.82rem;color:var(--text2);line-height:1.6}
+.deep-body ul{margin:.4rem 0 .2rem 1.2rem}
+.deep-body li{margin-bottom:.25rem}
 
 /* ── Architecture Diagram ── */
-.arch{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;margin:1.2rem 0;display:flex;flex-direction:column;align-items:center;gap:.6rem}
-.arch-row{display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center}
-.arch-box{padding:.6rem 1rem;border-radius:8px;font-size:.78rem;font-weight:600;font-family:var(--font-display);text-align:center;border:1px solid var(--border);background:var(--bg);min-width:100px}
-.arch-box small{display:block;font-weight:400;font-size:.68rem;color:var(--text3);margin-top:.2rem;font-family:var(--font-body)}
+.arch{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:1.4rem;margin:1rem 0;display:flex;flex-direction:column;align-items:center;gap:.5rem}
+.arch-row{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center}
+.arch-box{padding:.55rem .9rem;border-radius:8px;font-size:.76rem;font-weight:600;font-family:var(--font-display);text-align:center;border:1px solid var(--border);background:var(--bg);min-width:100px}
+.arch-box small{display:block;font-weight:400;font-size:.66rem;color:var(--text3);margin-top:.15rem;font-family:var(--font-body)}
 .arch-box.primary{background:rgba(244,112,104,.1);border-color:rgba(244,112,104,.3);color:var(--accent3)}
 .arch-box.ext{background:rgba(74,127,191,.08);border-color:rgba(74,127,191,.2);color:var(--blue)}
 .arch-box.data{background:rgba(45,159,111,.08);border-color:rgba(45,159,111,.2);color:var(--green3)}
 .arch-box.warn{background:rgba(232,146,58,.1);border-color:rgba(232,146,58,.25);color:var(--orange)}
-.arch-arrow{color:var(--text3);font-size:1.1rem;font-weight:700}
+.arch-arrow{color:var(--text3);font-size:1rem;font-weight:700}
 
 /* ── Steps ── */
-.steps{margin:1.5rem 0;display:flex;flex-direction:column;gap:.6rem}
-.step{display:flex;gap:1rem;align-items:flex-start;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.2rem;transition:all .25s}
-.step:hover{border-color:var(--border2);transform:translateY(-1px);box-shadow:0 4px 16px rgba(45,45,63,.06)}
-.step-num{flex-shrink:0;width:32px;height:32px;border-radius:50%;background:var(--accent);color:#fff;font-family:var(--font-display);font-weight:700;font-size:.82rem;display:flex;align-items:center;justify-content:center}
+.steps{margin:1.2rem 0;display:flex;flex-direction:column;gap:.5rem}
+.step{display:flex;gap:.9rem;align-items:flex-start;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:.9rem 1.1rem;transition:all .25s}
+.step:hover{border-color:var(--border2);transform:translateY(-1px);box-shadow:0 4px 16px rgba(45,45,63,.05)}
+.step-num{flex-shrink:0;width:30px;height:30px;border-radius:50%;background:var(--accent);color:#fff;font-family:var(--font-display);font-weight:700;font-size:.78rem;display:flex;align-items:center;justify-content:center}
+.step-num.green-n{background:var(--green)}
+.step-num.blue-n{background:var(--blue)}
+.step-num.orange-n{background:var(--orange)}
 .step-content{flex:1}
-.step-title{font-family:var(--font-display);font-weight:600;font-size:.9rem;color:var(--navy);margin-bottom:.2rem}
-.step-desc{font-size:.82rem;color:var(--text2);line-height:1.55}
+.step-title{font-family:var(--font-display);font-weight:600;font-size:.88rem;color:var(--navy);margin-bottom:.15rem}
+.step-desc{font-size:.8rem;color:var(--text2);line-height:1.55}
 
 /* ── Key-value pairs ── */
-.kv{display:flex;gap:.5rem;align-items:baseline;margin:.3rem 0}
-.kv-k{font-family:var(--font-mono);font-size:.72rem;color:var(--accent);min-width:120px;flex-shrink:0}
-.kv-v{font-size:.82rem;color:var(--text2)}
+.kv{display:flex;gap:.5rem;align-items:baseline;margin:.25rem 0}
+.kv-k{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);min-width:110px;flex-shrink:0}
+.kv-v{font-size:.8rem;color:var(--text2)}
 
 /* ── Inline highlight ── */
 .hl{font-weight:600;color:var(--navy)}
@@ -140,785 +167,760 @@ tr:hover td{background:rgba(244,112,104,.03)}
 .hl-blue{font-weight:600;color:var(--blue)}
 .hl-orange{font-weight:600;color:var(--orange)}
 
+/* ── Rule Block ── */
+.rule-block{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem 1.4rem;margin:1rem 0}
+.rule-block .rule-item{display:flex;gap:.7rem;align-items:flex-start;padding:.45rem 0;border-bottom:1px solid var(--border)}
+.rule-block .rule-item:last-child{border-bottom:none}
+.rule-block .rule-num{font-family:var(--font-mono);font-size:.72rem;font-weight:600;color:var(--accent);min-width:22px;padding-top:.1rem}
+.rule-block .rule-text{font-size:.82rem;color:var(--text2);line-height:1.55}
+
 /* ── Footer ── */
-.footer{text-align:center;padding:3rem 2rem;color:var(--text3);font-size:.82rem;border-top:1px solid var(--border)}
+.footer{text-align:center;padding:2.5rem 2rem;color:var(--text3);font-size:.8rem;border-top:1px solid var(--border)}
+
+/* ── Mobile Sidebar Toggle ── */
+.sidebar-toggle{display:none;background:none;border:none;font-size:1.3rem;cursor:pointer;color:var(--navy);padding:.2rem .4rem}
 
 /* ── Responsive ── */
-@media(max-width:768px){
-  .nav-links{display:none}
-  .hero h1{font-size:2.2rem}
-  .hero-stats{flex-direction:column;gap:1rem}
-  .section{padding:3rem 1.2rem}
+@media(max-width:900px){
+  .sidebar-toggle{display:block}
+  .sidebar{transform:translateX(-100%);transition:transform .25s ease;z-index:300}
+  .sidebar.open{transform:translateX(0);box-shadow:4px 0 24px rgba(0,0,0,.1)}
+  .main{margin-left:0}
+  .section{padding:2.5rem 1.5rem}
+  .divider{margin:0 1.5rem}
+  .hero{padding:3rem 1.5rem 2rem}
   .card-grid.cg2,.card-grid.cg3{grid-template-columns:1fr}
   .flow{flex-direction:column;align-items:flex-start}
   .flow-a{transform:rotate(90deg)}
   .arch-row{flex-direction:column;align-items:center}
-  .table-wrap{font-size:.75rem}
+  .hero-stats{gap:1rem}
+  .hero-stat{min-width:60px}
+  .hero-stat-num{font-size:1.4rem}
+}
+@media(max-width:500px){
+  .section{padding:2rem 1rem}
+  .divider{margin:0 1rem}
+  .hero{padding:2.5rem 1rem 1.5rem}
+  .table-wrap{font-size:.72rem}
 }
 </style>
 </head>
 <body>
 
-<!-- ══════════════════ NAV ══════════════════ -->
-<nav class="nav">
-  <div class="nav-logo">Insurance 101 &amp; 102</div>
-  <div class="nav-links">
-    <a class="nav-link" href="#revenue">Revenue</a>
-    <a class="nav-link" href="#lifecycle">Lifecycle</a>
-    <a class="nav-link" href="#policy-types">Policy Types</a>
-    <a class="nav-link" href="#money-flow">Money Flow</a>
-    <a class="nav-link" href="#bind-process">Bind Process</a>
-    <a class="nav-link" href="#subjectivities">Subjectivities</a>
-    <a class="nav-link" href="#mep">MEP</a>
-    <a class="nav-link" href="#coi">COIs</a>
-    <a class="nav-link" href="#eo">E&amp;O</a>
-    <a class="nav-link" href="#coverage-types">Coverage Types</a>
-    <a class="nav-link" href="#workers-comp">Workers' Comp</a>
-    <a class="nav-link" href="#specialized">Specialized</a>
-    <a class="nav-link" href="#sales">Sales</a>
+<!-- ══════════════════ TOP BAR ══════════════════ -->
+<header class="topbar">
+  <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">&#9776;</button>
+  <div class="topbar-logo">Insurance 201</div>
+  <span class="topbar-badge">ADVANCED</span>
+  <div class="topbar-right">Harper Internal Training</div>
+  <div class="topbar-progress" id="progress"></div>
+</header>
+
+<!-- ══════════════════ LAYOUT ══════════════════ -->
+<div class="layout">
+
+<!-- ══════════════════ SIDEBAR ══════════════════ -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-group">
+    <span class="sidebar-group-label">Guide</span>
+    <a class="sidebar-link" href="#overview">
+      <span class="sidebar-link-icon">&#127968;</span> Overview
+    </a>
   </div>
-  <div class="nav-progress" id="progress"></div>
-</nav>
-
-<!-- ══════════════════ HERO ══════════════════ -->
-<section class="hero">
-  <div class="hero-badge">Harper Internal Training</div>
-  <h1>Insurance 101 &amp; 102</h1>
-  <p>How Harper makes money, the lifecycle of every account, every coverage type you need to know, and why every detail in the process matters — from lead to renewal.</p>
-  <div class="hero-stats">
-    <div class="hero-stat">
-      <div class="hero-stat-num">2</div>
-      <div class="hero-stat-label">Revenue Streams</div>
-    </div>
-    <div class="hero-stat">
-      <div class="hero-stat-num">6</div>
-      <div class="hero-stat-label">Lifecycle Stages</div>
-    </div>
-    <div class="hero-stat">
-      <div class="hero-stat-num">14k+</div>
-      <div class="hero-stat-label">Competing Agencies</div>
-    </div>
-    <div class="hero-stat">
-      <div class="hero-stat-num">7–9yr</div>
-      <div class="hero-stat-label">Ideal Retention</div>
-    </div>
+  <div class="sidebar-group">
+    <span class="sidebar-group-label">Carriers &amp; Routing</span>
+    <a class="sidebar-link" href="#billing-routing">
+      <span class="sidebar-link-icon">&#128300;</span> Billing &amp; Routing
+    </a>
+    <a class="sidebar-link" href="#direct-carriers">
+      <span class="sidebar-link-icon">&#127970;</span> Direct Carriers
+    </a>
+    <a class="sidebar-link" href="#mgas-es">
+      <span class="sidebar-link-icon">&#128279;</span> MGAs &amp; E&amp;S
+    </a>
+    <a class="sidebar-link" href="#appetite-guide">
+      <span class="sidebar-link-icon">&#127919;</span> Appetite Guide
+    </a>
   </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ══════════════════ 01 / REVENUE ══════════════════ -->
-<section class="section" id="revenue">
-  <span class="section-num">01 / REVENUE</span>
-  <h2 class="section-title">How Harper Makes Money</h2>
-  <p class="section-desc">Harper generates revenue through exactly two channels. Understanding these is fundamental to every decision in sales, service, and renewals.</p>
-
-  <div class="card-grid cg2">
-    <div class="card">
-      <div class="card-icon" style="background:rgba(45,159,111,.12);color:var(--green)">$</div>
-      <div class="card-t">Commissions</div>
-      <div class="card-d">Paid by the <span class="hl">insurance carrier</span> to Harper for selling the policy. Typically around <span class="hl-green">10%</span> of the premium. Received roughly <span class="hl">two months</span> after the policy is sold on agency bill; received <span class="hl">instantly</span> from the down payment on direct bill.</div>
-    </div>
-    <div class="card">
-      <div class="card-icon" style="background:rgba(244,112,104,.12);color:var(--accent)">%</div>
-      <div class="card-t">Broker Fees</div>
-      <div class="card-d">Charged by Harper directly to the <span class="hl">customer</span> at the beginning of the policy. This is immediate revenue. On agency bill policies, broker fees can be split into <span class="hl-coral">earned</span> (collected upfront) and <span class="hl-coral">unearned</span> (spread over 10 payments).</div>
-    </div>
+  <div class="sidebar-group">
+    <span class="sidebar-group-label">Operations</span>
+    <a class="sidebar-link" href="#service-ops">
+      <span class="sidebar-link-icon">&#9881;</span> Service Operations
+    </a>
+    <a class="sidebar-link" href="#reinstate-cancel">
+      <span class="sidebar-link-icon">&#128260;</span> Reinstatements &amp; Cancellations
+    </a>
+    <a class="sidebar-link" href="#service-standards">
+      <span class="sidebar-link-icon">&#9733;</span> Service Standards
+    </a>
   </div>
+</aside>
 
-  <div class="deep" style="margin-top:1.5rem">
-    <div class="deep-title">Earned vs Unearned Broker Fees</div>
-    <div class="deep-body">
-      <span class="hl-coral">Earned</span> broker fees are collected immediately — it's money in the door today. <span class="hl-blue">Unearned</span> broker fees are spread across the 10 monthly payments. You can adjust the earned/unearned split to lower a customer's down payment. If you make the broker fee <em>all unearned</em>, it rolls into the 10 monthly payments instead of being collected upfront — so the customer's down payment is lower. But if they miss a payment and cancel, you lose that unearned broker fee because the policy lapses before it's collected.
-    </div>
-  </div>
+<!-- ══════════════════ MAIN CONTENT ══════════════════ -->
+<main class="main">
 
-  <h3 style="font-family:var(--font-display);font-size:1.15rem;font-weight:600;margin:2rem 0 .8rem;color:var(--navy)">Example: $1,000 Policy at 10% Commission</h3>
-  <div class="card" style="max-width:520px">
-    <div class="kv"><span class="kv-k">PREMIUM</span><span class="kv-v">$1,000</span></div>
-    <div class="kv"><span class="kv-k">COMMISSION</span><span class="kv-v">$100 (10% of premium)</span></div>
-    <div class="kv"><span class="kv-k">BROKER FEE</span><span class="kv-v">$100 (charged to customer)</span></div>
-    <div class="kv"><span class="kv-k">CUSTOMER PAYS</span><span class="kv-v">$200 today ($100 down + $100 fee)</span></div>
-    <div class="kv"><span class="kv-k">TOTAL REVENUE</span><span class="kv-v">$200 ($100 fee today + $100 commission in ~2 months)</span></div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ══════════════════ 02 / LIFECYCLE ══════════════════ -->
-<section class="section" id="lifecycle">
-  <span class="section-num">02 / LIFECYCLE</span>
-  <h2 class="section-title">Account Lifecycle</h2>
-  <p class="section-desc">Every customer follows this journey. The goal is to move them through cleanly and keep them on the books for 7–9 years.</p>
-
-  <div class="flow" style="margin-top:1.5rem">
-    <div class="flow-n coral">Lead</div>
-    <div class="flow-a">&rarr;</div>
-    <div class="flow-n orange">Intake</div>
-    <div class="flow-a">&rarr;</div>
-    <div class="flow-n navy">Mid Funnel</div>
-    <div class="flow-a">&rarr;</div>
-    <div class="flow-n blue">Sales</div>
-    <div class="flow-a">&rarr;</div>
-    <div class="flow-n green">Service</div>
-    <div class="flow-a">&rarr;</div>
-    <div class="flow-n violet">Renewals</div>
-  </div>
-
-  <div class="card-grid cg3" style="margin-top:1.5rem">
-    <div class="card">
-      <span class="badge b-coral">LEAD</span>
-      <div class="card-t" style="margin-top:.6rem">Lead Acquisition</div>
-      <div class="card-d">Leads come in through Tivly and other marketing channels. Each lead has an acquisition cost — sometimes $80, sometimes $500. Traditional agencies rely on free referrals; Harper invests heavily in paid leads.</div>
-    </div>
-    <div class="card">
-      <span class="badge b-orange">INTAKE</span>
-      <div class="card-t" style="margin-top:.6rem">Intake</div>
-      <div class="card-d">Gather all information from the customer. Ask about insurance requirements, landlord contracts, and additional insured needs. Speed matters — customers don't want to be on the phone for 30 minutes.</div>
-    </div>
-    <div class="card">
-      <span class="badge b-navy">MID FUNNEL</span>
-      <div class="card-t" style="margin-top:.6rem">Mid Funnel</div>
-      <div class="card-d">The most critical bottleneck. Job is to get the quote — either through instant quote or the E&S market. <span class="hl-coral">50% of leads are lost here</span> due to slow callbacks and follow-up. This stage must be airtight.</div>
-    </div>
-    <div class="card">
-      <span class="badge b-blue">SALES</span>
-      <div class="card-t" style="margin-top:.6rem">Sales</div>
-      <div class="card-d">Pitch the quote to the customer, handle adjustments, and close the deal. Instant quotes can be pitched same-day. E&S quotes take longer. Sales should always check subjectivities and insurance requirements before closing.</div>
-    </div>
-    <div class="card">
-      <span class="badge b-green">SERVICE</span>
-      <div class="card-t" style="margin-top:.6rem">Service</div>
-      <div class="card-d">Handle endorsements, certificates of insurance, and any policy changes. Service catches everything that went wrong upstream. If service is perfect, renewals follow. If not, the customer walks.</div>
-    </div>
-    <div class="card">
-      <span class="badge b-violet">RENEWALS</span>
-      <div class="card-t" style="margin-top:.6rem">Renewals</div>
-      <div class="card-d">Where the real profit lives. After year one, the account cycles between service and renewals indefinitely. Losing a customer in year 1–2 means the acquisition cost was wasted. Ideal retention: <span class="hl-green">7–9 years</span>.</div>
-    </div>
-  </div>
-
-  <div class="deep warn" style="margin-top:1.5rem">
-    <div class="deep-title">Why Mid Funnel is the Biggest Risk</div>
-    <div class="deep-body">
-      Harper does ~200 intakes per day. If 50% are lost in mid funnel because of slow callbacks and no follow-up, no amount of sales effort can make up for it. Every employee's time who touched that lead — intake, engineering, service — is also wasted. The mid funnel team must push instant quotes out same-day and always try the admitted market first before going to E&S.
+<!-- ══════════════════ HERO / OVERVIEW ══════════════════ -->
+<section class="hero" id="overview">
+  <div class="hero-inner">
+    <div class="hero-label">Advanced Follow-Up to Insurance 101</div>
+    <h1>Insurance 201</h1>
+    <p>Carrier routing, operational workflows, service standards, and the decision frameworks behind every account at Harper. This is the advanced guide for understanding <em>how</em> and <em>why</em> things move the way they do.</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num">17+</div>
+        <div class="hero-stat-label">Carrier Partners</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">5</div>
+        <div class="hero-stat-label">Service Request Types</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">&lt;5 min</div>
+        <div class="hero-stat-label">COI / Binder Target</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">Same-Day</div>
+        <div class="hero-stat-label">Completion Standard</div>
+      </div>
     </div>
   </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- ══════════════════ 03 / POLICY TYPES ══════════════════ -->
-<section class="section" id="policy-types">
-  <span class="section-num">03 / POLICY TYPES</span>
-  <h2 class="section-title">Direct Bill vs Agency Bill</h2>
-  <p class="section-desc">There are two types of policies Harper sells. Everything about the process — speed, cost, complexity — depends on which bucket the policy falls into.</p>
+<!-- ══════════════════ 01 / BILLING & ROUTING ══════════════════ -->
+<section class="section" id="billing-routing">
+  <span class="section-num">01 / BILLING &amp; ROUTING</span>
+  <h2 class="section-title">Billing Paths &amp; Routing Logic</h2>
+  <p class="section-desc">Every policy follows one of two billing paths. The routing decision determines speed, cost, complexity, and the customer experience.</p>
 
-  <!-- Architecture diagrams side by side -->
-  <h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:600;margin:2rem 0 .8rem;color:var(--navy)">Direct Bill (DB) — The Simple Path</h3>
-  <div class="arch">
-    <div class="arch-row">
-      <div class="arch-box ext">Insured (Customer)</div>
-    </div>
-    <div class="arch-arrow">&darr;</div>
-    <div class="arch-row">
-      <div class="arch-box primary">Harper</div>
-    </div>
-    <div class="arch-arrow">&darr;</div>
-    <div class="arch-row">
-      <div class="arch-box data">Insurance Carrier<small>NeXT, Coterie, Progressive</small></div>
-    </div>
-  </div>
-  <p style="font-size:.85rem;color:var(--text2);margin-top:.8rem">The insured pays the insurance company directly — Harper acts as the agent but there's no wholesale broker layer in between. Policies are issued quickly, and coverage is stronger relative to the E&S market. There are <span class="hl-green">no taxes or fees</span>, though Harper can still charge broker fees separately. This is the ideal path.</p>
-
-  <h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:600;margin:2.5rem 0 .8rem;color:var(--navy)">Agency Bill (AB) — The E&S Path</h3>
-  <div class="arch">
-    <div class="arch-row">
-      <div class="arch-box ext">Insured (Customer)</div>
-    </div>
-    <div class="arch-arrow">&darr;</div>
-    <div class="arch-row">
-      <div class="arch-box primary">Harper</div>
-    </div>
-    <div class="arch-arrow">&darr;</div>
-    <div class="arch-row">
-      <div class="arch-box warn">Wholesale Broker<small>RT Specialties, etc.</small></div>
-    </div>
-    <div class="arch-arrow">&darr;</div>
-    <div class="arch-row">
-      <div class="arch-box data">Insurance Carrier<small>Kinsale, etc.</small></div>
-    </div>
-  </div>
-  <p style="font-size:.85rem;color:var(--text2);margin-top:.8rem">An extra layer — the wholesale broker — slows everything down. This is why quotes take longer, there are taxes and fees, and everything is more complicated. The broker has to make money too, which adds cost.</p>
-
-  <h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:600;margin:2.5rem 0 .8rem;color:var(--navy)">Side-by-Side Comparison</h3>
+  <h3 class="sub-title">Agency Bill vs Direct Bill</h3>
   <div class="table-wrap">
     <table>
       <thead>
-        <tr><th>Attribute</th><th>Direct Bill (DB)</th><th>Agency Bill / E&S (AB)</th></tr>
+        <tr><th>Attribute</th><th>Direct Bill (DB)</th><th>Agency Bill (AB)</th></tr>
       </thead>
       <tbody>
-        <tr><td class="hl">Flow</td><td>Insured &rarr; Harper &rarr; Carrier</td><td>Insured &rarr; Harper &rarr; Broker &rarr; Carrier</td></tr>
-        <tr><td class="hl">Quote Speed</td><td>Instant or same-day</td><td>24–48+ hours</td></tr>
-        <tr><td class="hl">Taxes &amp; Fees</td><td>None (broker fees still charged separately)</td><td>Yes — always</td></tr>
-        <tr><td class="hl">Coverage Quality</td><td>Stronger — standard forms, fewer exclusions</td><td>Weaker relative to DB — more exclusions, tighter terms</td></tr>
-        <tr><td class="hl">Cancellation</td><td>Easy — maybe $10–20 in fees</td><td>25% minimum earned premium — non-refundable</td></tr>
-        <tr><td class="hl">Premium Financing</td><td>Not usually needed</td><td>Required — 15% down, 10 payments</td></tr>
-        <tr><td class="hl">Bind Documents</td><td>Minimal paperwork</td><td>Applications + finance agreement + subjectivities</td></tr>
-        <tr><td class="hl">Examples</td><td>Accountants, UPS stores, restaurants</td><td>Bars, security guards, group homes, adult care</td></tr>
-        <tr><td class="hl">Carriers</td><td>NeXT, Coterie, Progressive</td><td>Kinsale, various E&S carriers</td></tr>
+        <tr><td class="hl">Payment Flow</td><td>Customer pays carrier directly</td><td>Customer pays Harper &rarr; Harper pays broker &rarr; broker pays carrier</td></tr>
+        <tr><td class="hl">Commission Timing</td><td>Instant from down payment</td><td>~2 months after issuance</td></tr>
+        <tr><td class="hl">Broker Fee</td><td>Charged at purchase &mdash; immediate revenue</td><td>Split earned / unearned (adjustable)</td></tr>
+        <tr><td class="hl">Taxes &amp; Surplus Fees</td><td>None</td><td>Always apply</td></tr>
+        <tr><td class="hl">Cancellation Cost</td><td>$10&ndash;20 in fees, if any</td><td>25% minimum earned premium &mdash; non-refundable</td></tr>
+        <tr><td class="hl">Quote Speed</td><td>Instant or same-day</td><td>24&ndash;48+ hours</td></tr>
+        <tr><td class="hl">Coverage Quality</td><td>Standard forms, fewer exclusions</td><td>More exclusions, tighter terms</td></tr>
+        <tr><td class="hl">Premium Financing</td><td>Not needed</td><td>15% down, 10 monthly payments via GoToFinancePremium</td></tr>
+        <tr><td class="hl">Typical Businesses</td><td>Restaurants, UPS stores, accountants</td><td>Bars, security firms, group homes, adult care</td></tr>
       </tbody>
     </table>
   </div>
 
-  <div class="deep info" style="margin-top:1.5rem">
-    <div class="deep-title">What is "Main Street America"?</div>
-    <div class="deep-body">
-      Think of it as walking down a typical street: a restaurant, a UPS store, a Staples, a grocery store. These are simple, low-exposure businesses that standard carriers are happy to insure — they go <span class="hl-green">direct bill</span>. Anything more complicated — a bar, a group home, a security company — standard carriers don't want the risk, so it goes to the <span class="hl-coral">E&S market</span> (Excess & Surplus Lines).
-    </div>
+  <h3 class="sub-title">Routing Decision Framework</h3>
+  <p style="font-size:.84rem;color:var(--text2);margin-bottom:.8rem">Every account follows this routing sequence. The goal is to resolve at the earliest possible step.</p>
+
+  <div class="flow">
+    <div class="flow-n coral">Industry Type</div>
+    <div class="flow-a">&rarr;</div>
+    <div class="flow-n blue">Carrier Specialty</div>
+    <div class="flow-a">&rarr;</div>
+    <div class="flow-n violet">State Requirements</div>
+    <div class="flow-a">&rarr;</div>
+    <div class="flow-n green">Quick Market</div>
+    <div class="flow-a">&rarr;</div>
+    <div class="flow-n orange">E&amp;S (Last Resort)</div>
   </div>
 
   <div class="deep info">
-    <div class="deep-title">Admitted vs Non-Admitted Carriers</div>
+    <div class="deep-title">Routing Rule: Quick Markets First</div>
     <div class="deep-body">
-      Direct bill carriers are typically <span class="hl-green">admitted</span> — meaning they are regulated by the state and follow standard forms. E&S carriers are <em>typically</em> <span class="hl-coral">non-admitted</span> — they decide what they want to write, what exclusions to apply, and can be much more restrictive. However, some E&S carriers can also offer admitted options in certain situations. Always try the admitted market first before going to E&S.
+      Always exhaust quick-market carriers (Next, Coterie, Hiscox, Progressive, Thimble) before routing to E&amp;S. Quick markets deliver instant or same-day quotes with better coverage and no surplus line taxes. E&amp;S is the <span class="hl-coral">last resort</span> &mdash; used only when the admitted market cannot accommodate the risk.
+    </div>
+  </div>
+
+  <h3 class="sub-title">E&amp;S Routing Rules</h3>
+  <div class="deep warn">
+    <div class="deep-title">"Last Resort" E&amp;S Warnings</div>
+    <div class="deep-body">
+      <ul>
+        <li><span class="hl-coral">25% minimum earned premium</span> &mdash; locked the moment coverage is issued. No refunds.</li>
+        <li><span class="hl-coral">Annual audit risk</span> &mdash; payroll or revenue misreporting results in massive adjustment bills.</li>
+        <li><span class="hl-coral">Difficult endorsements</span> &mdash; every change goes through the broker and takes days, not minutes.</li>
+        <li><span class="hl-coral">Surplus lines affidavit required</span> &mdash; legal proof that the admitted market was tried first (3+ declinations).</li>
+        <li>Customer must be told upfront: E&amp;S policies take 24&ndash;48 hours to issue, even after payment.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="sub-title">Quick Market vs E&amp;S</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Factor</th><th>Quick Market (Admitted)</th><th>E&amp;S (Non-Admitted)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="hl">Quote Speed</td><td>Instant to same-day</td><td>24&ndash;48+ hours</td></tr>
+        <tr><td class="hl">Issuance</td><td>Immediate on bind</td><td>24&ndash;48 hours after payment</td></tr>
+        <tr><td class="hl">Taxes &amp; Fees</td><td>None</td><td>Surplus lines taxes always apply</td></tr>
+        <tr><td class="hl">Cancellation</td><td>Minimal cost</td><td>25% MEP, non-refundable</td></tr>
+        <tr><td class="hl">Endorsement Speed</td><td>Minutes to hours</td><td>Days through wholesale broker</td></tr>
+        <tr><td class="hl">Coverage Flexibility</td><td>Standard forms, predictable</td><td>Carrier-specific forms, more exclusions</td></tr>
+        <tr><td class="hl">Broker Layer</td><td>None &mdash; direct to carrier</td><td>Wholesale broker required</td></tr>
+        <tr><td class="hl">Use When</td><td>Business fits admitted appetite</td><td>All admitted carriers decline the risk</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════ 02 / DIRECT CARRIERS ══════════════════ -->
+<section class="section" id="direct-carriers">
+  <span class="section-num">02 / DIRECT CARRIERS</span>
+  <h2 class="section-title">Direct Carriers</h2>
+  <p class="section-desc">Direct carriers accept business directly from Harper with no wholesale broker intermediary. Policies are direct bill, coverage is admitted, and turnaround is fast.</p>
+
+  <div class="deep ok" style="margin-top:1.2rem">
+    <div class="deep-title">What Makes a Carrier "Direct"</div>
+    <div class="deep-body">
+      Harper has an appointed relationship with the carrier. Business is submitted through the carrier's portal or API, quotes are returned directly, and policies are issued without a broker layer. Commission is paid directly to Harper. This is the fastest, cleanest path for both the agency and the customer.
+    </div>
+  </div>
+
+  <h3 class="sub-title">Direct Carrier Profiles</h3>
+  <div class="card-grid cg2">
+    <div class="card" style="border-top:3px solid var(--green)">
+      <span class="badge b-green">QUICK MARKET</span>
+      <div class="card-t" style="margin-top:.5rem">Next Insurance</div>
+      <div class="card-d">
+        Best for small businesses under <span class="hl-green">&lt;$5M revenue</span>. Instant quoting. Covers GL, PL, WC, commercial auto, and more. Primary quick-market carrier for main-street businesses. Strong appetite across most standard industries.
+      </div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--green)">
+      <span class="badge b-green">QUICK MARKET</span>
+      <div class="card-t" style="margin-top:.5rem">Coterie</div>
+      <div class="card-d">
+        Instant quotes for GL, BOP, and WC. Ideal for small accounts. Additional insured must be added <span class="hl-coral">before binding</span> &mdash; adding post-bind requires an endorsement that takes 3&ndash;5 days.
+      </div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--blue)">
+      <span class="badge b-blue">SPECIALTY</span>
+      <div class="card-t" style="margin-top:.5rem">AmTrust</div>
+      <div class="card-d">
+        Strong workers' comp and GL appetite. Handles a broad range of class codes including hospitality and light manufacturing. Reliable for mid-market accounts that need more capacity than a quick-market carrier provides.
+      </div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--orange)">
+      <span class="badge b-orange">WC ONLY</span>
+      <div class="card-t" style="margin-top:.5rem">Employers</div>
+      <div class="card-d">
+        <span class="hl-orange">Workers' comp exclusively</span>. Does not write GL or any other line. One of the strongest WC carriers nationally. If the customer only needs WC and fits the appetite, Employers is the first call.
+      </div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--violet)">
+      <span class="badge b-violet">PREMIUM</span>
+      <div class="card-t" style="margin-top:.5rem">Chubb</div>
+      <div class="card-d">
+        Premium carrier. Recognized <span class="hl-blue">cyber liability strength</span>. Also writes management liability, professional liability, and package policies. Best for larger or more sophisticated accounts that value brand recognition and broad coverage terms.
+      </div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--green)">
+      <span class="badge b-green">QUICK MARKET</span>
+      <div class="card-t" style="margin-top:.5rem">Progressive</div>
+      <div class="card-d">
+        Primary commercial auto carrier. Strong appetite for fleets and single-vehicle operations. Also writes BOP for some classes. Fast quoting and familiar brand for customers who already have personal auto with Progressive.
+      </div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--green)">
+      <span class="badge b-green">QUICK MARKET</span>
+      <div class="card-t" style="margin-top:.5rem">Thimble</div>
+      <div class="card-d">
+        On-demand and short-term coverage specialist. Ideal for events, freelancers, and seasonal businesses. Flexible policy terms (monthly, daily). Instant quoting. Good for customers who need coverage fast and don't want a full annual commitment.
+      </div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--blue)">
+      <span class="badge b-blue">SPECIALTY</span>
+      <div class="card-t" style="margin-top:.5rem">Hiscox</div>
+      <div class="card-d">
+        Professional services specialist. Strong for consultants, IT firms, accountants, and other white-collar risks. Writes GL, PL (E&amp;O), and cyber. Direct online quoting available. Good for customers who need professional liability as the primary coverage.
+      </div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--blue)">
+      <span class="badge b-blue">SPECIALTY</span>
+      <div class="card-t" style="margin-top:.5rem">Guard (Berkshire Hathaway)</div>
+      <div class="card-d">
+        Workers' comp and BOP. Owned by Berkshire Hathaway &mdash; strong financial rating. Competitive pricing on WC for many class codes. Reliable for small-to-mid accounts that need both WC and a BOP in one package.
+      </div>
+    </div>
+  </div>
+
+  <h3 class="sub-title">Direct Carrier vs MGA: Operational Differences</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Dimension</th><th>Direct Carrier</th><th>MGA / Wholesale Broker</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="hl">Relationship</td><td>Harper is directly appointed</td><td>Harper works through a managing general agent or wholesale broker</td></tr>
+        <tr><td class="hl">Quoting</td><td>Portal or API &mdash; instant to same-day</td><td>Submission-based &mdash; 24&ndash;72 hours typical</td></tr>
+        <tr><td class="hl">Policy Issuance</td><td>Immediate on bind</td><td>After broker processes and carrier confirms</td></tr>
+        <tr><td class="hl">Endorsements</td><td>Self-service or fast turnaround (minutes to hours)</td><td>Request through broker &mdash; days to process</td></tr>
+        <tr><td class="hl">Commission</td><td>Paid directly to Harper</td><td>Split between Harper and wholesale broker</td></tr>
+        <tr><td class="hl">Billing</td><td>Direct bill to customer</td><td>Agency bill &mdash; Harper collects and remits</td></tr>
+        <tr><td class="hl">COI Generation</td><td>Carrier portal &mdash; minutes</td><td>Often manual &mdash; coordinate with broker</td></tr>
+        <tr><td class="hl">Cancellation</td><td>Clean and simple</td><td>25% MEP, premium finance unwind, complex</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════ 03 / MGAs & E&S ══════════════════ -->
+<section class="section" id="mgas-es">
+  <span class="section-num">03 / MGAs &amp; E&amp;S MARKET</span>
+  <h2 class="section-title">MGAs, Wholesale Brokers &amp; E&amp;S</h2>
+  <p class="section-desc">When the admitted market cannot accommodate a risk, Harper routes through managing general agents (MGAs) and wholesale brokers to access the Excess &amp; Surplus Lines market.</p>
+
+  <div class="card-grid cg2" style="margin-top:1.2rem">
+    <div class="card" style="border-left:3px solid var(--orange)">
+      <div class="card-t">What Is an MGA?</div>
+      <div class="card-d">A <span class="hl">Managing General Agent</span> is a specialized intermediary with underwriting authority from one or more carriers. MGAs can bind, issue, and manage policies on the carrier's behalf. They typically focus on niche industries or hard-to-place risks. Think of them as specialized arms of carriers.</div>
+    </div>
+    <div class="card" style="border-left:3px solid var(--violet)">
+      <div class="card-t">What Is a Wholesale Broker?</div>
+      <div class="card-d">A <span class="hl">wholesale broker</span> acts as a middleman between Harper (the retail agent) and the E&amp;S carrier. They do not have binding authority &mdash; they submit on Harper's behalf and negotiate with carriers. They add a layer of cost and time, but provide access to markets Harper cannot reach directly.</div>
+    </div>
+  </div>
+
+  <h3 class="sub-title">The E&amp;S Flow</h3>
+  <div class="arch">
+    <div class="arch-row">
+      <div class="arch-box ext">Insured (Customer)</div>
+    </div>
+    <div class="arch-arrow">&darr;</div>
+    <div class="arch-row">
+      <div class="arch-box primary">Harper (Retail Agent)</div>
+    </div>
+    <div class="arch-arrow">&darr;</div>
+    <div class="arch-row">
+      <div class="arch-box warn">Wholesale Broker / MGA<small>RT Specialty, RPS, AmWINS, etc.</small></div>
+    </div>
+    <div class="arch-arrow">&darr;</div>
+    <div class="arch-row">
+      <div class="arch-box data">E&amp;S Carrier<small>Kinsale, Markel, etc.</small></div>
+    </div>
+  </div>
+
+  <h3 class="sub-title">MGA &amp; Wholesale Broker Partners</h3>
+  <div class="card-grid cg3">
+    <div class="card">
+      <span class="badge b-orange">WHOLESALE</span>
+      <div class="card-t" style="margin-top:.5rem">RT Specialty</div>
+      <div class="card-d">Major wholesale broker. Broad carrier access across GL, PL, property, and specialty lines. RT Connector tool auto-creates binder documents. Primary E&amp;S submission partner.</div>
+    </div>
+    <div class="card">
+      <span class="badge b-orange">WHOLESALE</span>
+      <div class="card-t" style="margin-top:.5rem">RPS (Risk Placement Services)</div>
+      <div class="card-d">Full-service wholesale brokerage. Strong in property, casualty, and professional lines. Good alternative when RT Specialty cannot place the risk.</div>
+    </div>
+    <div class="card">
+      <span class="badge b-orange">WHOLESALE</span>
+      <div class="card-t" style="margin-top:.5rem">AmWINS</div>
+      <div class="card-d">One of the largest wholesale brokers nationally. Deep carrier relationships across nearly every line of business. Used for complex or larger accounts that need extensive market access.</div>
+    </div>
+    <div class="card">
+      <span class="badge b-violet">MGA</span>
+      <div class="card-t" style="margin-top:.5rem">First Connect</div>
+      <div class="card-d">MGA with binding authority for certain classes. Faster turnaround than traditional wholesale because they can bind without waiting for carrier confirmation on pre-approved risks.</div>
+    </div>
+    <div class="card">
+      <span class="badge b-orange">WHOLESALE</span>
+      <div class="card-t" style="margin-top:.5rem">CRC Group</div>
+      <div class="card-d">Wholesale and specialty brokerage. Handles complex placements including excess liability, environmental, and construction. Use for hard-to-place risks that other wholesalers have declined.</div>
+    </div>
+    <div class="card">
+      <span class="badge b-violet">MGA</span>
+      <div class="card-t" style="margin-top:.5rem">Markel</div>
+      <div class="card-d">Operates as both carrier and MGA. Known specialty: <span class="hl-green">daycares and childcare operations</span>. Also strong in camps, fitness, and social services. Markel acts as MGA for certain programs with delegated authority.</div>
+    </div>
+    <div class="card">
+      <span class="badge b-blue">CARRIER / MGA</span>
+      <div class="card-t" style="margin-top:.5rem">USLI</div>
+      <div class="card-d">Specialty carrier with broad small-commercial appetite. Careful underwriting &mdash; will flag revenue discrepancies across brokers. If two agents submit different revenue numbers for the same insured, USLI rejects both.</div>
+    </div>
+  </div>
+
+  <div class="deep danger" style="margin-top:1.5rem">
+    <div class="deep-title">E&amp;S: Last Resort Reminders</div>
+    <div class="deep-body">
+      <ul>
+        <li><strong>Minimum Earned Premium (MEP):</strong> 25% of premium is non-refundable from day one. Customer pays even if they cancel the next day.</li>
+        <li><strong>Audit Exposure:</strong> WC and GL audits are annual. Revenue or payroll misreporting triggers adjustment bills that the customer cannot avoid.</li>
+        <li><strong>Endorsement Friction:</strong> Every policy change routes through the wholesale broker. Simple changes that take minutes on direct bill take <em>days</em> on E&amp;S.</li>
+        <li><strong>Surplus Lines Affidavit:</strong> Legal requirement proving the admitted market was tried first (3+ carrier declinations).</li>
+        <li><strong>Customer Impact:</strong> Higher cost, slower service, more paperwork. Set expectations before the bind &mdash; not after.</li>
+      </ul>
     </div>
   </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- ══════════════════ 04 / MONEY FLOW ══════════════════ -->
-<section class="section" id="money-flow">
-  <span class="section-num">04 / MONEY FLOW</span>
-  <h2 class="section-title">Premium Financing &amp; Chargebacks</h2>
-  <p class="section-desc">How money actually moves between the customer, Harper, the broker, and the carrier — and how we lose it.</p>
+<!-- ══════════════════ 04 / APPETITE GUIDE ══════════════════ -->
+<section class="section" id="appetite-guide">
+  <span class="section-num">04 / APPETITE GUIDE</span>
+  <h2 class="section-title">Carrier Appetite &amp; Specialty Map</h2>
+  <p class="section-desc">Knowing which carrier to route to &mdash; and why &mdash; is the difference between a same-day bind and a 3-day wait. This is the quick-reference guide.</p>
 
-  <h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:600;margin:2rem 0 .8rem;color:var(--navy)">Premium Financing (Agency Bill)</h3>
-  <p style="font-size:.85rem;color:var(--text2);margin-bottom:1rem">For E&S policies, the insurance carrier must be paid in full to issue the policy. Most customers can't pay $10,000+ upfront, so we use premium financing through a company called <span class="hl">GoToFinancePremium</span>.</p>
-
-  <div class="flow">
-    <div class="flow-n coral">Customer pays 15% down</div>
-    <div class="flow-a">&rarr;</div>
-    <div class="flow-n navy">Harper takes commission + broker fee</div>
-    <div class="flow-a">&rarr;</div>
-    <div class="flow-n orange">GoToFinancePremium finances the rest</div>
-    <div class="flow-a">&rarr;</div>
-    <div class="flow-n green">Carrier &amp; broker get paid in full</div>
+  <h3 class="sub-title">Carrier Appetite At a Glance</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Carrier</th><th>Type</th><th>Primary Lines</th><th>Appetite Highlights</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="hl">Next Insurance</td><td><span class="badge b-green">Direct</span></td><td>GL, PL, WC, Auto</td><td>Small business &lt;$5M revenue. Instant quoting. Broadest quick-market appetite.</td></tr>
+        <tr><td class="hl">Coterie</td><td><span class="badge b-green">Direct</span></td><td>GL, BOP, WC</td><td>Small accounts. Add AI before bind. Post-bind endorsements take 3&ndash;5 days.</td></tr>
+        <tr><td class="hl">AmTrust</td><td><span class="badge b-blue">Direct</span></td><td>WC, GL</td><td>Broad class codes. Hospitality, light manufacturing. Mid-market appetite.</td></tr>
+        <tr><td class="hl">Employers</td><td><span class="badge b-orange">Direct</span></td><td>WC only</td><td>Workers' comp exclusively. No GL, no other lines. National WC leader.</td></tr>
+        <tr><td class="hl">Chubb</td><td><span class="badge b-violet">Direct</span></td><td>Cyber, PL, Package</td><td>Strongest cyber liability. Premium accounts. Management liability strength.</td></tr>
+        <tr><td class="hl">Progressive</td><td><span class="badge b-green">Direct</span></td><td>Comm. Auto, BOP</td><td>Primary commercial auto. Fleet &amp; single vehicle. Some BOP classes.</td></tr>
+        <tr><td class="hl">Thimble</td><td><span class="badge b-green">Direct</span></td><td>GL, PL</td><td>On-demand / short-term. Events, freelancers, seasonal. Daily or monthly terms.</td></tr>
+        <tr><td class="hl">Hiscox</td><td><span class="badge b-blue">Direct</span></td><td>PL, GL, Cyber</td><td>Professional services. Consultants, IT, accountants. E&amp;O specialist.</td></tr>
+        <tr><td class="hl">Guard</td><td><span class="badge b-blue">Direct</span></td><td>WC, BOP</td><td>Berkshire Hathaway backed. Competitive WC pricing. Small-to-mid accounts.</td></tr>
+        <tr><td class="hl">Markel</td><td><span class="badge b-violet">MGA</span></td><td>GL, PL, Specialty</td><td><span class="hl-green">Daycares, camps, fitness, social services</span>. Delegated authority programs.</td></tr>
+        <tr><td class="hl">USLI</td><td><span class="badge b-blue">Carrier</span></td><td>GL, PL, Specialty</td><td>Careful underwriting. Cross-checks revenue across brokers. Flags discrepancies.</td></tr>
+        <tr><td class="hl">RT Specialty</td><td><span class="badge b-orange">Wholesale</span></td><td>All E&amp;S lines</td><td>Primary wholesale broker. RT Connector auto-creates binders. Broad market access.</td></tr>
+        <tr><td class="hl">RPS</td><td><span class="badge b-orange">Wholesale</span></td><td>Property, Casualty, PL</td><td>Full-service wholesale. Property and casualty strength.</td></tr>
+        <tr><td class="hl">AmWINS</td><td><span class="badge b-orange">Wholesale</span></td><td>All lines</td><td>Largest wholesale broker. Complex / large accounts. Deep carrier access.</td></tr>
+        <tr><td class="hl">First Connect</td><td><span class="badge b-violet">MGA</span></td><td>Varies</td><td>Binding authority for select classes. Faster than traditional wholesale.</td></tr>
+        <tr><td class="hl">CRC Group</td><td><span class="badge b-orange">Wholesale</span></td><td>Excess, Environmental</td><td>Complex and hard-to-place risks. Excess liability, construction, environmental.</td></tr>
+      </tbody>
+    </table>
   </div>
 
-  <div class="card" style="margin-top:1rem;max-width:520px">
-    <div class="card-t">Payment Structure</div>
-    <div class="kv"><span class="kv-k">DOWN PAYMENT</span><span class="kv-v">15% of total premium</span></div>
-    <div class="kv"><span class="kv-k">MONTHLY</span><span class="kv-v">10 equal payments for the remaining 85%</span></div>
-    <div class="kv"><span class="kv-k">FINANCE CO.</span><span class="kv-v">GoToFinancePremium — funds carrier &amp; broker upfront</span></div>
-    <div class="kv"><span class="kv-k">IF MISSED</span><span class="kv-v">Finance company sends insured to collections</span></div>
+  <h3 class="sub-title">Admitted vs Non-Admitted: Key Differences</h3>
+  <div class="card-grid cg2">
+    <div class="card" style="border-left:3px solid var(--green)">
+      <div class="card-t">Admitted Carriers</div>
+      <div class="card-d">
+        <span class="hl-green">Regulated by the state insurance department.</span> Use standardized policy forms (ISO forms). Rates are filed and approved by the state. If the carrier goes insolvent, the state guaranty fund covers claims. Most direct-bill carriers are admitted.
+        <br><br>
+        <span class="hl">Always try admitted first.</span>
+      </div>
+    </div>
+    <div class="card" style="border-left:3px solid var(--red)">
+      <div class="card-t">Non-Admitted (E&amp;S) Carriers</div>
+      <div class="card-d">
+        <span class="hl-coral">Not regulated by standard state forms.</span> Carriers write their own terms, set their own exclusions, and price freely. No guaranty fund protection if the carrier fails. Surplus lines taxes always apply. Used when admitted carriers decline the risk.
+        <br><br>
+        <span class="hl">Use only when admitted is unavailable.</span>
+      </div>
+    </div>
   </div>
 
-  <h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:600;margin:2.5rem 0 .8rem;color:var(--navy)">How Harper Loses Money: Chargebacks</h3>
-  <p style="font-size:.85rem;color:var(--text2);margin-bottom:1rem">When a customer cancels mid-term, Harper has to return the unearned portion of the commission back to the carrier.</p>
-
-  <div class="card" style="max-width:520px">
-    <div class="card-t" style="color:var(--red)">Chargeback Example</div>
-    <div class="kv"><span class="kv-k">POLICY START</span><span class="kv-v">Jan 1 — $1,000 premium, 10% commission = $100</span></div>
-    <div class="kv"><span class="kv-k">CANCEL DATE</span><span class="kv-v">Jul 1 — 6 months in, $500 unearned</span></div>
-    <div class="kv"><span class="kv-k">CHARGEBACK</span><span class="kv-v">$50 (10% of $500 unearned premium)</span></div>
-    <div class="kv"><span class="kv-k">NET EARNED</span><span class="kv-v">$50 instead of $100</span></div>
-  </div>
-
-  <div class="deep warn" style="margin-top:1.5rem">
-    <div class="deep-title">Revenue Accuracy Matters</div>
+  <h3 class="sub-title">State-Specific Nuances</h3>
+  <div class="deep info">
+    <div class="deep-title">Key State Considerations</div>
     <div class="deep-body">
-      Chargebacks are the primary way Harper loses revenue. This is why the accounting piece is critical — the team must track revenue accurately and account for potential chargebacks at all times. The carriers and brokers will always get their money, no matter what. If we don't get it right, we eat the loss.
+      <ul>
+        <li><strong>Surplus lines taxes vary by state</strong> &mdash; some states add 3&ndash;5% to the premium, others more. Always factor this into quotes so the customer isn't surprised.</li>
+        <li><strong>Some states require domestic surplus lines filings</strong> &mdash; the surplus lines affidavit must be filed with the state's surplus lines office, not just kept on file.</li>
+        <li><strong>Workers' comp is state-regulated</strong> &mdash; rates and class codes differ by state. A class code in California may price differently than the same code in Texas.</li>
+        <li><strong>Monopolistic WC states</strong> (Ohio, North Dakota, Washington, Wyoming) &mdash; employers must buy WC through the state fund. Private carriers cannot write WC in these states.</li>
+        <li><strong>Carrier licensing varies</strong> &mdash; a carrier admitted in one state may not be admitted in another. Always confirm the carrier is licensed in the customer's state of operation.</li>
+      </ul>
     </div>
   </div>
 
-  <div class="card-grid cg2" style="margin-top:1.5rem">
-    <div class="card">
-      <div class="card-t">Direct Bill Revenue Collection</div>
-      <div class="card-d">Commission is taken <span class="hl-green">instantly</span> from the down payment. Broker fee is charged at purchase — immediate revenue. Simple, fast, and predictable.</div>
+  <h3 class="sub-title">Routing Quick-Reference</h3>
+  <div class="rule-block">
+    <div class="rule-item">
+      <span class="rule-num">1</span>
+      <span class="rule-text"><strong>Identify the industry</strong> &mdash; Is this a "main street" business (restaurant, retail, professional services) or a specialty risk (security, bars, group homes)?</span>
     </div>
-    <div class="card">
-      <div class="card-t">Agency Bill Revenue Collection</div>
-      <div class="card-d">Commission arrives roughly <span class="hl-coral">two months later</span> from the carrier. Broker fee can be split earned/unearned. More complex and harder to track, but often larger policies.</div>
+    <div class="rule-item">
+      <span class="rule-num">2</span>
+      <span class="rule-text"><strong>Match to carrier specialty</strong> &mdash; WC only? Try Employers or Guard. Daycare? Try Markel. Professional services? Try Hiscox. Small business &lt;$5M? Start with Next.</span>
+    </div>
+    <div class="rule-item">
+      <span class="rule-num">3</span>
+      <span class="rule-text"><strong>Confirm state eligibility</strong> &mdash; Is the carrier admitted in the customer's state? Any state-specific requirements (monopolistic WC, filing obligations)?</span>
+    </div>
+    <div class="rule-item">
+      <span class="rule-num">4</span>
+      <span class="rule-text"><strong>Try the quick market</strong> &mdash; Run instant quotes through Next, Coterie, Hiscox, Progressive, or Thimble. If a quote comes back, pitch same-day.</span>
+    </div>
+    <div class="rule-item">
+      <span class="rule-num">5</span>
+      <span class="rule-text"><strong>E&amp;S only if all else fails</strong> &mdash; Document the declinations. Submit through RT Specialty, RPS, or AmWINS. Set customer expectations on timeline and cost.</span>
     </div>
   </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- ══════════════════ 05 / BIND PROCESS ══════════════════ -->
-<section class="section" id="bind-process">
-  <span class="section-num">05 / BIND PROCESS</span>
-  <h2 class="section-title">The Bind Process (E&S)</h2>
-  <p class="section-desc">Once the customer agrees to a quote, this is the step-by-step process to actually get the policy issued. For instant quotes, most of this is automatic. For E&S — it's all manual.</p>
+<!-- ══════════════════ 05 / SERVICE OPERATIONS ══════════════════ -->
+<section class="section" id="service-ops">
+  <span class="section-num">05 / SERVICE OPERATIONS</span>
+  <h2 class="section-title">Service Operations</h2>
+  <p class="section-desc">Service is where everything that went wrong upstream surfaces. There are exactly five major request types, each with distinct workflows depending on whether the policy is direct bill or agency bill.</p>
 
+  <h3 class="sub-title">The Five Service Request Types</h3>
   <div class="steps">
     <div class="step">
       <div class="step-num">1</div>
       <div class="step-content">
-        <div class="step-title">Quote Received from Broker</div>
-        <div class="step-desc">The wholesale broker (e.g., RT Specialties) sends back a quote from the carrier (e.g., Kinsale). The quote includes coverage details, premium, and a list of <span class="hl">subjectivities</span> — requirements that must be met to issue the policy.</div>
+        <div class="step-title">Certificates of Insurance (COIs)</div>
+        <div class="step-desc">Proof-of-coverage documents requested by landlords, contractors, clients, and government agencies. A COI summarizes the policy on one page &mdash; coverage types, limits, effective dates, certificate holders, and additional insured. <span class="hl-green">Target: issued within 5 minutes.</span> For direct carriers, generate from the carrier portal. For E&amp;S, coordinate with the wholesale broker or issue from Harper's system.</div>
       </div>
     </div>
     <div class="step">
       <div class="step-num">2</div>
       <div class="step-content">
-        <div class="step-title">Create Bind Documents</div>
-        <div class="step-desc">Includes the <span class="hl">applications</span>, <span class="hl">finance agreement</span>, and all required forms. The bind docs should be sent to the customer <span class="hl-coral">within 2 hours</span> of the sale. RT Connector creates the binder automatically, but Harper still creates the separate finance agreement.</div>
+        <div class="step-title">Endorsements (Policy Changes)</div>
+        <div class="step-desc">Any modification to the existing policy: adding/removing locations, changing coverage limits, adding additional insured, updating named insured, or adding coverage types (HNOA, liquor liability, etc.). <span class="hl">Direct carriers:</span> self-service or fast turnaround (minutes to hours). <span class="hl-coral">E&amp;S carriers:</span> submit through the wholesale broker &mdash; expect 3&ndash;5 business days. Always confirm the endorsement has been processed before sending an updated COI.</div>
       </div>
     </div>
     <div class="step">
-      <div class="step-num">3</div>
+      <div class="step-num green-n">3</div>
       <div class="step-content">
-        <div class="step-title">Customer Signs</div>
-        <div class="step-desc">The customer must sign both the binder documents and the finance agreement. Both signatures are required before moving forward.</div>
+        <div class="step-title">Reinstatements</div>
+        <div class="step-desc">Restoring a policy that has been cancelled or lapsed. Direct carriers typically reinstate quickly if the lapse period is short. E&amp;S reinstatements require the wholesale broker to re-submit to the carrier, which may re-underwrite the risk. <span class="hl-coral">Reinstatement is not guaranteed</span> &mdash; the carrier can decline. See the Reinstatements section for full process details.</div>
       </div>
     </div>
     <div class="step">
-      <div class="step-num">4</div>
+      <div class="step-num orange-n">4</div>
       <div class="step-content">
-        <div class="step-title">Harper Signs</div>
-        <div class="step-desc">After the customer signs, Harper co-signs the documents to authorize the bind.</div>
+        <div class="step-title">Cancellations</div>
+        <div class="step-desc">Processing policy cancellations &mdash; whether initiated by the customer, the carrier (non-payment, underwriting reasons), or the premium finance company. Requires <span class="hl-coral">15+ contact attempts</span> with documented consistency before final processing. Cancellation compliance is strict &mdash; see the Cancellations section for rules.</div>
       </div>
     </div>
     <div class="step">
-      <div class="step-num">5</div>
+      <div class="step-num blue-n">5</div>
       <div class="step-content">
-        <div class="step-title">Send Request to Bind</div>
-        <div class="step-desc">Harper tells the broker: "We have the insured's money, all documents are signed — buy it." Two critical pieces: <span class="hl-coral">the effective date</span> (when coverage starts) and <span class="hl-coral">all subjectivity documents</span> must be collected.</div>
+        <div class="step-title">Upstream Error Correction</div>
+        <div class="step-desc">Fixing issues that originated in intake, mid funnel, or sales. Examples: wrong class code on the application, incorrect revenue, missing coverage that should have been included, wrong effective date. Service catches these errors and works backwards through the chain to resolve them &mdash; re-quoting, endorsing, or in worst cases, cancelling and rebinding.</div>
       </div>
     </div>
-    <div class="step">
-      <div class="step-num">6</div>
-      <div class="step-content">
-        <div class="step-title">Binder Confirmation</div>
-        <div class="step-desc">The insurance carrier confirms the customer officially has coverage. This is the green light.</div>
+  </div>
+
+  <h3 class="sub-title">Turnaround: Direct Carrier vs MGA/E&amp;S</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Request Type</th><th>Direct Carrier</th><th>MGA / E&amp;S (via Broker)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="hl">COI Issuance</td><td>5 minutes (carrier portal)</td><td>Same day if template exists; otherwise 1&ndash;2 business days</td></tr>
+        <tr><td class="hl">Simple Endorsement</td><td>Minutes to hours</td><td>3&ndash;5 business days</td></tr>
+        <tr><td class="hl">Complex Endorsement</td><td>Same day to next day</td><td>5&ndash;10 business days</td></tr>
+        <tr><td class="hl">Reinstatement</td><td>Same day (if within grace period)</td><td>3&ndash;7 business days (carrier re-underwrites)</td></tr>
+        <tr><td class="hl">Cancellation Processing</td><td>Same day</td><td>2&ndash;5 business days (broker must process)</td></tr>
+        <tr><td class="hl">Error Correction</td><td>Varies &mdash; often same day</td><td>Varies &mdash; often requires re-submission through broker</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="deep info">
+    <div class="deep-title">Service Catches Everything</div>
+    <div class="deep-body">
+      If intake got the wrong address, service fixes it. If mid funnel missed a coverage requirement, service adds the endorsement. If sales bound the wrong class code, service corrects it. Service is the last line of defense &mdash; and the quality of service directly determines whether the customer renews or walks.
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════ 06 / REINSTATEMENTS & CANCELLATIONS ══════════════════ -->
+<section class="section" id="reinstate-cancel">
+  <span class="section-num">06 / REINSTATEMENTS &amp; CANCELLATIONS</span>
+  <h2 class="section-title">Reinstatements &amp; Cancellations</h2>
+  <p class="section-desc">Two of the most operationally complex service requests. The process differs significantly between direct carriers and E&amp;S &mdash; and compliance requirements are strict.</p>
+
+  <h3 class="sub-title">Reinstatement Process</h3>
+  <div class="card-grid cg2">
+    <div class="card" style="border-left:3px solid var(--green)">
+      <div class="card-t">Direct Carrier Reinstatement</div>
+      <div class="card-d">
+        <ul style="margin:.3rem 0 0 1rem;font-size:.82rem;color:var(--text2)">
+          <li>Typically fast &mdash; same day if within the grace period</li>
+          <li>Customer pays any outstanding balance</li>
+          <li>Carrier reinstates without re-underwriting in most cases</li>
+          <li>Some carriers allow online reinstatement through the portal</li>
+          <li>If lapse is longer than 30 days, may require a new application</li>
+        </ul>
       </div>
     </div>
-    <div class="step">
-      <div class="step-num">7</div>
-      <div class="step-content">
-        <div class="step-title">COI + Finance Upload</div>
-        <div class="step-desc">Harper sends out the <span class="hl">Certificate of Insurance</span> and uploads the finance agreement so the premium finance company can fund the carrier and broker.</div>
+    <div class="card" style="border-left:3px solid var(--orange)">
+      <div class="card-t">E&amp;S / MGA Reinstatement</div>
+      <div class="card-d">
+        <ul style="margin:.3rem 0 0 1rem;font-size:.82rem;color:var(--text2)">
+          <li>Submit reinstatement request through the wholesale broker</li>
+          <li>Carrier may <span class="hl-coral">re-underwrite the risk</span> &mdash; not guaranteed to reinstate</li>
+          <li>May require updated loss runs, financials, or subjectivity documents</li>
+          <li>Timeline: 3&ndash;7 business days minimum</li>
+          <li>If the carrier declines reinstatement, must find new coverage (re-quote)</li>
+          <li>Premium finance company must also approve (outstanding balance implications)</li>
+        </ul>
       </div>
+    </div>
+  </div>
+
+  <div class="deep warn">
+    <div class="deep-title">Reinstatement Is Not Guaranteed</div>
+    <div class="deep-body">
+      On E&amp;S policies, the carrier has full discretion to decline reinstatement. A lapse of even a few days can trigger a re-underwriting review. If the customer had claims, late payments, or the risk profile has changed, the carrier may refuse. Always communicate this to the customer immediately &mdash; they may need new coverage while the reinstatement is pending.
+    </div>
+  </div>
+
+  <h3 class="sub-title">Cancellation Compliance</h3>
+
+  <div class="deep danger">
+    <div class="deep-title">Cancellation Contact Requirements</div>
+    <div class="deep-body">
+      Before a cancellation is finalized, Harper must make a documented good-faith effort to retain the customer or confirm their intent. The standard is:
+      <ul>
+        <li><span class="hl-coral">Minimum 15 contact attempts</span> across phone, email, and text</li>
+        <li>Attempts must be <span class="hl">consistent and spread over time</span> &mdash; 15 calls in one hour does not satisfy the requirement</li>
+        <li>Every attempt must be logged in Big Brother (CRM) with date, time, method, and outcome</li>
+        <li>If the customer responds and confirms cancellation, document the confirmation verbatim</li>
+        <li>If the customer is unreachable after 15+ attempts, proceed with cancellation but keep the full contact log</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="sub-title">Cancellation Types</h3>
+  <div class="card-grid cg3">
+    <div class="card">
+      <span class="badge b-coral">INSURED-INITIATED</span>
+      <div class="card-t" style="margin-top:.5rem">Customer Requests Cancellation</div>
+      <div class="card-d">Customer contacts Harper to cancel. Confirm the reason, document it, make the 15+ contact attempts to retain, and if confirmed, process. On E&amp;S: 25% MEP applies. On direct bill: minimal cost.</div>
+    </div>
+    <div class="card">
+      <span class="badge b-orange">CARRIER-INITIATED</span>
+      <div class="card-t" style="margin-top:.5rem">Carrier Cancels for Cause</div>
+      <div class="card-d">Carrier issues notice of cancellation &mdash; usually for non-payment, missing subjectivities, or underwriting reasons. Harper must contact the customer immediately, attempt resolution, and document all steps.</div>
+    </div>
+    <div class="card">
+      <span class="badge b-red">FINANCE-INITIATED</span>
+      <div class="card-t" style="margin-top:.5rem">Premium Finance Cancellation</div>
+      <div class="card-d">GoToFinancePremium cancels for non-payment. The finance company notifies the broker and carrier. Harper must contact the customer to resolve the outstanding balance before the cancellation effective date.</div>
     </div>
   </div>
 
   <div class="deep ok">
-    <div class="deep-title">Instant Quote vs E&S Timeline</div>
+    <div class="deep-title">Consistency Is the Standard</div>
     <div class="deep-body">
-      <span class="hl-green">Instant quotes</span> skip most of these steps — the policy is issued immediately, no bind documents needed, no subjectivities to worry about. That's why the mid funnel team always tries the admitted market first.<br><br>
-      <span class="hl-coral">E&S policies</span> realistically take 24–48 hours to issue even after the customer pays. The customer must be told this upfront so they're not surprised.
+      Regulators and the insurance commissioner evaluate cancellation handling based on <span class="hl-green">consistency</span> &mdash; did you follow the same process for every customer? If one customer gets 15 attempts and another gets 3, that's a compliance risk. The process must be the same every time, documented the same way, regardless of the policy size or customer attitude.
     </div>
   </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- ══════════════════ 06 / SUBJECTIVITIES ══════════════════ -->
-<section class="section" id="subjectivities">
-  <span class="section-num">06 / SUBJECTIVITIES</span>
-  <h2 class="section-title">Subjectivities &amp; Compliance</h2>
-  <p class="section-desc">Subjectivities are the requirements that a carrier demands before they'll issue a policy. Miss one, and the entire process restarts.</p>
+<!-- ══════════════════ 07 / SERVICE STANDARDS ══════════════════ -->
+<section class="section" id="service-standards">
+  <span class="section-num">07 / SERVICE STANDARDS</span>
+  <h2 class="section-title">Service Mindset &amp; Standards</h2>
+  <p class="section-desc">These are the non-negotiable standards for service operations at Harper. Speed, documentation, and consistency define the customer experience.</p>
 
-  <div class="card-grid cg2" style="margin-top:1.5rem">
-    <div class="card">
-      <div class="card-icon" style="background:rgba(244,112,104,.12);color:var(--accent)">&#128196;</div>
-      <div class="card-t">Loss Runs</div>
-      <div class="card-d">A document showing claims history for the past 2–5 years. If the customer has been in business 2 years and had insurance, they should have 2 years of loss runs. No claims = ideal. Claims found after sale = quote may change and the whole process restarts.</div>
-    </div>
-    <div class="card">
-      <div class="card-icon" style="background:rgba(74,127,191,.12);color:var(--blue)">&#128203;</div>
-      <div class="card-t">State Licenses</div>
-      <div class="card-d">Required for certain industries. The carrier needs proof the insured is licensed to operate in their state. Missing this can trigger a notice of cancellation — even after the policy is issued.</div>
-    </div>
-    <div class="card">
-      <div class="card-icon" style="background:rgba(45,159,111,.12);color:var(--green)">&#128100;</div>
-      <div class="card-t">Resumes</div>
-      <div class="card-d">Owner/operator resumes showing relevant experience. If the customer doesn't have one, Harper can offer to build one with a 5-minute phone call — ask about school, work experience, achievements.</div>
-    </div>
-    <div class="card">
-      <div class="card-icon" style="background:rgba(139,111,191,.12);color:var(--violet)">&#128209;</div>
-      <div class="card-t">NPDB &amp; Other Docs</div>
-      <div class="card-d">National Practitioner Data Bank reports (for medical), due diligence forms, state-specific surplus lines forms, and any other carrier-specific requirements listed on the quote.</div>
-    </div>
-  </div>
-
-  <div class="deep warn" style="margin-top:1.5rem">
-    <div class="deep-title">When to Communicate Subjectivities</div>
-    <div class="deep-body">
-      There are two schools of thought:<br><br>
-      <span class="hl-coral">Old approach:</span> Mention subjectivities after payment to avoid scaring the customer. This caused cancellations and angry customers who felt blindsided.<br><br>
-      <span class="hl-green">Current approach:</span> Mention the main subjectivities during the pitch while breaking down the policy. Prep the customer so there are no surprises. This leads to better service outcomes, fewer cancellations, and happier renewals.<br><br>
-      As a Series A company, Harper must be transparent from the beginning. Customers need to know what they'll need before they pay.
-    </div>
-  </div>
-
-  <div class="deep info">
-    <div class="deep-title">Surplus Lines Form</div>
-    <div class="deep-body">
-      Whenever a policy goes through the E&S market, a <span class="hl">surplus lines affidavit</span> is required. This form proves that the agent tried the admitted market first, got denied by at least three standard carriers, and then went to E&S as a last resort. It's a legal requirement showing due diligence.
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ══════════════════ 07 / MEP ══════════════════ -->
-<section class="section" id="mep">
-  <span class="section-num">07 / MINIMUM EARNED PREMIUM</span>
-  <h2 class="section-title">MEP — The 25% Rule</h2>
-  <p class="section-desc">On agency bill / E&S policies, 25% of the premium is fully earned the moment the policy is issued. No refunds. No exceptions.</p>
-
-  <div class="card-grid cg2" style="margin-top:1.5rem">
-    <div class="card" style="border-left:3px solid var(--red)">
-      <div class="card-t">Agency Bill / E&S</div>
-      <div class="card-d">
-        <span class="hl-coral">25% minimum earned premium</span> — non-refundable from day one. If the customer's policy is $10,000, then $2,500 is locked in the moment it's issued. Even if the customer only paid a 15% down payment ($1,500), the finance company loses 10% and sends the customer to collections. This is why getting it right the first time is critical.
+  <h3 class="sub-title">The Five Service Rules</h3>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <div class="step-title">Speed Wins</div>
+        <div class="step-desc">COIs and binders should be issued in <span class="hl-green">5 minutes or less</span>. When a customer or their landlord/contractor asks for proof of coverage, every minute of delay risks losing a lease, a contract, or the customer's trust. Speed is the single biggest differentiator between Harper and every other agency.</div>
       </div>
     </div>
-    <div class="card" style="border-left:3px solid var(--green)">
-      <div class="card-t">Direct Bill</div>
-      <div class="card-d">
-        <span class="hl-green">Easy cancellation</span> — the customer might lose $10–20 in fees. Maybe a full refund if they cancel the same day. The process is simple and low-risk compared to agency bill.
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <div class="step-title">Same-Day Completion Standard</div>
+        <div class="step-desc">Every service request received during business hours should be completed <span class="hl-green">the same day</span>. COIs, simple endorsements, reinstatement submissions, cancellation processing &mdash; nothing sits overnight unless it requires external action from a carrier or broker that cannot be completed same-day.</div>
       </div>
+    </div>
+    <div class="step">
+      <div class="step-num green-n">3</div>
+      <div class="step-content">
+        <div class="step-title">Big Brother CRM Documentation</div>
+        <div class="step-desc">Every interaction, every phone call, every email, every status change &mdash; <span class="hl">logged in Big Brother immediately</span>. This is Harper's advantage. When a customer disputes what happened, when a carrier asks for proof, when a regulator reviews the file &mdash; it's all there. Notes must include date, time, method, content summary, and next steps.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num orange-n">4</div>
+      <div class="step-content">
+        <div class="step-title">No Priority Jumping for Demanding Customers</div>
+        <div class="step-desc">The loudest customer does not go to the front of the line. Every customer gets the same standard of service: same-day completion, same process, same documentation. If a customer calls repeatedly or makes threats, document the interactions and follow the standard process. <span class="hl-coral">Consistency protects the team and the company.</span></div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num blue-n">5</div>
+      <div class="step-content">
+        <div class="step-title">Escalate System Issues Immediately</div>
+        <div class="step-desc">If a carrier portal is down, a tool is broken, or a process is failing systemically &mdash; <span class="hl-blue">escalate immediately</span>. Do not work around the issue silently. A system problem that affects one agent affects all agents. Report it, flag it, and let the team know so it can be resolved for everyone.</div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="sub-title">Service Mindset Framework</h3>
+  <div class="card-grid cg3">
+    <div class="card" style="border-top:3px solid var(--accent);text-align:center">
+      <div style="font-size:1.4rem;margin-bottom:.4rem">&#9889;</div>
+      <div class="card-t">Speed Over Perfection</div>
+      <div class="card-d">A 95% correct COI delivered in 5 minutes beats a 100% perfect one delivered tomorrow. Get it out, then refine if needed.</div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--green);text-align:center">
+      <div style="font-size:1.4rem;margin-bottom:.4rem">&#128203;</div>
+      <div class="card-t">Document Everything</div>
+      <div class="card-d">If it's not in Big Brother, it didn't happen. CRM notes are your best defense in disputes, complaints, and audits.</div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--blue);text-align:center">
+      <div style="font-size:1.4rem;margin-bottom:.4rem">&#9878;</div>
+      <div class="card-t">Process Is Protection</div>
+      <div class="card-d">Following the same process for every customer &mdash; regardless of policy size or attitude &mdash; is what keeps Harper compliant.</div>
     </div>
   </div>
 
   <div class="deep" style="margin-top:1.5rem">
-    <div class="deep-title">Real Example: Security Guard Policy</div>
+    <div class="deep-title">Why Same-Day Matters</div>
     <div class="deep-body">
-      A security guard company was sold a policy. The customer sent their insurance requirements (from a contract) an hour <em>after</em> everything was issued. The policy couldn't meet the requirements. The customer lost <span class="hl-coral">$500</span> with no possible refund due to the 25% MEP. She filed a complaint with the insurance commissioner. Harper had all call logs and did everything right — but the outcome still hurt. This is why sales must verify all requirements <em>before</em> the bind.
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ══════════════════ 08 / COI ══════════════════ -->
-<section class="section" id="coi">
-  <span class="section-num">08 / CERTIFICATES OF INSURANCE</span>
-  <h2 class="section-title">COIs &amp; Additional Insured</h2>
-  <p class="section-desc">A Certificate of Insurance (COI) is a one-page document that condenses a 120-page policy into a summary showing proof of coverage. It does not grant coverage — it's information only. But what's listed on it determines what the certificate holder knows and relies on.</p>
-
-  <div class="card-grid cg2" style="margin-top:1.5rem">
-    <div class="card">
-      <div class="card-t">What's on a COI</div>
-      <div class="card-d">The insured's name, coverage types, coverage limits, effective dates, and any additional insured or certificate holders. The <span class="hl">description of operations</span> section contains critical coverage details — this is where certificate holders look for proof of additional insured, waiver of subrogation, and primary &amp; non-contributory status.</div>
-    </div>
-    <div class="card">
-      <div class="card-t">Who Requests COIs</div>
-      <div class="card-d">Landlords, general contractors, clients, government agencies (e.g., the DMV for DLIMP plates). They need the <span class="hl">specific entity name</span> listed as certificate holder, and specific items in the description section. It's essentially an insurance ID card — proof of purchase.</div>
+      A customer waiting for a COI might be signing a lease that afternoon. A contractor waiting for additional insured confirmation might not let the insured on the job site. A reinstatement delayed by a day means the customer is operating without coverage for an extra 24 hours. Every hour of delay has a real-world consequence for the customer's business &mdash; and for Harper's retention rate.
     </div>
   </div>
 
-  <h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:600;margin:2rem 0 .8rem;color:var(--navy)">Additional Insured (AI)</h3>
-
-  <div class="deep" style="margin-top:.5rem;border-left-color:var(--red)">
-    <div class="deep-title">Blanket vs Specifically Listed Additional Insured</div>
+  <div class="deep ok">
+    <div class="deep-title">Big Brother Is the Advantage</div>
     <div class="deep-body">
-      These are <span class="hl-coral">two completely different things</span> — lawsuits have happened from getting this wrong.<br><br>
-      <span class="hl">Blanket AI</span> — the policy automatically extends additional insured status to anyone who has a written contract with the insured. No need to list them individually.<br><br>
-      <span class="hl">Specific AI</span> — must list the exact entity name and full address. You must also document the relationship (landlord, business partner, etc.) and notify the carrier. Majority of the time, <span class="hl-coral">specific AI is what's required</span>.
+      Most agencies rely on email threads and memory. Harper has every call recorded, every note logged, every status change timestamped. When a customer says "nobody told me about the subjectivities," Harper can pull the exact call where it was explained. When a carrier disputes a bind request, Harper has the signed documents and the submission timestamp. <span class="hl-green">This documentation advantage compounds over time</span> &mdash; it protects the team, resolves disputes faster, and builds trust with carriers and regulators.
     </div>
   </div>
 
-  <h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:600;margin:2rem 0 .8rem;color:var(--navy)">Policy Modification Terms</h3>
-  <p style="font-size:.85rem;color:var(--text2);margin-bottom:1rem">These terms appear in the "description of operations" section of a COI. Certificate holders rely on these to understand how coverage applies to them.</p>
-
-  <div class="card-grid cg3">
-    <div class="card">
-      <div class="card-icon" style="background:rgba(74,127,191,.12);color:var(--blue)">&#9878;</div>
-      <div class="card-t">Waiver of Subrogation</div>
-      <div class="card-d">The carrier agrees <span class="hl-blue">not to sue</span> a specific party on the policy. If your partner is listed with waiver of subrogation, the insurance company can't come after them to recover claim costs — even if they were partly at fault.</div>
-    </div>
-    <div class="card">
-      <div class="card-icon" style="background:rgba(45,159,111,.12);color:var(--green)">&#9312;</div>
-      <div class="card-t">Primary &amp; Non-Contributory</div>
-      <div class="card-d"><span class="hl-green">Your policy pays first, mine pays second.</span> If there's a claim, the primary policy covers it before the other party's insurance has to chip in. Common requirement in contracts between businesses.</div>
-    </div>
-    <div class="card">
-      <div class="card-icon" style="background:rgba(244,112,104,.12);color:var(--accent)">&#128196;</div>
-      <div class="card-t">Description of Operations</div>
-      <div class="card-d">The section on the COI where all modifications are listed. Certificate holders look here for proof of AI status, waiver of subrogation, PNC, and any other special terms. <span class="hl-coral">This must be accurate.</span></div>
-    </div>
-  </div>
-
-  <h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:600;margin:2rem 0 .8rem;color:var(--navy)">Additional Insured by Carrier</h3>
+  <h3 class="sub-title">Common Service Scenarios</h3>
   <div class="table-wrap">
     <table>
       <thead>
-        <tr><th>Carrier</th><th>When to Add</th><th>Cost</th><th>Notes</th></tr>
+        <tr><th>Scenario</th><th>Standard Response</th><th>Time Target</th></tr>
       </thead>
       <tbody>
-        <tr><td class="hl">NeXT</td><td>After binding</td><td>Free</td><td>Add after purchase — no issues</td></tr>
-        <tr><td class="hl">Coterie</td><td>Before binding</td><td>Free if pre-bind</td><td>Adding after bind requires endorsement — takes 3–5 days</td></tr>
-        <tr><td class="hl">E&S Carriers</td><td>Varies</td><td>~$250+</td><td>May charge per additional insured — customer often surprised</td></tr>
+        <tr><td class="hl">Customer needs COI for landlord</td><td>Generate from carrier portal, send via email</td><td>&lt;5 minutes</td></tr>
+        <tr><td class="hl">Customer needs AI added</td><td>Check carrier (Next: add post-bind free; Coterie: endorsement 3&ndash;5 days; E&amp;S: request through broker)</td><td>Same day</td></tr>
+        <tr><td class="hl">Customer reports wrong info on COI</td><td>Verify against policy, correct immediately, re-issue, log E&amp;O check</td><td>&lt;30 minutes</td></tr>
+        <tr><td class="hl">Carrier sends cancellation notice</td><td>Contact customer immediately, begin 15+ attempt documentation, work to resolve</td><td>Same day initiation</td></tr>
+        <tr><td class="hl">Customer wants to add coverage</td><td>Quote the endorsement, explain cost/timeline difference (direct vs E&amp;S), process</td><td>Same day quote</td></tr>
+        <tr><td class="hl">Portal is down or tool is broken</td><td>Escalate to team immediately, document the issue, use workaround if available</td><td>Immediate escalation</td></tr>
       </tbody>
     </table>
   </div>
 </section>
 
-<div class="divider"></div>
-
-<!-- ══════════════════ 09 / E&O ══════════════════ -->
-<section class="section" id="eo">
-  <span class="section-num">09 / ERRORS &amp; OMISSIONS</span>
-  <h2 class="section-title">Why Accuracy is Everything</h2>
-  <p class="section-desc">One wrong number on a document can expose Harper to a lawsuit. This is called Errors &amp; Omissions (E&O) — and it's the scariest risk in insurance brokerage.</p>
-
-  <div class="deep" style="margin-top:1.5rem;border-left-color:var(--red)">
-    <div class="deep-title">The Coverage Limit Nightmare</div>
-    <div class="deep-body">
-      <strong>Scenario:</strong> A customer buys a policy with <span class="hl">$1M / $2M</span> coverage limits. They request <span class="hl">$1M / $3M</span>. A COI gets sent out showing $1M / $3M. The customer gives it to the state, gets approved, and operates for two months.<br><br>
-      <strong>Then:</strong> A claim happens — a kid slips, falls, breaks a tooth. Parents sue. The claim exceeds $2M.<br><br>
-      <strong>The problem:</strong> The COI showed $3M aggregate, but the actual policy only has $2M. The carrier says: "This is your mistake. We issued $1M/$2M." Any lawyer will argue the customer was under the impression they had $3M because of the COI Harper sent. Harper is now on the hook for the extra $1M.<br><br>
-      <span class="hl-coral">This is why every single COI is double-checked. Every coverage limit must match the actual policy. No exceptions.</span>
-    </div>
-  </div>
-
-  <div class="card-grid cg3" style="margin-top:1.5rem">
-    <div class="card">
-      <div class="card-icon" style="background:rgba(224,90,82,.12);color:var(--red)">&#9888;</div>
-      <div class="card-t">Wrong Coverages</div>
-      <div class="card-d">If coverage on a COI doesn't match the actual policy, the entire sale may need to be unwound. Lead goes back to mid funnel, everything restarts, and the deal is invalidated.</div>
-    </div>
-    <div class="card">
-      <div class="card-icon" style="background:rgba(232,146,58,.12);color:var(--orange)">&#128269;</div>
-      <div class="card-t">Double-Check Everything</div>
-      <div class="card-d">Every COI created by VAs offshore is reviewed by someone onshore. Even a blank COI with no coverage listed is a risk — it went out, and someone could rely on it.</div>
-    </div>
-    <div class="card">
-      <div class="card-icon" style="background:rgba(74,127,191,.12);color:var(--blue)">&#128230;</div>
-      <div class="card-t">Validated Deals</div>
-      <div class="card-d">Sales reps who "validate" deals that don't actually close properly lose their commission. If something is wrong, the deal gets refunded and unvalidated. Selling right the first time matters more than volume.</div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ══════════════════ 10 / COVERAGE TYPES ══════════════════ -->
-<section class="section" id="coverage-types">
-  <span class="section-num">10 / COVERAGE TYPES</span>
-  <h2 class="section-title">Core Liability Coverage</h2>
-  <p class="section-desc">The main coverage types you'll see on every COI and sell every day. You must know these to pitch, answer customer questions, and validate quotes.</p>
-
-  <div class="card-grid cg3" style="margin-top:1.5rem">
-    <div class="card" style="border-top:3px solid var(--blue)">
-      <div class="card-icon" style="background:rgba(74,127,191,.12);color:var(--blue)">&#9888;</div>
-      <div class="card-t">General Liability (GL)</div>
-      <div class="card-d">Covers <span class="hl-blue">third-party</span> bodily injury and property damage. A customer slips and falls at a restaurant, someone breaks a client's property — that's GL. It does <em>not</em> cover workers' comp or first-party damage (your own stuff). Anytime you hear "liability" — it covers the <em>other</em> person, not you.</div>
-    </div>
-    <div class="card" style="border-top:3px solid var(--violet)">
-      <div class="card-icon" style="background:rgba(139,111,191,.12);color:var(--violet)">&#128203;</div>
-      <div class="card-t">Professional Liability (E&amp;O)</div>
-      <div class="card-d">Protects against financial harm from <span class="hl">professional work errors</span>. An accountant files taxes wrong, a med spa botches Botox, an insurance agent sends the wrong COI — E&O covers it. Essential for accountants, consultants, IT, med spas, and <span class="hl-coral">insurance agents like Harper</span>.</div>
-    </div>
-    <div class="card" style="border-top:3px solid var(--green)">
-      <div class="card-icon" style="background:rgba(45,159,111,.12);color:var(--green)">&#128274;</div>
-      <div class="card-t">Cyber Liability</div>
-      <div class="card-d">Protects against <span class="hl-green">data breaches and hacking</span>. Someone steals credit card info from the POS system, social security numbers get leaked — cyber liability covers it. Needed by literally everyone who stores customer data digitally. Easy upsell.</div>
-    </div>
-  </div>
-
-  <div class="deep info" style="margin-top:1.5rem">
-    <div class="deep-title">Selling Coverage: Tell a Story</div>
-    <div class="deep-body">
-      If a customer asks what GL covers and you don't know the answer, they won't buy from you. When pitching, give them a scenario: "Imagine hot soup drops on a customer's face" or "Someone slips on a wet floor and breaks their arm." Scare them a little — make them understand <em>why</em> they need coverage. That's how you sell.
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ══════════════════ 11 / WORKERS COMP & PROPERTY ══════════════════ -->
-<section class="section" id="workers-comp">
-  <span class="section-num">11 / WORKERS' COMP &amp; PROPERTY</span>
-  <h2 class="section-title">Workers' Comp &amp; Commercial Property</h2>
-  <p class="section-desc">Two coverage types with critical nuances — payroll accuracy matters for workers' comp, and one letter can mean thousands of dollars on property coverage.</p>
-
-  <div class="card-grid cg2" style="margin-top:1.5rem">
-    <div class="card" style="border-left:3px solid var(--orange)">
-      <div class="card-t">Workers' Compensation</div>
-      <div class="card-d">
-        Covers <span class="hl">employee injuries on the job</span>. Required by law in almost every state — easy upsell. An employee trips and breaks their leg at the office? Workers' comp pays.<br><br>
-        <span class="hl-coral">Key:</span> Clarify upfront whether the <span class="hl">owner is included or excluded</span>. Most say no, but they should be included. If you get hurt on your own job site, do you want to be covered?
-      </div>
-    </div>
-    <div class="card" style="border-left:3px solid var(--blue)">
-      <div class="card-t">Commercial Property &amp; BPP</div>
-      <div class="card-d">
-        <span class="hl">Commercial Property</span> covers the building structure. <span class="hl">Business Personal Property (BPP)</span> covers the contents — desks, monitors, inventory. Think of BPP as inventory coverage.<br><br>
-        If someone knocks over every monitor in the office, BPP pays for it. If the building floods, commercial property covers the structure.
-      </div>
-    </div>
-  </div>
-
-  <div class="deep warn" style="margin-top:1.5rem">
-    <div class="deep-title">Workers' Comp Audits — Payroll Must Be Accurate</div>
-    <div class="deep-body">
-      Workers' comp audits happen <span class="hl-coral">every single year</span>, no exceptions. If the customer said their payroll is $60K but it's actually $200K, they'll get a massive bill for the difference. If they don't pay, they get reported to the national workers' comp board and won't be able to get coverage anywhere in the country. A few thousand off is fine — a $140K discrepancy is not. Make sure they get the payroll right.
-    </div>
-  </div>
-
-  <div class="deep" style="margin-top:1rem;border-left-color:var(--red)">
-    <div class="deep-title">Replacement Cost vs Actual Cash Value (ACV)</div>
-    <div class="deep-body">
-      <span class="hl-green">Replacement Cost</span> — the carrier pays for a brand new item. What it costs to replace it today.<br><br>
-      <span class="hl-coral">Actual Cash Value</span> — the carrier pays what the item is <em>worth</em> after depreciation. A 5-year-old laptop might only be worth $200 even though replacing it costs $1,500.<br><br>
-      On certificates, this is a <span class="hl-coral">single letter difference worth thousands of dollars</span> in claims. Get it right.
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ══════════════════ 12 / SPECIALIZED COVERAGE ══════════════════ -->
-<section class="section" id="specialized">
-  <span class="section-num">12 / SPECIALIZED COVERAGE &amp; BONDS</span>
-  <h2 class="section-title">Specialized Coverage &amp; Bonds</h2>
-  <p class="section-desc">Additional coverage types you'll encounter regularly — each has specific use cases, upsell opportunities, and pitfalls to watch for.</p>
-
-  <div class="card-grid cg2" style="margin-top:1.5rem">
-    <div class="card">
-      <div class="card-icon" style="background:rgba(139,111,191,.12);color:var(--violet)">&#9969;</div>
-      <div class="card-t">Umbrella Liability</div>
-      <div class="card-d">Excess coverage that kicks in <span class="hl">above primary GL limits</span>. If GL is $1M/$2M and the customer adds a $1M umbrella, they now have $3M total. Last resort coverage for really bad claims. Common in personal lines (protect the house) and commercial (protect against massive lawsuits that could shut down the business).</div>
-    </div>
-    <div class="card">
-      <div class="card-icon" style="background:rgba(244,112,104,.12);color:var(--accent)">&#127863;</div>
-      <div class="card-t">Liquor Liability</div>
-      <div class="card-d">Covers incidents from <span class="hl-coral">over-serving alcohol</span>. Someone gets drunk at a bar, beats somebody up outside, or gets behind the wheel and kills someone — the establishment is liable. <span class="hl">Push this for ALL restaurants</span> serving any alcohol, even if it's only $1K/month worth. You'll see it on COIs constantly.</div>
-    </div>
-    <div class="card">
-      <div class="card-icon" style="background:rgba(74,127,191,.12);color:var(--blue)">&#128663;</div>
-      <div class="card-t">Hired &amp; Non-Owned Auto (HNOA)</div>
-      <div class="card-d">Covers <span class="hl-blue">employees driving personal cars for business</span>. Goes under the GL policy. Common contract requirement when a company owns no vehicles. <span class="hl-coral">Must be endorsed before the policy is issued</span> — carriers often won't add it after because it increases exposure. Mid funnel missing this = endorsement nightmare later.</div>
-    </div>
-    <div class="card">
-      <div class="card-icon" style="background:rgba(232,146,58,.12);color:var(--orange)">&#128188;</div>
-      <div class="card-t">EPLI (Employment Practices)</div>
-      <div class="card-d">Protects against <span class="hl-orange">wrongful termination and retaliation claims</span>. Employee gets fired and says it was wrongful? EPLI covers the legal fight. Important for larger companies. Harper doesn't sell much of it yet, but it's growing.</div>
-    </div>
-  </div>
-
-  <h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:600;margin:2.5rem 0 .8rem;color:var(--navy)">Garage Coverage (Auto Dealers)</h3>
-  <p style="font-size:.85rem;color:var(--text2);margin-bottom:1rem">Harper sells a lot of policies for used car dealers. There are three distinct coverage types — each covers something different.</p>
-
-  <div class="card-grid cg3">
-    <div class="card">
-      <div class="card-t">Garage Liability</div>
-      <div class="card-d">Covers <span class="hl">third parties</span> — same as GL but specific to auto businesses. If a customer gets hurt on the lot, garage liability pays. Remember: liability = covers the other person.</div>
-    </div>
-    <div class="card">
-      <div class="card-t">Garage Keepers</div>
-      <div class="card-d">Covers <span class="hl">customer vehicles in your care, custody, and control</span>. If you're a repair shop and a car gets stolen off your lot, garage keepers pays the customer. Key for any shop holding other people's vehicles.</div>
-    </div>
-    <div class="card">
-      <div class="card-t">Dealer's Physical Damage</div>
-      <div class="card-d">Covers <span class="hl">the dealer's own lot inventory</span>. $100K of cars on the lot and it floods tomorrow? This pays. Dealers always forget about this — big upsell opportunity. "Do you want to lose $100K or pay $1–2K more for coverage?"</div>
-    </div>
-  </div>
-
-  <h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:600;margin:2.5rem 0 .8rem;color:var(--navy)">Surety Bonds</h3>
-  <p style="font-size:.85rem;color:var(--text2);margin-bottom:1rem">A guarantee that you'll do what you promised. Not insurance — it's a financial guarantee.</p>
-
-  <div class="card-grid cg3">
-    <div class="card">
-      <div class="card-t">Bid Bonds</div>
-      <div class="card-d">Guarantees a contractor will follow through on their bid. If they back out, the bond pays the project owner. Required for many government and large commercial projects.</div>
-    </div>
-    <div class="card">
-      <div class="card-t">Dealer Bonds</div>
-      <div class="card-d">Required for used car dealers. If something goes wrong — sell the wrong car, can't pay at auction — the bond covers it. Claims can be filed against the dealer's bond.</div>
-    </div>
-    <div class="card">
-      <div class="card-t">Lottery Bonds</div>
-      <div class="card-d">Required for gas stations and stores selling lotto. If a winning ticket is sold and the store's account goes negative, the state lottery files a claim against the lottery bond to recover what's owed.</div>
-    </div>
-  </div>
-
-  <div class="deep ok" style="margin-top:1.5rem">
-    <div class="deep-title">Why You Need to Know This</div>
-    <div class="deep-body">
-      Customers call asking for coverages after the fact. If you understand what each coverage does, you can: (1) diffuse angry customers by explaining <em>why</em> they need something, (2) upsell at the right moment, and (3) validate quotes correctly. If a customer asks about GL and you can't answer, they won't buy from you. Know the product.
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ══════════════════ 13 / SALES ══════════════════ -->
-<section class="section" id="sales">
-  <span class="section-num">13 / SALES PRINCIPLES</span>
-  <h2 class="section-title">How to Sell at Harper</h2>
-  <p class="section-desc">Practical advice from the training session on building relationships, closing deals, and avoiding common pitfalls.</p>
-
-  <div class="card-grid cg2" style="margin-top:1.5rem">
-    <div class="card">
-      <div class="card-icon" style="background:rgba(45,159,111,.12);color:var(--green)">&#129309;</div>
-      <div class="card-t">Build Relationships Fast</div>
-      <div class="card-d">You have 3–5 minutes to pitch and build a relationship. The customer can't just be a number on the board. Find common ground quickly. The guy who started at $3K with one limo now has 350 cars and a $1M+ policy — and he left the agency the moment his trusted rep left. Relationships are everything.</div>
-    </div>
-    <div class="card">
-      <div class="card-icon" style="background:rgba(244,112,104,.12);color:var(--accent)">&#128247;</div>
-      <div class="card-t">Respond Like Crazy</div>
-      <div class="card-d">Every text message, every phone call, every email — respond the same day, including Saturdays and Sundays. Response time is the #1 differentiator between Harper and every other broker. Nobody else gives attention to the $500 policy customer. We do.</div>
-    </div>
-    <div class="card">
-      <div class="card-icon" style="background:rgba(232,146,58,.12);color:var(--orange)">&#128176;</div>
-      <div class="card-t">Always Be Closing (ABC)</div>
-      <div class="card-d">Your job all day long: email customers, pitch quotes, close deals. Check Big Brother for quotes, pitch them, follow up. If an E&S quote looks like it might fit instant quote — ask mid funnel to try. A cheaper instant quote beats a slow E&S one every time.</div>
-    </div>
-    <div class="card">
-      <div class="card-icon" style="background:rgba(139,111,191,.12);color:var(--violet)">&#128640;</div>
-      <div class="card-t">Prep the Customer</div>
-      <div class="card-d">Tell them about subjectivities during the pitch. Tell them if additional insured may cost extra. Tell them E&S policies take 24–48 hours. If they're prepped, service goes well, and they renew. If they're blindsided, they cancel — and you lose commission.</div>
-    </div>
-  </div>
-
-  <div class="deep warn" style="margin-top:1.5rem">
-    <div class="deep-title">Buyers Are Liars</div>
-    <div class="deep-body">
-      Customers will underreport revenue to get a cheaper quote. A gas station owner said he sold 15,000 gallons/month — the minimum contract requires 40,000. He actually did 42,000. He went from 15K to 42K in one conversation.<br><br>
-      <span class="hl-coral">You must verify.</span> Ask for P&Ls. Check if the numbers make sense. If two brokers quote the same customer with different revenue numbers, carriers like USLI will flag it and reject the bind. Harper looks bad, the deal dies, and you've wasted everyone's time.<br><br>
-      When you misrepresent information — even based on what the customer told you — Harper is liable because we presented it to the carrier. All calls are recorded. Be honest, verify everything, and never stuff a policy into a bucket it doesn't belong in just to get a cheaper quote.
-    </div>
-  </div>
-
-  <div class="deep ok">
-    <div class="deep-title">The USLI Cross-Quote Problem</div>
-    <div class="deep-body">
-      If two brokers submit different revenue numbers for the same customer to USLI, the carrier will flag both quotes. They'll reject the lower one and demand proof (P&L) before issuing either. This stops the entire bind process and can result in a lost deal. Always ask: "Would you be able to show me a P&L that confirms this revenue?" It protects everyone.
-    </div>
-  </div>
-
-  <h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:600;margin:2.5rem 0 .8rem;color:var(--navy)">The Golden Rules</h3>
-  <div class="card-grid cg3">
-    <div class="card" style="border-top:3px solid var(--accent);text-align:center">
-      <div style="font-size:1.5rem;margin-bottom:.5rem">&#128172;</div>
-      <div class="card-t">Build the Relationship</div>
-      <div class="card-d">3–5 min to connect. Every customer matters — today's $500 policy could be tomorrow's $1M account.</div>
-    </div>
-    <div class="card" style="border-top:3px solid var(--green);text-align:center">
-      <div style="font-size:1.5rem;margin-bottom:.5rem">&#9889;</div>
-      <div class="card-t">Respond Instantly</div>
-      <div class="card-d">Same-day replies on everything — texts, calls, emails. Weekends included. Speed wins deals.</div>
-    </div>
-    <div class="card" style="border-top:3px solid var(--blue);text-align:center">
-      <div style="font-size:1.5rem;margin-bottom:.5rem">&#128270;</div>
-      <div class="card-t">Verify Everything</div>
-      <div class="card-d">Check P&Ls, validate revenue, confirm subjectivities. Buyers are liars — protect yourself and Harper.</div>
-    </div>
-  </div>
-</section>
-
 <!-- ══════════════════ FOOTER ══════════════════ -->
 <div class="footer">
-  <p style="color:var(--navy)">Insurance 101 &amp; 102 — Harper Internal Training Guide</p>
-  <p style="margin-top:.4rem">From Ammar's teaching sessions &middot; Feb 9–10, 2026</p>
+  <p style="color:var(--navy)">Insurance 201 &mdash; Harper Advanced Operations Guide</p>
+  <p style="margin-top:.3rem">Built on Ammar's training sessions &middot; Harper Internal Use Only</p>
+</div>
+
+</main>
 </div>
 
 <!-- ══════════════════ SCRIPTS ══════════════════ -->
@@ -926,32 +928,71 @@ tr:hover td{background:rgba(244,112,104,.03)}
 // Scroll progress
 window.addEventListener('scroll', () => {
   const p = document.getElementById('progress');
-  p.style.width = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100) + '%';
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  p.style.width = h > 0 ? (window.scrollY / h * 100) + '%' : '0%';
 });
 
-// Active nav link
-const sects = document.querySelectorAll('section[id]');
-const navs = document.querySelectorAll('.nav-link');
-window.addEventListener('scroll', () => {
-  let c = '';
-  sects.forEach(s => { if (window.scrollY >= s.offsetTop - 100) c = s.id; });
-  navs.forEach(n => { n.classList.toggle('active', n.getAttribute('href') === '#' + c); });
+// Active sidebar link tracking
+const sections = document.querySelectorAll('section[id]');
+const sidebarLinks = document.querySelectorAll('.sidebar-link');
+
+function updateActiveLink() {
+  let current = '';
+  sections.forEach(s => {
+    const top = s.offsetTop - 80;
+    if (window.scrollY >= top) current = s.id;
+  });
+  sidebarLinks.forEach(link => {
+    link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+  });
+}
+window.addEventListener('scroll', updateActiveLink);
+updateActiveLink();
+
+// Sidebar smooth scroll + close on mobile
+sidebarLinks.forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const target = document.querySelector(link.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    // Close sidebar on mobile
+    if (window.innerWidth <= 900) {
+      document.getElementById('sidebar').classList.remove('open');
+    }
+  });
+});
+
+// Mobile sidebar toggle
+document.getElementById('sidebarToggle').addEventListener('click', () => {
+  document.getElementById('sidebar').classList.toggle('open');
+});
+
+// Close sidebar when clicking outside on mobile
+document.addEventListener('click', (e) => {
+  const sidebar = document.getElementById('sidebar');
+  const toggle = document.getElementById('sidebarToggle');
+  if (window.innerWidth <= 900 && !sidebar.contains(e.target) && !toggle.contains(e.target)) {
+    sidebar.classList.remove('open');
+  }
 });
 
 // Scroll animations
-const obs = new IntersectionObserver(entries => {
+const observer = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) {
       e.target.style.opacity = '1';
       e.target.style.transform = 'translateY(0)';
     }
   });
-}, { threshold: .1 });
-document.querySelectorAll('.card,.deep,.step,.arch').forEach(el => {
+}, { threshold: .08 });
+
+document.querySelectorAll('.card,.deep,.step,.arch,.rule-block').forEach(el => {
   el.style.opacity = '0';
-  el.style.transform = 'translateY(8px)';
-  el.style.transition = 'opacity .4s ease, transform .4s ease';
-  obs.observe(el);
+  el.style.transform = 'translateY(6px)';
+  el.style.transition = 'opacity .35s ease, transform .35s ease';
+  observer.observe(el);
 });
 </script>
 </body>
