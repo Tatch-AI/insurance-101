@@ -153,9 +153,7 @@ export default function App() {
           <div className="sidebar-sections">
             {currentModule && (
               <div className="sidebar-group">
-                <span className="sidebar-group-label">
-                  Insurance {currentModule.label} — {currentModule.sub}
-                </span>
+                <span className="sidebar-group-label">{currentModule.sub}</span>
                 {currentModule.sections.map(s => (
                   <a
                     key={s.id}
@@ -168,15 +166,6 @@ export default function App() {
                 ))}
               </div>
             )}
-
-            {/* Quick jump to other modules */}
-            {modules.filter(m => m.id !== activeTab).map(m => (
-              <div className="sidebar-group" key={m.id}>
-                <span className="sidebar-group-label" style={{ cursor: 'pointer', opacity: .6 }} onClick={() => handleTabClick(m.id)}>
-                  ↗ Jump to {m.label}
-                </span>
-              </div>
-            ))}
           </div>
         </aside>
 

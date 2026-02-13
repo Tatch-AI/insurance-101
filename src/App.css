@@ -47,11 +47,11 @@ body { background: var(--bg); color: var(--text); font-family: var(--font-body);
 .sidebar::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px }
 
 /* ── Sidebar Tabs ── */
-.sidebar-tabs { display: flex; gap: 4px; padding: 0 .75rem .6rem; border-bottom: 1px solid var(--border); margin-bottom: .6rem; flex-shrink: 0 }
-.sidebar-tab { flex: 1; padding: .45rem .2rem; border: 1px solid var(--border); border-radius: 7px; background: transparent; font-family: var(--font-display); font-weight: 600; font-size: .75rem; cursor: pointer; transition: all .18s; color: var(--text2); text-align: center; white-space: nowrap }
+.sidebar-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; padding: 0 .75rem .7rem; border-bottom: 1px solid var(--border); margin-bottom: .5rem; flex-shrink: 0 }
+.sidebar-tab { padding: .4rem .3rem; border: 1px solid var(--border); border-radius: 7px; background: transparent; font-family: var(--font-display); font-weight: 600; font-size: .72rem; cursor: pointer; transition: all .18s; color: var(--text2); text-align: center }
 .sidebar-tab:hover { border-color: var(--border2); color: var(--text); background: rgba(244,112,104,.04) }
 .sidebar-tab.active { background: var(--accent); color: #fff; border-color: var(--accent); box-shadow: 0 2px 8px rgba(244,112,104,.25) }
-.sidebar-tab-sub { display: block; font-size: .55rem; font-weight: 400; opacity: .8; margin-top: 1px; font-family: var(--font-body) }
+.sidebar-tab-sub { display: block; font-size: .56rem; font-weight: 400; opacity: .75; margin-top: 2px; font-family: var(--font-body); line-height: 1.1 }
 
 /* ── Sidebar Links ── */
 .sidebar-sections { flex: 1; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--border2) transparent }
