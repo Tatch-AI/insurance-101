@@ -127,11 +127,18 @@ export default function Module101() {
               <tr><td className="hl">Coverage Quality</td><td>Standard forms, fewer exclusions</td><td>More exclusions, tighter terms</td></tr>
               <tr><td className="hl">Taxes & Fees</td><td>None</td><td>Surplus lines taxes always apply</td></tr>
               <tr><td className="hl">Cancellation</td><td>Easy — $10–20 in fees, quick refund</td><td>25% minimum earned premium — non-refundable</td></tr>
-              <tr><td className="hl">Premium Financing</td><td>Not needed</td><td>15% down, 10 monthly payments via GoTo</td></tr>
+              <tr><td className="hl">Premium Financing</td><td>Not needed</td><td><strong>Required if not paid in full.</strong> Collect 15% down + set up premium finance agreement (GoTo) for 10 monthly payments</td></tr>
               <tr><td className="hl">Commission</td><td>Instant from down payment</td><td>~2 months after issuance</td></tr>
               <tr><td className="hl">Typical Businesses</td><td>Restaurants, UPS stores, accountants</td><td>Bars, security firms, group homes, adult care</td></tr>
             </tbody>
           </table>
+        </div>
+
+        <div className="deep danger">
+          <div className="deep-title">Agency Bill = Premium Finance Required (Unless Paid in Full)</div>
+          <div className="deep-body">
+            If the customer is on an agency bill policy and does <strong>not</strong> pay in full, you <strong>must</strong> collect a down payment (typically 15%) and set up a premium finance agreement through GoTo. There is no "bill me later" option — the premium finance company funds the carrier upfront, and the customer repays in 10 monthly installments. <span className="hl-coral">If you skip this step, the policy will not be funded and will not stay active.</span>
+          </div>
         </div>
 
         <div className="deep ok">
@@ -152,7 +159,7 @@ export default function Module101() {
           <div className="card" style={{ borderLeft: '3px solid var(--red)' }}>
             <div className="card-t">Agency Bill — Complex Risks</div>
             <div className="card-d">
-              Group homes, adult care facilities, security companies, bars with heavy liquor — standard carriers won't touch these. Must go through wholesale brokers (RT Specialty, RPS, AmWINS) to access E&S carriers. <span className="hl-coral">25% minimum earned premium from day one.</span>
+              Group homes, adult care facilities, security companies, bars with heavy liquor — standard carriers won't touch these. Must go through wholesale brokers (RT Specialty, RPS, AmWINS) to access E&S carriers. <span className="hl-coral">25% minimum earned premium from day one.</span> If the customer doesn't pay in full, <strong>you must collect a down payment and set up a premium finance agreement</strong> — this is not optional on agency bill.
             </div>
           </div>
         </div>
