@@ -230,6 +230,15 @@ tr:hover td { background: rgba(244,112,104,.03) }
 .quiz-results-verdict.pass { color: var(--green3) }
 .quiz-results-verdict.fail { color: var(--red) }
 
+.quiz-actions-row { display: flex; gap: .6rem; justify-content: center; margin-top: 1.2rem; flex-wrap: wrap }
+.quiz-btn.secondary { background: var(--bg); color: var(--navy); border: 1px solid var(--border2) }
+.quiz-btn.secondary:hover { background: var(--bg3); border-color: var(--navy) }
+
+.quiz-review-list { display: flex; flex-direction: column; gap: 1.2rem; margin-top: 1.2rem }
+.quiz-review-card { background: var(--bg2); border: 1px solid var(--border); border-left: 3px solid var(--red); border-radius: 0 var(--radius) var(--radius) 0; padding: 1.2rem 1.4rem }
+.quiz-review-num { font-family: var(--font-mono); font-size: .68rem; font-weight: 600; color: var(--red); margin-bottom: .5rem; letter-spacing: .03em; text-transform: uppercase }
+.quiz-review-explanation { margin-top: .8rem; font-size: .82rem; color: var(--text2); background: rgba(224,90,82,.05); padding: .6rem .8rem; border-radius: 6px; line-height: 1.5 }
+
 /* ── Footer ── */
 .footer { text-align: center; padding: 2.5rem 2rem; color: var(--text3); font-size: .8rem; border-top: 1px solid var(--border) }
 
