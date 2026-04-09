@@ -10,15 +10,12 @@ export default function Videos() {
       <div className="video-grid">
         <div className="video-card">
           <div className="video-wrapper">
-            <video
-              controls
-              preload="metadata"
-              playsInline
-              poster=""
-            >
-              <source src="/videos/new-hire-training.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+            <iframe
+              src="https://drive.google.com/file/d/1heqi22KnVnPOzrdgoV1eTAJnXG-DmsyR/preview"
+              allow="autoplay; encrypted-media"
+              allowFullScreen
+              title="New Hire Training Video"
+            />
           </div>
           <div className="video-info">
             <div className="video-badge-row">
