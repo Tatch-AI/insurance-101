@@ -222,3 +222,39 @@ tr:hover td { background: rgba(244,112,104,.03) }
 /* ── Scroll animations ── */
 .animate-in { opacity: 0; transform: translateY(6px); transition: opacity .35s ease, transform .35s ease }
 .animate-in.visible { opacity: 1; transform: translateY(0) }
+
+/* ── Auth: Loading ── */
+.auth-loading { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; gap: 1rem; color: var(--text2); font-size: .9rem }
+.auth-loading-spinner { width: 32px; height: 32px; border: 3px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin .7s linear infinite }
+@keyframes spin { to { transform: rotate(360deg) } }
+
+/* ── Auth: Sign In Page ── */
+.signin-page { display: flex; align-items: center; justify-content: center; min-height: 100vh; background: var(--bg); padding: 2rem }
+.signin-container { width: 100%; max-width: 420px; text-align: center }
+.signin-header { margin-bottom: 1.5rem }
+.signin-logo { font-family: var(--font-display); font-weight: 700; font-size: 1.4rem; color: var(--accent); margin-bottom: .5rem }
+.signin-title { font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; color: var(--navy); margin-bottom: .4rem }
+.signin-subtitle { font-size: .88rem; color: var(--text2); line-height: 1.5 }
+.signin-clerk-root { margin: 0 auto }
+.signin-clerk-card { background: var(--bg2) !important; border: 1px solid var(--border) !important; box-shadow: 0 4px 24px rgba(45,45,63,.06) !important; border-radius: var(--radius) !important }
+.signin-clerk-hidden { display: none !important }
+.signin-clerk-social-btn { background: var(--bg) !important; border: 1px solid var(--border) !important }
+.signin-clerk-social-btn:hover { background: var(--bg3) !important }
+.signin-clerk-primary-btn { background: var(--accent) !important; color: #fff !important }
+.signin-clerk-primary-btn:hover { background: var(--accent3) !important }
+.signin-clerk-footer-link { color: var(--accent) !important }
+.signin-clerk-input { background: var(--bg) !important; border-color: var(--border) !important; color: var(--text) !important }
+.signin-clerk-divider { background: var(--border) !important }
+.signin-clerk-divider-text { color: var(--text3) !important }
+
+/* ── Auth: Blocked (non-harper email) ── */
+.auth-blocked { display: flex; align-items: center; justify-content: center; min-height: 100vh; background: var(--bg); padding: 2rem }
+.auth-blocked-card { text-align: center; background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 2.5rem 2rem; max-width: 420px }
+.auth-blocked-icon { font-size: 2.5rem; margin-bottom: 1rem }
+.auth-blocked-card h2 { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; color: var(--navy); margin-bottom: .6rem }
+.auth-blocked-card p { font-size: .88rem; color: var(--text2); line-height: 1.6 }
+.auth-blocked-email { margin-top: .8rem; margin-bottom: 1.2rem }
+.auth-blocked-email code { font-family: var(--font-mono); font-size: .8rem; background: var(--bg3); padding: .2rem .5rem; border-radius: 4px; color: var(--accent3) }
+
+/* ── User Button (floating) ── */
+.user-button-float { position: fixed; top: 10px; right: 16px; z-index: 250 }
