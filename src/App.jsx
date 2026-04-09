@@ -3,6 +3,7 @@ import Module101 from './Module101'
 import Module102 from './Module102'
 import Module201 from './Module201'
 import Module203 from './Module203'
+import Videos from './Videos'
 
 /* ── Navigation Data ── */
 const modules = [
@@ -48,6 +49,12 @@ const modules = [
       { id: 'cancellation-process', title: 'Cancellation Process', icon: '🚫' },
       { id: 'reinstatements', title: 'Reinstatements & Grace', icon: '🔄' },
       { id: 'customer-relationships', title: 'Customer Relationships', icon: '❤️' },
+    ]
+  },
+  {
+    id: 'videos', label: '🎬', sub: 'Videos',
+    sections: [
+      { id: 'videos', title: 'New Hire Training', icon: '🎬' },
     ]
   }
 ]
@@ -217,6 +224,10 @@ export default function App() {
 
           {/* Module 203 */}
           <Module203 />
+          <div className="module-divider" />
+
+          {/* Videos */}
+          <Videos />
 
           {/* Footer */}
           <div className="footer">

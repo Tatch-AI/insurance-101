@@ -178,6 +178,17 @@ tr:hover td { background: rgba(244,112,104,.03) }
 .hl-blue { font-weight: 600; color: var(--blue) }
 .hl-orange { font-weight: 600; color: var(--orange) }
 
+/* ── Video Library ── */
+.video-grid { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 1.5rem }
+.video-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: all .25s }
+.video-card:hover { border-color: var(--border2); box-shadow: 0 8px 28px rgba(45,45,63,.07) }
+.video-wrapper { position: relative; background: #1a1a2e; width: 100% }
+.video-wrapper video { display: block; width: 100%; max-height: 540px; object-fit: contain; background: #000 }
+.video-info { padding: 1.2rem 1.4rem }
+.video-badge-row { display: flex; gap: .4rem; margin-bottom: .5rem }
+.video-title { font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; color: var(--navy); margin-bottom: .35rem }
+.video-desc { font-size: .85rem; color: var(--text2); line-height: 1.6; max-width: 640px }
+
 /* ── Footer ── */
 .footer { text-align: center; padding: 2.5rem 2rem; color: var(--text3); font-size: .8rem; border-top: 1px solid var(--border) }
 
