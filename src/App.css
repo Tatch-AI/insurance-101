@@ -35,7 +35,7 @@ body { background: var(--bg); color: var(--text); font-family: var(--font-body);
 .topbar { position: fixed; top: 0; left: 0; right: 0; z-index: 200; height: var(--topbar-h); background: rgba(245,230,216,.95); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); display: flex; align-items: center; padding: 0 1.5rem; gap: 1rem }
 .topbar-logo { font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; color: var(--accent); letter-spacing: -.01em; white-space: nowrap }
 .topbar-badge { font-size: .68rem; font-family: var(--font-mono); background: rgba(244,112,104,.12); color: var(--accent3); padding: .15rem .55rem; border-radius: 4px; font-weight: 600; letter-spacing: .02em }
-.topbar-right { margin-left: auto; font-size: .78rem; color: var(--text3) }
+.topbar-right { margin-left: auto; font-size: .78rem; color: var(--text3); padding-right: 2.5rem }
 .topbar-progress { position: absolute; bottom: 0; left: 0; height: 2px; background: linear-gradient(90deg, var(--accent), var(--orange)); transition: width .3s; z-index: 1 }
 
 /* ── Layout ── */
