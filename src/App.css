@@ -189,6 +189,47 @@ tr:hover td { background: rgba(244,112,104,.03) }
 .video-title { font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; color: var(--navy); margin-bottom: .35rem }
 .video-desc { font-size: .85rem; color: var(--text2); line-height: 1.6; max-width: 640px }
 
+/* ── Quiz ── */
+.quiz-start-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem; margin-top: 1.5rem; text-align: center }
+.quiz-start-stats { display: flex; justify-content: center; gap: 2.5rem; margin-bottom: 1.5rem }
+.quiz-start-stat { text-align: center }
+.quiz-start-stat-num { font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; color: var(--navy) }
+.quiz-start-stat-label { font-size: .72rem; color: var(--text3); margin-top: .1rem }
+
+.quiz-progress { height: 4px; background: var(--border); border-radius: 2px; margin-top: 1.2rem; overflow: hidden }
+.quiz-progress-bar { height: 100%; background: linear-gradient(90deg, var(--accent), var(--orange)); border-radius: 2px; transition: width .3s }
+.quiz-progress-label { font-size: .72rem; color: var(--text3); margin-top: .4rem; font-family: var(--font-mono) }
+
+.quiz-question-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; margin-top: 1rem }
+.quiz-question { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; color: var(--navy); margin-bottom: 1.2rem; line-height: 1.4 }
+
+.quiz-options { display: flex; flex-direction: column; gap: .5rem }
+.quiz-option { display: flex; align-items: center; gap: .75rem; padding: .75rem 1rem; border: 1px solid var(--border); border-radius: 8px; background: var(--bg); font-size: .85rem; color: var(--text); cursor: pointer; transition: all .15s; text-align: left; font-family: var(--font-body) }
+.quiz-option:hover:not(:disabled) { border-color: var(--border2); background: rgba(244,112,104,.03) }
+.quiz-option.selected { border-color: var(--accent); background: rgba(244,112,104,.06); color: var(--accent3); font-weight: 600 }
+.quiz-option.correct { border-color: var(--green); background: rgba(45,159,111,.08); color: var(--green3); font-weight: 600 }
+.quiz-option.wrong { border-color: var(--red); background: rgba(224,90,82,.08); color: var(--red); font-weight: 600 }
+.quiz-option:disabled { cursor: default }
+.quiz-option-letter { flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%; background: var(--bg3); font-family: var(--font-display); font-weight: 700; font-size: .72rem; display: flex; align-items: center; justify-content: center; color: var(--text2) }
+.quiz-option.selected .quiz-option-letter { background: var(--accent); color: #fff }
+.quiz-option.correct .quiz-option-letter { background: var(--green); color: #fff }
+.quiz-option.wrong .quiz-option-letter { background: var(--red); color: #fff }
+
+.quiz-actions { margin-top: 1.2rem; display: flex; justify-content: flex-end }
+.quiz-btn { padding: .6rem 1.4rem; border-radius: 8px; border: 1px solid var(--border); font-family: var(--font-display); font-weight: 600; font-size: .85rem; cursor: pointer; transition: all .18s }
+.quiz-btn.primary { background: var(--accent); color: #fff; border-color: var(--accent) }
+.quiz-btn.primary:hover { background: var(--accent3) }
+.quiz-btn.primary:disabled { opacity: .4; cursor: default }
+
+.quiz-results-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 2.5rem; margin-top: 1.5rem; text-align: center }
+.quiz-results-score { font-family: var(--font-display); font-size: 3.5rem; font-weight: 700; margin-bottom: .3rem }
+.quiz-results-score.pass { color: var(--green) }
+.quiz-results-score.fail { color: var(--red) }
+.quiz-results-detail { font-size: .88rem; color: var(--text2); margin-bottom: .5rem }
+.quiz-results-verdict { font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; margin-bottom: 1.5rem }
+.quiz-results-verdict.pass { color: var(--green3) }
+.quiz-results-verdict.fail { color: var(--red) }
+
 /* ── Footer ── */
 .footer { text-align: center; padding: 2.5rem 2rem; color: var(--text3); font-size: .8rem; border-top: 1px solid var(--border) }
 

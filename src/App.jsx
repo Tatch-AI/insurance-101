@@ -4,6 +4,7 @@ import Module102 from './Module102'
 import Module201 from './Module201'
 import Module203 from './Module203'
 import Videos from './Videos'
+import Quiz from './Quiz'
 
 /* ── Navigation Data ── */
 const modules = [
@@ -52,9 +53,10 @@ const modules = [
     ]
   },
   {
-    id: 'videos', label: '🎬', sub: 'Videos',
+    id: 'videos', label: '🎬', sub: 'Videos & Quiz',
     sections: [
       { id: 'videos', title: 'New Hire Training', icon: '🎬' },
+      { id: 'quiz', title: 'Training Quiz', icon: '📝' },
     ]
   }
 ]
@@ -228,6 +230,10 @@ export default function App() {
 
           {/* Videos */}
           <Videos />
+          <div className="divider" />
+
+          {/* Quiz */}
+          <Quiz />
 
           {/* Footer */}
           <div className="footer">
