@@ -1,6 +1,7 @@
 import { useUser, UserButton } from '@clerk/clerk-react'
 import App from './App'
 import SignInPage from './SignInPage'
+import { ProgressProvider } from './ProgressContext'
 
 export default function AuthGate() {
   const { isLoaded, isSignedIn, user } = useUser()
@@ -38,11 +39,11 @@ export default function AuthGate() {
   }
 
   return (
-    <>
+    <ProgressProvider>
       <div className="user-button-float">
         <UserButton afterSignOutUrl="/" />
       </div>
       <App />
-    </>
+    </ProgressProvider>
   )
 }
