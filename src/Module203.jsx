@@ -1,9 +1,9 @@
 export default function Module203() {
   return (
     <>
-      {/* ══════════════════ 203 / SALES PITCH FRAMEWORK ══════════════════ */}
+      {/* ══════════════════ 202 / SALES PITCH FRAMEWORK ══════════════════ */}
       <section className="section" id="sales-pitch">
-        <span className="section-num">203 / SALES PITCH</span>
+        <span className="section-num">202 / SALES PITCH</span>
         <h2 className="section-title">Sales Process &amp; Pitch Framework</h2>
         <p className="section-desc">The reality class — what happens during the sale, after the sale, the breaks, the edge cases, and the operational gaps. This is how you pitch, close, and hand off.</p>
 
@@ -60,9 +60,9 @@ export default function Module203() {
 
       <div className="divider" />
 
-      {/* ══════════════════ 203 / CROSS-SELL & OBJECTIONS ══════════════════ */}
+      {/* ══════════════════ 202 / CROSS-SELL & OBJECTIONS ══════════════════ */}
       <section className="section" id="cross-sell">
-        <span className="section-num">203 / CROSS-SELL</span>
+        <span className="section-num">202 / CROSS-SELL</span>
         <h2 className="section-title">Cross-Sell Triggers</h2>
         <p className="section-desc">Every phone call is a cross-sell opportunity. These triggers tell you exactly which additional coverage to pitch based on what the customer reveals.</p>
 
@@ -104,9 +104,9 @@ export default function Module203() {
 
       <div className="divider" />
 
-      {/* ══════════════════ 203 / POST-SALE HANDOFF ══════════════════ */}
+      {/* ══════════════════ 202 / POST-SALE HANDOFF ══════════════════ */}
       <section className="section" id="post-sale-handoff">
-        <span className="section-num">203 / HANDOFF &amp; QC</span>
+        <span className="section-num">202 / HANDOFF &amp; QC</span>
         <h2 className="section-title">Post-Sale Handoff &amp; Quality Control</h2>
         <p className="section-desc">A clean handoff from sales to service prevents 90% of downstream problems. Nobody monitors this except the service team — so service has to flag it every time.</p>
 
@@ -180,9 +180,9 @@ export default function Module203() {
 
       <div className="divider" />
 
-      {/* ══════════════════ 203 / CANCELLATION PROCESS ══════════════════ */}
+      {/* ══════════════════ 202 / CANCELLATION PROCESS ══════════════════ */}
       <section className="section" id="cancellation-process">
-        <span className="section-num">203 / CANCELLATIONS</span>
+        <span className="section-num">202 / CANCELLATIONS</span>
         <h2 className="section-title">Cancellation Process Deep Dive</h2>
         <p className="section-desc">Two completely different processes depending on the billing type. Direct bill is fast. Agency bill is a 60–90 day pain.</p>
 
@@ -263,9 +263,9 @@ export default function Module203() {
 
       <div className="divider" />
 
-      {/* ══════════════════ 203 / REINSTATEMENTS ══════════════════ */}
+      {/* ══════════════════ 202 / REINSTATEMENTS ══════════════════ */}
       <section className="section" id="reinstatements">
-        <span className="section-num">203 / REINSTATEMENTS</span>
+        <span className="section-num">202 / REINSTATEMENTS</span>
         <h2 className="section-title">Reinstatements &amp; Grace Periods</h2>
         <p className="section-desc">When a customer misses payments, there's a structured timeline before the policy is gone for good. Knowing the grace periods and process saves accounts.</p>
 
@@ -324,9 +324,9 @@ export default function Module203() {
 
       <div className="divider" />
 
-      {/* ══════════════════ 203 / CUSTOMER RELATIONSHIPS ══════════════════ */}
+      {/* ══════════════════ 202 / CUSTOMER RELATIONSHIPS ══════════════════ */}
       <section className="section" id="customer-relationships">
-        <span className="section-num">203 / CUSTOMER</span>
+        <span className="section-num">202 / CUSTOMER</span>
         <h2 className="section-title">Customer Relationships &amp; Communication</h2>
         <p className="section-desc">Everything connects back to one thing: the account lifecycle. How do we keep customers happy and satisfy their requirements? It's only as strong as its weakest handoff.</p>
 

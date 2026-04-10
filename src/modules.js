@@ -168,9 +168,9 @@ export const MODULES = [
     ],
   },
   {
-    id: 'r-203',
+    id: 'r-202',
     type: 'reading',
-    title: '203 — Sales & Account Management',
+    title: '202 — Sales & Account Management',
     desc: 'Sales pitch framework, cross-selling, post-sale handoff, cancellations, reinstatements, and customer relationships.',
     icon: '📕',
     component: 'Module203',
