@@ -15,7 +15,7 @@ function shuffle(arr) {
   return a
 }
 
-const EXAM_SIZE = 10
+const EXAM_SIZE = 20
 const PASS_THRESHOLD = 0.8
 
 export default function FinalExam({ onBack }) {
