@@ -5,8 +5,8 @@ export default function SignInPage() {
     <div className="signin-page">
       <div className="signin-container">
         <div className="signin-header">
-          <div className="signin-logo">Harper Training</div>
-          <h2 className="signin-title">Insurance Training Guide</h2>
+          <div className="signin-logo">Harper University</div>
+          <h2 className="signin-title">Harper University</h2>
           <p className="signin-subtitle">
             Sign in with your Harper email to access training materials
           </p>

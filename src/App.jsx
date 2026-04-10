@@ -55,7 +55,19 @@ const modules = [
   {
     id: 'videos', label: '🎬', sub: 'Videos & Quiz',
     sections: [
-      { id: 'videos', title: 'New Hire Training', icon: '🎬' },
+      { id: 'videos', title: 'Video Library', icon: '🎬' },
+      { id: 'intro-video', title: 'Intro — New Hire Training', icon: '▶️' },
+      { id: 'module-1', title: 'Module 1 — General Liability', icon: '1️⃣' },
+      { id: 'module-2', title: 'Module 2 — Prof. Liability & E&O', icon: '2️⃣' },
+      { id: 'module-3', title: 'Module 3 — EPLI', icon: '3️⃣' },
+      { id: 'module-4', title: 'Module 4 — D&O Insurance', icon: '4️⃣' },
+      { id: 'module-5', title: 'Module 5 — Liquor Liability', icon: '5️⃣' },
+      { id: 'module-6', title: 'Module 6 — Claims-Made', icon: '6️⃣' },
+      { id: 'module-7', title: 'Module 7 — Business Income', icon: '7️⃣' },
+      { id: 'module-8', title: 'Module 8 — Cyber Liability', icon: '8️⃣' },
+      { id: 'module-9', title: 'Module 9 — Inland Marine', icon: '9️⃣' },
+      { id: 'module-10', title: 'Module 10 — Building & BPP', icon: '🔟' },
+      { id: 'module-11', title: 'Module 11 — Intake Mistakes', icon: '⚠️' },
       { id: 'quiz', title: 'Training Quiz', icon: '📝' },
     ]
   }
@@ -133,9 +145,9 @@ export default function App() {
         <button className="sidebar-toggle" onClick={() => setSidebarOpen(o => !o)} aria-label="Toggle sidebar">
           &#9776;
         </button>
-        <div className="topbar-logo">Harper Training</div>
-        <span className="topbar-badge">INSURANCE GUIDE</span>
-        <div className="topbar-right">Harper Internal Training</div>
+        <div className="topbar-logo">Harper University</div>
+        <span className="topbar-badge">TRAINING PLATFORM</span>
+        <div className="topbar-right">Harper University</div>
         <div className="topbar-progress" style={{ width: `${scrollProgress}%` }} />
       </header>
 
@@ -184,10 +196,10 @@ export default function App() {
           {/* Hero */}
           <section className="hero" id="overview">
             <div className="hero-inner">
-              <div className="hero-label">Insurance 101 → 102 → 201 → 203</div>
-              <h1>Harper Insurance Training Guide</h1>
+              <div className="hero-label">101 → 102 → 201 → 203 → Videos</div>
+              <h1>Harper University</h1>
               <p>
-                From fundamentals to advanced operations — everything the Harper team needs to know about insurance placement, coverage types, carrier routing, sales, and service. Built from Ammar's training sessions.
+                From fundamentals to advanced operations — everything the Harper team needs to know about insurance placement, coverage types, carrier routing, sales, and service.
               </p>
               <div className="hero-stats">
                 <div className="hero-stat">
@@ -237,8 +249,8 @@ export default function App() {
 
           {/* Footer */}
           <div className="footer">
-            <p style={{ color: 'var(--navy)' }}>Harper Insurance Training Guide — 101 through 203</p>
-            <p style={{ marginTop: '.3rem' }}>Built from Ammar's training sessions · Harper Internal Use Only</p>
+            <p style={{ color: 'var(--navy)' }}>Harper University</p>
+            <p style={{ marginTop: '.3rem' }}>Made by Aarfan and Ammar</p>
           </div>
         </main>
       </div>
