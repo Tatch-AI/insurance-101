@@ -42,10 +42,8 @@ export default function App() {
           <button
             className={`mode-btn ${mode === 'reference' ? 'active' : ''}`}
             onClick={() => setMode('reference')}
-            disabled={!allDone && mode !== 'reference'}
-            title={!allDone ? 'Complete all modules to unlock Reference Mode' : ''}
           >
-            🔍 Reference {!allDone && '🔒'}
+            🔍 Reference
           </button>
         </div>
       </header>
