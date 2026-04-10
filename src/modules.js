@@ -108,6 +108,15 @@ export const MODULES = [
     driveId: '1oCHd2RXgo9oRxk9ITWTpU9R3f6msWeQt',
     badge: { label: 'MODULE 11', cls: 'b-orange' },
   },
+  {
+    id: 'v-12',
+    type: 'video',
+    title: 'Garage Insurance',
+    desc: 'Garage insurance coverage for auto service businesses, dealerships, and repair shops.',
+    icon: '🔧',
+    driveId: '1L_qE5C1PCsNzs6LGv7CgafFMHz5mJdaa',
+    badge: { label: 'MODULE 12', cls: 'b-green' },
+  },
 
   // ─── READING MODULES ───
   {
