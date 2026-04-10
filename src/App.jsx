@@ -9,9 +9,28 @@ import Quiz from './Quiz'
 /* ── Navigation Data ── */
 const modules = [
   {
-    id: '101', label: '101', sub: 'Fundamentals',
+    id: 'videos', label: '🎬', sub: 'Videos & Quiz',
     sections: [
       { id: 'overview', title: 'Overview', icon: '🏠' },
+      { id: 'videos', title: 'Video Library', icon: '🎬' },
+      { id: 'intro-video', title: 'Intro — New Hire Training', icon: '▶️' },
+      { id: 'module-1', title: 'Module 1 — General Liability', icon: '1️⃣' },
+      { id: 'module-2', title: 'Module 2 — Prof. Liability & E&O', icon: '2️⃣' },
+      { id: 'module-3', title: 'Module 3 — EPLI', icon: '3️⃣' },
+      { id: 'module-4', title: 'Module 4 — D&O Insurance', icon: '4️⃣' },
+      { id: 'module-5', title: 'Module 5 — Liquor Liability', icon: '5️⃣' },
+      { id: 'module-6', title: 'Module 6 — Claims-Made', icon: '6️⃣' },
+      { id: 'module-7', title: 'Module 7 — Business Income', icon: '7️⃣' },
+      { id: 'module-8', title: 'Module 8 — Cyber Liability', icon: '8️⃣' },
+      { id: 'module-9', title: 'Module 9 — Inland Marine', icon: '9️⃣' },
+      { id: 'module-10', title: 'Module 10 — Building & BPP', icon: '🔟' },
+      { id: 'module-11', title: 'Module 11 — Intake Mistakes', icon: '⚠️' },
+      { id: 'quiz', title: 'Training Quiz', icon: '📝' },
+    ]
+  },
+  {
+    id: '101', label: '101', sub: 'Fundamentals',
+    sections: [
       { id: 'how-harper-works', title: 'How Harper Makes Money', icon: '💰' },
       { id: 'customer-lifecycle', title: 'Customer Lifecycle', icon: '🔄' },
       { id: 'billing-types', title: 'Policy Types & Billing', icon: '📋' },
@@ -52,31 +71,12 @@ const modules = [
       { id: 'customer-relationships', title: 'Customer Relationships', icon: '❤️' },
     ]
   },
-  {
-    id: 'videos', label: '🎬', sub: 'Videos & Quiz',
-    sections: [
-      { id: 'videos', title: 'Video Library', icon: '🎬' },
-      { id: 'intro-video', title: 'Intro — New Hire Training', icon: '▶️' },
-      { id: 'module-1', title: 'Module 1 — General Liability', icon: '1️⃣' },
-      { id: 'module-2', title: 'Module 2 — Prof. Liability & E&O', icon: '2️⃣' },
-      { id: 'module-3', title: 'Module 3 — EPLI', icon: '3️⃣' },
-      { id: 'module-4', title: 'Module 4 — D&O Insurance', icon: '4️⃣' },
-      { id: 'module-5', title: 'Module 5 — Liquor Liability', icon: '5️⃣' },
-      { id: 'module-6', title: 'Module 6 — Claims-Made', icon: '6️⃣' },
-      { id: 'module-7', title: 'Module 7 — Business Income', icon: '7️⃣' },
-      { id: 'module-8', title: 'Module 8 — Cyber Liability', icon: '8️⃣' },
-      { id: 'module-9', title: 'Module 9 — Inland Marine', icon: '9️⃣' },
-      { id: 'module-10', title: 'Module 10 — Building & BPP', icon: '🔟' },
-      { id: 'module-11', title: 'Module 11 — Intake Mistakes', icon: '⚠️' },
-      { id: 'quiz', title: 'Training Quiz', icon: '📝' },
-    ]
-  }
 ]
 
 const allSections = modules.flatMap(m => m.sections.map(s => ({ ...s, moduleId: m.id })))
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState('101')
+  const [activeTab, setActiveTab] = useState('videos')
   const [activeSection, setActiveSection] = useState('overview')
   const [scrollProgress, setScrollProgress] = useState(0)
   const [sidebarOpen, setSidebarOpen] = useState(false)
@@ -196,7 +196,7 @@ export default function App() {
           {/* Hero */}
           <section className="hero" id="overview">
             <div className="hero-inner">
-              <div className="hero-label">101 → 102 → 201 → 203 → Videos</div>
+              <div className="hero-label">Videos → 101 → 102 → 201 → 203</div>
               <h1>Harper University</h1>
               <p>
                 From fundamentals to advanced operations — everything the Harper team needs to know about insurance placement, coverage types, carrier routing, sales, and service.
@@ -224,6 +224,14 @@ export default function App() {
 
           <div className="module-divider" />
 
+          {/* Videos */}
+          <Videos />
+          <div className="divider" />
+
+          {/* Quiz */}
+          <Quiz />
+          <div className="module-divider" />
+
           {/* Module 101 */}
           <Module101 />
           <div className="module-divider" />
@@ -238,14 +246,6 @@ export default function App() {
 
           {/* Module 203 */}
           <Module203 />
-          <div className="module-divider" />
-
-          {/* Videos */}
-          <Videos />
-          <div className="divider" />
-
-          {/* Quiz */}
-          <Quiz />
 
           {/* Footer */}
           <div className="footer">

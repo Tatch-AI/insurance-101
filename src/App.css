@@ -184,7 +184,17 @@ tr:hover td { background: rgba(244,112,104,.03) }
 .video-card:hover { border-color: var(--border2); box-shadow: 0 8px 28px rgba(45,45,63,.07) }
 .video-wrapper { position: relative; background: #1a1a2e; width: 100%; aspect-ratio: 16 / 9 }
 .video-wrapper iframe { display: block; width: 100%; height: 100%; border: none }
-.video-block-newtab { position: absolute; top: 0; right: 0; width: 80px; height: 80px; z-index: 10; cursor: default; background: transparent }
+.video-block-newtab { position: absolute; top: 0; right: 0; width: 60px; height: 60px; z-index: 10; cursor: default }
+.video-poster { position: relative; width: 100%; aspect-ratio: 16 / 9; cursor: pointer; overflow: hidden; transition: transform .3s }
+.video-poster:hover { transform: scale(1.005) }
+.video-poster:hover .poster-play svg { transform: scale(1.1) }
+.poster-bg { position: absolute; inset: 0; background: linear-gradient(135deg, var(--navy) 0%, #1a1a2e 40%, var(--accent3) 100%) }
+.poster-content { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .6rem; z-index: 1 }
+.poster-badge { font-family: var(--font-mono); font-size: .65rem; font-weight: 600; letter-spacing: .12em; color: rgba(255,255,255,.6); text-transform: uppercase }
+.poster-title { font-family: var(--font-display); font-size: clamp(1.4rem, 3vw, 2.2rem); font-weight: 700; color: #fff; letter-spacing: -.02em }
+.poster-sub { font-size: .85rem; color: rgba(255,255,255,.55); max-width: 480px; text-align: center; line-height: 1.5; padding: 0 1.5rem }
+.poster-play { margin-top: .8rem }
+.poster-play svg { transition: transform .25s }
 .video-info { padding: 1.2rem 1.4rem }
 .video-badge-row { display: flex; gap: .4rem; margin-bottom: .5rem }
 .video-title { font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; color: var(--navy); margin-bottom: .35rem }

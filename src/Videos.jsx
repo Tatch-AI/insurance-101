@@ -1,14 +1,6 @@
-const modules = [
-  {
-    id: 'intro-video',
-    title: 'New Hire Training',
-    desc: 'Comprehensive onboarding session covering insurance fundamentals, Harper workflows, carrier routing, and service standards. Required viewing for all new team members.',
-    driveId: '1heqi22KnVnPOzrdgoV1eTAJnXG-DmsyR',
-    badges: [
-      { label: 'REQUIRED', cls: 'b-coral' },
-      { label: 'NEW HIRE', cls: 'b-blue' },
-    ],
-  },
+import { useState } from 'react'
+
+const videoModules = [
   {
     id: 'module-1',
     title: 'Module 1 — General Liability Insurance',
@@ -88,17 +80,77 @@ const modules = [
   },
 ]
 
+function IntroPoster({ onPlay }) {
+  return (
+    <div className="video-card" id="intro-video">
+      <div className="video-poster" onClick={onPlay}>
+        <div className="poster-bg" />
+        <div className="poster-content">
+          <div className="poster-badge">HARPER UNIVERSITY</div>
+          <h2 className="poster-title">New Hire Training</h2>
+          <p className="poster-sub">Introduction to insurance fundamentals, Harper workflows, carrier routing, and service standards.</p>
+          <div className="poster-play">
+            <svg viewBox="0 0 48 48" width="64" height="64" fill="none">
+              <circle cx="24" cy="24" r="23" stroke="#fff" strokeWidth="2" opacity=".85" />
+              <path d="M19 15l14 9-14 9V15z" fill="#fff" opacity=".9" />
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div className="video-info">
+        <div className="video-badge-row">
+          <span className="badge b-coral">REQUIRED</span>
+          <span className="badge b-blue">NEW HIRE</span>
+        </div>
+        <h3 className="video-title">New Hire Training</h3>
+        <p className="video-desc">
+          Comprehensive onboarding session covering insurance fundamentals, Harper workflows, carrier routing, and service standards. Required viewing for all new team members.
+        </p>
+      </div>
+    </div>
+  )
+}
+
 export default function Videos() {
+  const [introPlaying, setIntroPlaying] = useState(false)
+
   return (
     <section className="section" id="videos">
       <span className="section-num">TRAINING VIDEOS</span>
       <h2 className="section-title">Video Library</h2>
       <p className="section-desc">
-        Watch training sessions to supplement the written modules. Start with the intro video, then work through each module in order.
+        Start with the intro video, then work through each module in order.
       </p>
 
       <div className="video-grid">
-        {modules.map((m) => (
+        {introPlaying ? (
+          <div className="video-card" id="intro-video">
+            <div className="video-wrapper">
+              <iframe
+                src="https://drive.google.com/file/d/1heqi22KnVnPOzrdgoV1eTAJnXG-DmsyR/preview"
+                sandbox="allow-scripts allow-same-origin"
+                allow="autoplay; encrypted-media"
+                allowFullScreen
+                title="New Hire Training"
+              />
+              <div className="video-block-newtab" />
+            </div>
+            <div className="video-info">
+              <div className="video-badge-row">
+                <span className="badge b-coral">REQUIRED</span>
+                <span className="badge b-blue">NEW HIRE</span>
+              </div>
+              <h3 className="video-title">New Hire Training</h3>
+              <p className="video-desc">
+                Comprehensive onboarding session covering insurance fundamentals, Harper workflows, carrier routing, and service standards. Required viewing for all new team members.
+              </p>
+            </div>
+          </div>
+        ) : (
+          <IntroPoster onPlay={() => setIntroPlaying(true)} />
+        )}
+
+        {videoModules.map((m) => (
           <div className="video-card" key={m.id} id={m.id}>
             <div className="video-wrapper">
               <iframe
