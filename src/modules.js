@@ -117,6 +117,15 @@ export const MODULES = [
     driveId: '1L_qE5C1PCsNzs6LGv7CgafFMHz5mJdaa',
     badge: { label: 'MODULE 12', cls: 'b-green' },
   },
+  {
+    id: 'v-13',
+    type: 'video',
+    title: 'A Guide to Insurance Intake',
+    desc: 'Complete guide to the insurance intake process — collecting information, setting expectations, and moving leads forward.',
+    icon: '📋',
+    driveId: '1zzDvRXcSP1W8h28qQ_rOHvfhdZaY6apd',
+    badge: { label: 'MODULE 13', cls: 'b-green' },
+  },
 
   // ─── READING MODULES ───
   {
