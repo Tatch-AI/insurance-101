@@ -187,7 +187,7 @@ export default function ModuleDetail({ mod, onBack, referenceMode }) {
   if (mod.type === 'reading') {
     const Comp = COMPONENTS[mod.component]
 
-    if (showQuiz && !referenceMode) {
+    if (showQuiz) {
       return (
         <div className="detail">
           <button className="detail-back" onClick={() => setShowQuiz(false)}>← Back to Reading</button>
@@ -195,8 +195,8 @@ export default function ModuleDetail({ mod, onBack, referenceMode }) {
             <span className={`badge ${mod.badge.cls}`}>QUIZ</span>
           </div>
           <h1 className="detail-title">{mod.title} — Quiz</h1>
-          <p className="detail-desc">Answer all questions. 80% to pass and complete this module.</p>
-          <ModuleQuiz quiz={mod.quiz} onPass={handleQuizPass} />
+          <p className="detail-desc">{referenceMode ? 'Practice quiz — results won\'t affect your progress.' : 'Answer all questions. 80% to pass and complete this module.'}</p>
+          <ModuleQuiz quiz={mod.quiz} onPass={referenceMode ? () => setShowQuiz(false) : handleQuizPass} />
         </div>
       )
     }
@@ -215,11 +215,13 @@ export default function ModuleDetail({ mod, onBack, referenceMode }) {
             <Comp />
           </Suspense>
         </div>
-        {!done && !referenceMode && (
-          <div className="detail-actions">
+        <div className="detail-actions">
+          {!done && !referenceMode ? (
             <button className="btn-primary" onClick={() => setShowQuiz(true)}>Take Quiz to Complete →</button>
-          </div>
-        )}
+          ) : (
+            <button className="btn-secondary" onClick={() => setShowQuiz(true)}>Practice Quiz</button>
+          )}
+        </div>
       </div>
     )
   }

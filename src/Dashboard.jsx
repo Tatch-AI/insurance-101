@@ -185,22 +185,26 @@ export default function Dashboard({ onOpen, mode }) {
       </div>
 
       {/* Final Exam */}
-      {!referenceMode && examModule && (
+      {examModule && (
         <div className="dash-section">
           <h2 className="dash-section-title">
             <span className="dash-section-icon">🎓</span> Final Exam
           </h2>
-          <p className="dash-section-desc">Complete all modules above to unlock the final exam.</p>
+          <p className="dash-section-desc">
+            {referenceMode
+              ? 'Practice the final exam anytime.'
+              : 'Complete all modules above to unlock the final exam.'}
+          </p>
           <div className="module-grid">
             <button
-              className={`module-card exam-card ${isComplete(examModule.id) ? 'done' : ''} ${!allPreExamDone ? 'locked' : ''}`}
-              onClick={() => allPreExamDone && onOpen(examModule.id)}
-              disabled={!allPreExamDone}
+              className={`module-card exam-card ${isComplete(examModule.id) ? 'done' : ''} ${!referenceMode && !allPreExamDone ? 'locked' : ''}`}
+              onClick={() => (referenceMode || allPreExamDone) && onOpen(examModule.id)}
+              disabled={!referenceMode && !allPreExamDone}
             >
               <div className="module-card-top">
                 <span className={`badge ${examModule.badge.cls}`}>{examModule.badge.label}</span>
                 {isComplete(examModule.id) && <span className="module-check">✓</span>}
-                {!allPreExamDone && <span className="module-lock">🔒</span>}
+                {!referenceMode && !allPreExamDone && <span className="module-lock">🔒</span>}
               </div>
               <div className="module-card-icon">{examModule.icon}</div>
               <h3 className="module-card-title">{examModule.title}</h3>
