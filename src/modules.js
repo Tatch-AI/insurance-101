@@ -135,8 +135,7 @@ export const MODULES = [
     title: 'Security Guard Intake',
     desc: 'Intake walkthrough for security guard businesses — what to collect, what to verify, and common pitfalls.',
     icon: '🛡️',
-    folderDriveId: '1ne6rlOHjr8wBXcTjlqHmNEFqFtYTyA_J',
-    fileName: 'Security Guard Tutorial Video Module 1.mp4',
+    driveId: '15naKHMQM1_TE2vGlwBoWmYdgkc831VXj',
     badge: { label: 'INTAKE 1', cls: 'b-orange' },
   },
   {
@@ -146,8 +145,7 @@ export const MODULES = [
     title: 'Garage Liability Intake',
     desc: 'Intake walkthrough for garage and auto service businesses — dealer bonds, garagekeepers, and liability coverage.',
     icon: '🔧',
-    folderDriveId: '1ne6rlOHjr8wBXcTjlqHmNEFqFtYTyA_J',
-    fileName: 'Garage Liability Tutorial Video Module 2.mp4',
+    driveId: '1wGCrOAWpnujnRDrd8M5_WeZLTqEIUZd9',
     badge: { label: 'INTAKE 2', cls: 'b-orange' },
   },
   {
@@ -157,8 +155,7 @@ export const MODULES = [
     title: 'Restaurant & Property Intake',
     desc: 'Intake walkthrough for restaurants and property coverage — liquor liability, building coverage, and BPP.',
     icon: '🍽️',
-    folderDriveId: '1ne6rlOHjr8wBXcTjlqHmNEFqFtYTyA_J',
-    fileName: 'Restaurant and Property Intake Module 3.mp4',
+    driveId: '1SPQbrSVc4iceHUXijP29gTrim2D2TTET',
     badge: { label: 'INTAKE 3', cls: 'b-orange' },
   },
   {
@@ -168,8 +165,7 @@ export const MODULES = [
     title: 'Workers Compensation Intake',
     desc: 'Intake walkthrough for workers\' comp — payroll verification, audit prep, and owner inclusion/exclusion.',
     icon: '⚠️',
-    folderDriveId: '1ne6rlOHjr8wBXcTjlqHmNEFqFtYTyA_J',
-    fileName: 'Workers Compensation Intake Module 4.mp4',
+    driveId: '1obIEprqwCnjpkbf1EGTvqEwYGYqllfnI',
     badge: { label: 'INTAKE 4', cls: 'b-orange' },
   },
 
