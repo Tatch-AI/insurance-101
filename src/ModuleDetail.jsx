@@ -131,6 +131,8 @@ export default function ModuleDetail({ mod, onBack, referenceMode }) {
   }
 
   if (mod.type === 'video') {
+    const isFolderVideo = !mod.driveId && mod.folderDriveId
+
     return (
       <div className="detail">
         <button className="detail-back" onClick={onBack}>← Back to Dashboard</button>
@@ -141,16 +143,37 @@ export default function ModuleDetail({ mod, onBack, referenceMode }) {
         <h1 className="detail-title">{mod.title}</h1>
         <p className="detail-desc">{mod.desc}</p>
         <div className="detail-video">
-          <div className="video-wrapper">
-            <iframe
-              src={`https://drive.google.com/file/d/${mod.driveId}/preview`}
-              sandbox="allow-scripts allow-same-origin"
-              allow="autoplay; encrypted-media"
-              allowFullScreen
-              title={mod.title}
-            />
-            <div className="video-block-newtab" />
-          </div>
+          {isFolderVideo ? (
+            <a
+              href={`https://drive.google.com/drive/folders/${mod.folderDriveId}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="detail-folder-link"
+            >
+              <div className="poster-bg" />
+              <div className="poster-content">
+                <p className="poster-sub" style={{ fontSize: '.85rem', opacity: .75, marginBottom: '.5rem' }}>{mod.fileName}</p>
+                <div className="poster-play">
+                  <svg viewBox="0 0 48 48" width="64" height="64" fill="none">
+                    <circle cx="24" cy="24" r="23" stroke="#fff" strokeWidth="2" opacity=".85" />
+                    <path d="M19 15l14 9-14 9V15z" fill="#fff" opacity=".9" />
+                  </svg>
+                </div>
+                <p className="poster-sub" style={{ fontSize: '.78rem', marginTop: '.5rem' }}>Click to open in Google Drive</p>
+              </div>
+            </a>
+          ) : (
+            <div className="video-wrapper">
+              <iframe
+                src={`https://drive.google.com/file/d/${mod.driveId}/preview`}
+                sandbox="allow-scripts allow-same-origin"
+                allow="autoplay; encrypted-media"
+                allowFullScreen
+                title={mod.title}
+              />
+              <div className="video-block-newtab" />
+            </div>
+          )}
         </div>
         {!done && !referenceMode && (
           <div className="detail-actions">

@@ -11,13 +11,13 @@ export default function Module101() {
           <div className="card" style={{ borderTop: '3px solid var(--green)' }}>
             <div className="card-t">💰 Commission</div>
             <div className="card-d">
-              A percentage of the premium paid by the insurance carrier to Harper for placing the business. Typically <span className="hl-green">~10% of premium</span>. Commission timing depends on whether the policy is direct bill (instant from down payment) or agency bill (~2 months after issuance).
+              A percentage of the premium paid by the insurance carrier to Harper for placing the business. Typically <span className="hl-green">~10% of premium</span>. Commission timing depends on whether the policy is direct bill (~1 month after issuance) or agency bill (instant — everything upfront).
             </div>
           </div>
           <div className="card" style={{ borderTop: '3px solid var(--accent)' }}>
             <div className="card-t">🏷️ Broker Fees</div>
             <div className="card-d">
-              A fee charged directly to the customer at purchase — typically <span className="hl-coral">$100 per policy</span>. This is immediate revenue. Broker fees can be structured as <strong>earned</strong> (collected upfront) or <strong>unearned</strong> (spread over monthly payments). Legally required to disclose.
+              A fee charged directly to the customer at purchase — <span className="hl-coral">subject to the quote and risk</span>. This is immediate revenue. Broker fees can be structured as <strong>earned</strong> (collected upfront) or <strong>unearned</strong> (spread over monthly payments). Legally required to disclose.
             </div>
           </div>
         </div>
@@ -29,19 +29,15 @@ export default function Module101() {
           </div>
         </div>
 
-        <h3 className="sub-title">Lead Economics</h3>
-        <div className="card-grid cg3">
+        <h3 className="sub-title">Lead Acquisition</h3>
+        <div className="card-grid cg2">
           <div className="card">
             <div className="card-t">$80–$500</div>
             <div className="card-d">Cost per lead. Must also factor in employee time across intake, mid funnel, sales, and service who touch each lead.</div>
           </div>
           <div className="card">
-            <div className="card-t">90% Free</div>
-            <div className="card-d">Traditional agencies get 90% of leads from referrals. Harper is venture-backed and pays for lead acquisition at scale.</div>
-          </div>
-          <div className="card">
-            <div className="card-t">50% Lost</div>
-            <div className="card-d">Half of all leads are lost in mid funnel due to poor follow-up. This is the biggest revenue leak in the pipeline.</div>
+            <div className="card-t">100% Referral-Based (Traditional)</div>
+            <div className="card-d">Traditional agencies get <span className="hl-green">all</span> of their leads from referrals. Harper is venture-backed and pays for lead acquisition at scale — that's why every lead matters and accuracy at every stage is critical.</div>
           </div>
         </div>
       </section>
@@ -126,9 +122,9 @@ export default function Module101() {
               <tr><td className="hl">Policy Issuance</td><td>Immediate on bind</td><td>24–48 hours after payment</td></tr>
               <tr><td className="hl">Coverage Quality</td><td>Standard forms, fewer exclusions</td><td>More exclusions, tighter terms</td></tr>
               <tr><td className="hl">Taxes & Fees</td><td>None</td><td>Surplus lines taxes always apply</td></tr>
-              <tr><td className="hl">Cancellation</td><td>Easy — $10–20 in fees, quick refund</td><td>25% minimum earned premium — non-refundable</td></tr>
+              <tr><td className="hl">Cancellation</td><td>Easy — $10–20 in fees, quick refund</td><td>Most policies have a 25% minimum earned premium — non-refundable</td></tr>
               <tr><td className="hl">Premium Financing</td><td>Not needed</td><td><strong>Required if not paid in full.</strong> Collect 15% down + set up premium finance agreement (GoTo) for 10 monthly payments</td></tr>
-              <tr><td className="hl">Commission</td><td>Instant from down payment</td><td>~2 months after issuance</td></tr>
+              <tr><td className="hl">Commission</td><td>Broker fees instant; remaining commission ~1 month after issuance</td><td>Instant — everything upfront including commission on the policy</td></tr>
               <tr><td className="hl">Typical Businesses</td><td>Restaurants, UPS stores, accountants</td><td>Bars, security firms, group homes, adult care</td></tr>
             </tbody>
           </table>
@@ -159,7 +155,7 @@ export default function Module101() {
           <div className="card" style={{ borderLeft: '3px solid var(--red)' }}>
             <div className="card-t">Agency Bill — Complex Risks</div>
             <div className="card-d">
-              Group homes, adult care facilities, security companies, bars with heavy liquor — standard carriers won't touch these. Must go through wholesale brokers (RT Specialty, RPS, AmWINS) to access E&S carriers. <span className="hl-coral">25% minimum earned premium from day one.</span> If the customer doesn't pay in full, <strong>you must collect a down payment and set up a premium finance agreement</strong> — this is not optional on agency bill.
+              Group homes, adult care facilities, security companies, bars with heavy liquor — standard carriers won't touch these. Must go through wholesale brokers (RT Specialty, RPS, AmWINS) to access E&S carriers. <span className="hl-coral">Most have a 25% minimum earned premium</span> — even if the customer cancels the next day, that premium is non-refundable. If the customer doesn't pay in full, <strong>you must collect a down payment and set up a premium finance agreement</strong> — this is not optional on agency bill.
             </div>
           </div>
         </div>
@@ -178,13 +174,13 @@ export default function Module101() {
           <div className="card" style={{ borderTop: '3px solid var(--green)' }}>
             <div className="card-t">Direct Bill Commission</div>
             <div className="card-d">
-              <span className="hl-green">Instant.</span> Commission is taken from the customer's down payment. Example: $1,000 policy at 10% = $100 commission collected on day one, plus the $100 broker fee = $200 revenue immediately.
+              <span className="hl-green">Broker fees are instant.</span> The remaining commission is collected but unpaid to us — it takes about <span className="hl-orange">~1 month after the policy is issued</span> for the carrier to pay out.
             </div>
           </div>
           <div className="card" style={{ borderTop: '3px solid var(--orange)' }}>
             <div className="card-t">Agency Bill Commission</div>
             <div className="card-d">
-              <span className="hl-orange">~2 months later.</span> Commission is paid after the carrier and broker settle. The broker fee can still be earned upfront, but commission payment is delayed through the multi-layer settlement process.
+              <span className="hl-green">Instant.</span> We get everything upfront — including the commission on the policy. The only exception: if the broker fee is financed, those broker fees are collected on a monthly basis instead of upfront.
             </div>
           </div>
         </div>
@@ -194,9 +190,9 @@ export default function Module101() {
           <div className="deep-title">Earned vs Unearned Broker Fees</div>
           <div className="deep-body">
             <ul>
-              <li><strong>Earned:</strong> Collected 100% upfront — immediate revenue. If customer cancels, we keep it.</li>
-              <li><strong>Unearned:</strong> Spread over the 10 monthly payments — collected gradually. If customer misses payments, we don't get the remaining broker fee.</li>
-              <li><strong>Why it matters:</strong> You can adjust the earned/unearned split to lower the customer's down payment (making it easier to close the sale) while still protecting Harper's revenue.</li>
+              <li><strong>Earned Fees:</strong> Collected 100% upfront — immediate revenue. If customer cancels, we keep the broker fee.</li>
+              <li><strong>Unearned Fees:</strong> The broker fees are paid to us on a monthly basis. If customer misses payments, we don't get the remaining broker fee.</li>
+              <li><strong>Why it matters:</strong> This choice affects cash flow. Earned fees mean more revenue upfront; unearned fees can lower the customer's down payment (making it easier to close the sale) but spread out your revenue over time.</li>
             </ul>
           </div>
         </div>
@@ -208,22 +204,26 @@ export default function Module101() {
           </div>
           <div className="arch-arrow">↓</div>
           <div className="arch-row">
-            <div className="arch-box primary">Premium finance company funds carrier</div>
+            <div className="arch-box primary">Premium finance company pays the broker</div>
           </div>
           <div className="arch-arrow">↓</div>
           <div className="arch-row">
-            <div className="arch-box warn">Customer makes 10 monthly payments to finance company</div>
+            <div className="arch-box warn">Broker pays the insurance carrier</div>
           </div>
           <div className="arch-arrow">↓</div>
           <div className="arch-row">
-            <div className="arch-box data">Policy remains active as long as payments continue</div>
+            <div className="arch-box data">Customer makes 10 monthly payments to the finance company</div>
+          </div>
+          <div className="arch-arrow">↓</div>
+          <div className="arch-row">
+            <div className="arch-box ext">Policy remains active as long as payments continue</div>
           </div>
         </div>
 
-        <div className="deep danger">
-          <div className="deep-title">Minimum Earned Premium (MEP) — The 25% Trap</div>
+        <div className="deep warn">
+          <div className="deep-title">Minimum Earned Premium (MEP) — What It Means</div>
           <div className="deep-body">
-            On E&S policies, <span className="hl-coral">25% of the premium is non-refundable from day one</span>. The customer's down payment is only 15%. That means there's a <strong>10% gap</strong>. If the customer doesn't make their first monthly payment, the finance company sends them to <span className="hl-coral">collections</span> for that 10% difference. This happens constantly and creates furious customers. Sales must explain this upfront — before the bind, not after.
+            Not all agency-billed policies have a 25% minimum earned premium, but the <span className="hl-coral">majority of them do</span>. MEP means that even if the insured cancels their policy the very next day, they <strong>will not get that premium back</strong>. This is not a trap — it's how E&S carriers protect themselves on risks they've agreed to underwrite. The customer's down payment is typically 15%, which means there's a <strong>10% gap</strong> between the down payment and the MEP. If the customer doesn't make their first monthly payment, the finance company sends them to collections for that difference. <strong>Sales must explain MEP upfront — before the bind, not after.</strong>
           </div>
         </div>
       </section>
@@ -249,9 +249,10 @@ export default function Module101() {
         </div>
 
         <div className="deep danger" style={{ marginTop: '1.2rem' }}>
-          <div className="deep-title">⚠️ Buyers Are Liars</div>
+          <div className="deep-title">⚠️ Get It Right the First Time</div>
           <div className="deep-body">
-            Customers will understate revenue, underreport payroll, and omit details to get a cheaper price. Example: a gas station owner says 15,000 gallons/month — but their Exxon contract requires 40,000 minimum. They went from 15,000 to 42,000 when pressed. <strong>Always verify information with documentation.</strong> If you present incorrect information to the carrier, it's Harper's liability — not the customer's.
+            <p>Getting accurate information on the first pass is critical. <span className="hl-coral">Do not let customers understate their revenue.</span> When they underreport, they knock themselves out of quotes they could have qualified for — and the quotes they do get back will be incorrect. This creates rework, delays, and lost deals.</p>
+            <p style={{ marginTop: '.5rem' }}>Example: a gas station owner says 15,000 gallons/month — but their Exxon contract requires 40,000 minimum. They went from 15,000 to 42,000 when pressed. <strong>Always verify information with documentation.</strong> If you present incorrect information to the carrier, it's Harper's liability — not the customer's.</p>
           </div>
         </div>
 
@@ -290,8 +291,8 @@ export default function Module101() {
           <div className="step">
             <div className="step-num green-n">3</div>
             <div className="step-content">
-              <div className="step-title">Harper Signs & Sends Bind Request</div>
-              <div className="step-desc">After customer signs, Harper co-signs and sends the "request to bind" to the broker. Two critical checks: <strong>correct effective date</strong> and <strong>all subjectivity documents included</strong>.</div>
+              <div className="step-title">Harper Signs & Sends Bind Request with Subjectivities</div>
+              <div className="step-desc">After customer signs, Harper co-signs and sends the "request to bind" to the broker. <span className="hl-green">Include all subjectivities with the bind request</span> so that it comes back correctly and doesn't create back-and-forth. Three critical checks: <strong>correct effective date</strong>, <strong>all subjectivity documents included</strong>, and <strong>subjectivities attached to the request</strong>.</div>
             </div>
           </div>
           <div className="step">
@@ -328,7 +329,7 @@ export default function Module101() {
             <ul>
               <li><strong>Next:</strong> Add after binding — free, instant</li>
               <li><strong>Coterie:</strong> Must add <span className="hl-coral">before binding</span> or face a $250 endorsement fee and 3–5 day wait</li>
-              <li><strong>E&S carriers:</strong> Always charged ($150–$250+), processed through broker</li>
+              <li><strong>E&S carriers:</strong> Don't always cost money — some include it, but when charged, expect $150–$250+. Processed through broker</li>
             </ul>
             Getting this wrong creates furious customers who thought they had coverage. This is where service catches sales mistakes.
           </div>

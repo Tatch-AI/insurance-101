@@ -9,7 +9,8 @@ export default function Dashboard({ onOpen, mode }) {
   const completedCount = completed.length
   const pct = Math.round((completedCount / totalModules) * 100)
 
-  const videoModules = MODULES.filter(m => m.type === 'video')
+  const videoModules = MODULES.filter(m => m.type === 'video' && !m.group)
+  const intakeModules = MODULES.filter(m => m.group === 'intake-training')
   const readingModules = MODULES.filter(m => m.type === 'reading')
   const examModule = MODULES.find(m => m.type === 'exam')
 
@@ -81,6 +82,44 @@ export default function Dashboard({ onOpen, mode }) {
         </p>
         <div className="module-grid">
           {videoModules.map(mod => {
+            const done = isComplete(mod.id)
+            const unlocked = isUnlocked(mod)
+            return (
+              <button
+                key={mod.id}
+                className={`module-card ${done ? 'done' : ''} ${!unlocked ? 'locked' : ''}`}
+                onClick={() => unlocked && onOpen(mod.id)}
+                disabled={!unlocked}
+              >
+                <div className="module-card-top">
+                  <span className={`badge ${mod.badge.cls}`}>{mod.badge.label}</span>
+                  {done && <span className="module-check">✓</span>}
+                  {!unlocked && <span className="module-lock">🔒</span>}
+                </div>
+                <div className="module-card-icon">{mod.icon}</div>
+                <h3 className="module-card-title">{mod.title}</h3>
+                <p className="module-card-desc">{mod.desc}</p>
+                <div className="module-card-type">
+                  <span className="type-dot video" />Video
+                </div>
+              </button>
+            )
+          })}
+        </div>
+      </div>
+
+      {/* Intake Training Videos */}
+      <div className="dash-section">
+        <h2 className="dash-section-title">
+          <span className="dash-section-icon">📋</span> Intake Training Videos
+        </h2>
+        <p className="dash-section-desc">
+          {referenceMode
+            ? 'Industry-specific intake walkthroughs.'
+            : 'Watch each intake walkthrough, then mark it complete to unlock the next.'}
+        </p>
+        <div className="module-grid">
+          {intakeModules.map(mod => {
             const done = isComplete(mod.id)
             const unlocked = isUnlocked(mod)
             return (

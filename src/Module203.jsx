@@ -170,12 +170,6 @@ export default function Module203() {
           </div>
         </div>
 
-        <div className="deep warn">
-          <div className="deep-title">Flag Everything in the Excel Sheet</div>
-          <div className="deep-body">
-            If sales doesn't do a proper handoff — flag it. Every time. Add it to the Excel sheet of things sales needs to improve on. This goes to Nick (head of sales). If there's an address discrepancy, post in Slack. If effective dates are wrong on a binder, catch it before sending. These aren't small mistakes — they add up and destroy the customer experience.
-          </div>
-        </div>
       </section>
 
       <div className="divider" />

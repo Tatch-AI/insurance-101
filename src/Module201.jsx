@@ -163,64 +163,8 @@ export default function Module201() {
             <div className="card-t" style={{ marginTop: '.5rem' }}>AmWINS</div>
             <div className="card-d">One of the largest nationally. <span className="hl-coral">Stopped GL with Harper</span> due to poor turnaround times. Still used for other lines. Deep carrier relationships.</div>
           </div>
-          <div className="card">
-            <span className="badge b-violet">PORTAL</span>
-            <div className="card-t" style={{ marginTop: '.5rem' }}>First Connect</div>
-            <div className="card-d">Portal access to <span className="hl-green">Next, Coterie, Hiscox</span>. Also handles USLI in states where they're non-admitted (Shannon/Kathy). MGA with binding authority for certain classes.</div>
-          </div>
-          <div className="card">
-            <span className="badge b-orange">WHOLESALE</span>
-            <div className="card-t" style={{ marginTop: '.5rem' }}>CRC Group</div>
-            <div className="card-d">Major brokerage option for complex placements. Excess liability, environmental, construction. Use for hard-to-place risks that others have declined.</div>
-          </div>
         </div>
 
-        <div className="deep danger" style={{ marginTop: '1.2rem' }}>
-          <div className="deep-title">Kinsale — Option of Last Resort</div>
-          <div className="deep-body">
-            Kinsale writes anything and everything, but: they slap on <span className="hl-coral">$20K quotes</span> with heavy exclusions and minimum earned premiums. Making changes is "an absolute pain." They <strong>never return money</strong> — policy cancels? Bye. Missed an audit? Bye. Messed up a renewal audit from last year? Big trouble. Pitch Integrity, Atlantic Casualty, anything else before Kinsale. Literally last resort.
-          </div>
-        </div>
-      </section>
-
-      <div className="divider" />
-
-      {/* ══════════════════ 201 / APPETITE GUIDE ══════════════════ */}
-      <section className="section" id="appetite-guide">
-        <span className="section-num">201 / APPETITE GUIDE</span>
-        <h2 className="section-title">Carrier Appetite &amp; Specialty Map</h2>
-        <p className="section-desc">Knowing which carrier to route to — and why — is the difference between a same-day bind and a 3-day wait. Sales must know this like clockwork.</p>
-
-        <div className="table-wrap" style={{ marginTop: '1.2rem' }}>
-          <table>
-            <thead>
-              <tr><th>Carrier</th><th>Type</th><th>Primary Lines</th><th>Appetite Highlights</th></tr>
-            </thead>
-            <tbody>
-              <tr><td className="hl">Next</td><td><span className="badge b-green">Direct</span></td><td>GL, BOP, PL, Cyber, EPLI</td><td>Small business &lt;$5M. Food/bev, retail, contractors, daycares. Instant quoting.</td></tr>
-              <tr><td className="hl">Coterie</td><td><span className="badge b-green">Direct</span></td><td>GL, BOP, WC</td><td>Writes everything — gyms, restaurants, salons. Add AI before bind.</td></tr>
-              <tr><td className="hl">AmTrust</td><td><span className="badge b-blue">Direct</span></td><td>WC, GL</td><td>Restaurants, hospitality, light manufacturing. 50-state access.</td></tr>
-              <tr><td className="hl">Employers</td><td><span className="badge b-orange">Direct</span></td><td>WC only</td><td>Workers' comp exclusively. National leader. No other lines.</td></tr>
-              <tr><td className="hl">Chubb</td><td><span className="badge b-violet">Direct</span></td><td>Cyber, PL, Package</td><td>#1 cyber writer nationally. Marketplace access, need $50K for full appointment.</td></tr>
-              <tr><td className="hl">Progressive</td><td><span className="badge b-green">Direct</span></td><td>Comm. Auto</td><td>Commercial auto. GA direct, CoverForce for other states.</td></tr>
-              <tr><td className="hl">Thimble</td><td><span className="badge b-green">Direct</span></td><td>GL, PL, Cyber</td><td>All 50 states. On-demand, short-term. Freelancers, events.</td></tr>
-              <tr><td className="hl">Markel</td><td><span className="badge b-violet">MGA</span></td><td>GL, PL, Specialty</td><td>Daycares, camps, fitness, social services.</td></tr>
-              <tr><td className="hl">USLI</td><td><span className="badge b-blue">Carrier</span></td><td>GL, PL, Specialty</td><td>Admitted/non-admitted by state. Cross-checks revenue across brokers.</td></tr>
-              <tr><td className="hl">RT Specialty</td><td><span className="badge b-orange">Wholesale</span></td><td>All E&amp;S</td><td>Restaurants, bars, security. RT Connector for binders.</td></tr>
-              <tr><td className="hl">RPS</td><td><span className="badge b-orange">Wholesale</span></td><td>Garages, Casualty</td><td>Garage specialization for Harper. Atlantic Casualty, Kinsale.</td></tr>
-              <tr><td className="hl">First Connect</td><td><span className="badge b-violet">Portal</span></td><td>Varies</td><td>Portal access to Next, Coterie, Hiscox. USLI non-admitted states.</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3 className="sub-title">Routing Quick-Reference</h3>
-        <div className="rule-block">
-          <div className="rule-item"><span className="rule-num">1</span><span className="rule-text"><strong>Identify the industry</strong> — Main street (restaurant, retail, professional) or specialty (security, bars, group homes)?</span></div>
-          <div className="rule-item"><span className="rule-num">2</span><span className="rule-text"><strong>Match to carrier specialty</strong> — WC only? Employers/Guard. Daycare? Markel. Pro services? Hiscox. Small biz &lt;$5M? Next.</span></div>
-          <div className="rule-item"><span className="rule-num">3</span><span className="rule-text"><strong>Confirm state eligibility</strong> — Is the carrier admitted in the customer's state? Monopolistic WC states? USLI admitted or non-admitted?</span></div>
-          <div className="rule-item"><span className="rule-num">4</span><span className="rule-text"><strong>Try quick market first</strong> — Run instant quotes through Next, Coterie, Hiscox, Progressive, Thimble. If a quote comes back, pitch same-day.</span></div>
-          <div className="rule-item"><span className="rule-num">5</span><span className="rule-text"><strong>E&amp;S only if all else fails</strong> — Document declinations. Submit through RT Specialty, RPS, or AmWINS. Set customer expectations.</span></div>
-        </div>
       </section>
 
       <div className="divider" />

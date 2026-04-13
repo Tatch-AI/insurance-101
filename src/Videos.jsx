@@ -80,6 +80,39 @@ const videoModules = [
   },
 ]
 
+const intakeTrainingModules = [
+  {
+    id: 'intake-1',
+    title: 'Intake 1 — Security Guard',
+    desc: 'Intake walkthrough for security guard businesses — what to collect, what to verify, and common pitfalls.',
+    fileName: 'Security Guard Tutorial Video Module 1.mp4',
+    badges: [{ label: 'INTAKE 1', cls: 'b-orange' }],
+  },
+  {
+    id: 'intake-2',
+    title: 'Intake 2 — Garage Liability',
+    desc: 'Intake walkthrough for garage and auto service businesses — dealer bonds, garagekeepers, and liability coverage.',
+    fileName: 'Garage Liability Tutorial Video Module 2.mp4',
+    badges: [{ label: 'INTAKE 2', cls: 'b-orange' }],
+  },
+  {
+    id: 'intake-3',
+    title: 'Intake 3 — Restaurant & Property',
+    desc: 'Intake walkthrough for restaurants and property coverage — liquor liability, building coverage, and BPP.',
+    fileName: 'Restaurant and Property Intake Module 3.mp4',
+    badges: [{ label: 'INTAKE 3', cls: 'b-orange' }],
+  },
+  {
+    id: 'intake-4',
+    title: 'Intake 4 — Workers Compensation',
+    desc: 'Intake walkthrough for workers\' comp — payroll verification, audit prep, and owner inclusion/exclusion.',
+    fileName: 'Workers Compensation Intake Module 4.mp4',
+    badges: [{ label: 'INTAKE 4', cls: 'b-orange' }],
+  },
+]
+
+const INTAKE_FOLDER_ID = '1ne6rlOHjr8wBXcTjlqHmNEFqFtYTyA_J'
+
 function IntroPoster({ onPlay }) {
   return (
     <div className="video-card" id="intro-video">
@@ -162,6 +195,51 @@ export default function Videos() {
               />
               <div className="video-block-newtab" />
             </div>
+            <div className="video-info">
+              <div className="video-badge-row">
+                {m.badges.map((b) => (
+                  <span className={`badge ${b.cls}`} key={b.label}>
+                    {b.label}
+                  </span>
+                ))}
+              </div>
+              <h3 className="video-title">{m.title}</h3>
+              <p className="video-desc">{m.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="divider" />
+
+      <span className="section-num">INTAKE TRAINING VIDEOS</span>
+      <h2 className="section-title">Intake Training</h2>
+      <p className="section-desc">
+        Industry-specific intake walkthroughs — learn how to collect the right information for each business type.
+      </p>
+
+      <div className="video-grid">
+        {intakeTrainingModules.map((m) => (
+          <div className="video-card" key={m.id} id={m.id}>
+            <a
+              href={`https://drive.google.com/drive/folders/${INTAKE_FOLDER_ID}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="video-wrapper"
+              style={{ display: 'block', textDecoration: 'none' }}
+            >
+              <div className="poster-bg" />
+              <div className="poster-content">
+                <p className="poster-sub" style={{ fontSize: '.78rem', opacity: .7, marginBottom: '.25rem' }}>{m.fileName}</p>
+                <div className="poster-play">
+                  <svg viewBox="0 0 48 48" width="56" height="56" fill="none">
+                    <circle cx="24" cy="24" r="23" stroke="#fff" strokeWidth="2" opacity=".85" />
+                    <path d="M19 15l14 9-14 9V15z" fill="#fff" opacity=".9" />
+                  </svg>
+                </div>
+                <p className="poster-sub" style={{ fontSize: '.72rem', marginTop: '.5rem' }}>Opens in Google Drive</p>
+              </div>
+            </a>
             <div className="video-info">
               <div className="video-badge-row">
                 {m.badges.map((b) => (

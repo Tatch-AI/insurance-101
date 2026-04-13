@@ -109,7 +109,7 @@ export default function Module102() {
       <section className="section" id="core-liability">
         <span className="section-num">102 / COVERAGE TYPES</span>
         <h2 className="section-title">Core Liability Coverage Types</h2>
-        <p className="section-desc">The three liability coverages you'll encounter most often. Know what they cover, who needs them, and how to explain them in plain English.</p>
+        <p className="section-desc">The liability coverages you'll encounter most often. Know what they cover, who needs them, and how to explain them in plain English.</p>
 
         <div className="card-grid cg3" style={{ marginTop: '1.2rem' }}>
           <div className="card" style={{ borderTop: '3px solid var(--accent)' }}>
@@ -137,6 +137,46 @@ export default function Module102() {
               Protects against <span className="hl">data breaches and hacking</span>. Stolen credit card info from POS systems, leaked social security numbers, ransomware attacks.
               <br /><br />
               <strong>Who needs it:</strong> Literally anyone who stores customer data digitally. Easy upsell — most business owners don't know they need it until you tell them.
+            </div>
+          </div>
+        </div>
+
+        <h3 className="sub-title">Other Core Liability Coverages</h3>
+        <div className="card-grid cg2">
+          <div className="card" style={{ borderTop: '3px solid var(--orange)' }}>
+            <span className="badge b-orange">LEADERSHIP</span>
+            <div className="card-t" style={{ marginTop: '.5rem' }}>Directors & Officers (D&O)</div>
+            <div className="card-d">
+              Protects <span className="hl-orange">company directors and officers from personal liability</span> for decisions made while managing the company. If a board decision leads to a financial loss and shareholders sue, D&O covers the legal defense and damages. Applies to both for-profit and nonprofit organizations.
+              <br /><br />
+              <strong>Who needs it:</strong> Any business with a board, advisory committee, or formal leadership structure. Investors and lenders often require it.
+            </div>
+          </div>
+          <div className="card" style={{ borderTop: '3px solid var(--accent)' }}>
+            <span className="badge b-coral">EMPLOYMENT</span>
+            <div className="card-t" style={{ marginTop: '.5rem' }}>EPLI (Employment Practices Liability)</div>
+            <div className="card-d">
+              Protects against <span className="hl-coral">wrongful termination, discrimination, harassment, and retaliation</span> claims from employees. If you fire someone and they claim it was discriminatory — EPLI covers the legal defense and damages.
+              <br /><br />
+              <strong>Who needs it:</strong> Any business with employees. Risk increases with headcount. One wrongful termination lawsuit can cost $100K+ in legal fees alone.
+            </div>
+          </div>
+          <div className="card" style={{ borderTop: '3px solid var(--red)' }}>
+            <span className="badge b-coral">ALCOHOL</span>
+            <div className="card-t" style={{ marginTop: '.5rem' }}>Liquor Liability</div>
+            <div className="card-d">
+              Covers incidents related to <span className="hl-coral">serving, selling, or distributing alcohol</span>. A customer gets over-served, gets behind the wheel, kills someone — the establishment is liable. Separate from GL because alcohol-related claims are excluded from standard GL policies.
+              <br /><br />
+              <strong>Who needs it:</strong> <span className="hl">Every restaurant serving ANY alcohol</span> — even if it's just beer and wine. Bars, nightclubs, event venues, liquor stores. A ~$10K–15K policy that prevents catastrophic lawsuits.
+            </div>
+          </div>
+          <div className="card" style={{ borderTop: '3px solid var(--blue)' }}>
+            <span className="badge b-blue">PROPERTY</span>
+            <div className="card-t" style={{ marginTop: '.5rem' }}>Building & Property Coverage</div>
+            <div className="card-d">
+              Covers the <span className="hl-blue">physical building structure and business personal property (BPP)</span> — equipment, inventory, furniture, and fixtures inside. If the building burns down or floods, this pays for repairs. If equipment is destroyed, BPP replaces it.
+              <br /><br />
+              <strong>Key distinction:</strong> Building coverage protects the structure; BPP protects what's inside. Both are separate from GL, which only covers liability to other people.
             </div>
           </div>
         </div>
