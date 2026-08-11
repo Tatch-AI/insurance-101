@@ -20,10 +20,10 @@
 
 /**
  * Employee authentication — sign-in, session, and per-user metadata for Harper staff.
- * @external Clerk in:InternalOps
+ * @external Clerk in:Platform
  */
 
 /**
  * Training video hosting — Harper University embeds Drive preview URLs for all video modules.
- * @external Google-Drive in:InternalOps
+ * @external Google-Drive in:Quoting
  */
