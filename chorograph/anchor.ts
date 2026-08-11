@@ -27,3 +27,13 @@
  * Training video hosting — Harper University embeds Drive preview URLs for all video modules.
  * @external Google-Drive in:Quoting
  */
+
+/**
+ * Cloud infrastructure, Terraform, SRE, and deployment tooling.
+ * @domain Platform
+ */
+
+/**
+ * Quote generation, submission packets, rules, SKU routing, and placement tooling.
+ * @domain Quoting
+ */
