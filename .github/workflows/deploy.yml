@@ -33,6 +33,7 @@ jobs:
         id: build
         with:
           context: .
+          file: Dockerfile.ecs
           platforms: linux/amd64
           push: true
           tags: ${{ steps.ecr.outputs.registry }}/insurance-101:${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
