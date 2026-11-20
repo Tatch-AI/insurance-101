@@ -1,0 +1,53 @@
+name: Deploy production
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: insurance-101-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7.0.1
+
+      - uses: aws-actions/configure-aws-credentials@v6.3.0
+        with:
+          role-to-assume: arn:aws:iam::815402439295:role/insurance-101-github-deploy
+          aws-region: us-east-2
+
+      - uses: aws-actions/amazon-ecr-login@v2.2.0
+        id: ecr
+
+      - uses: docker/build-push-action@v7.4.0
+        id: build
+        with:
+          context: .
+          platforms: linux/amd64
+          push: true
+          tags: ${{ steps.ecr.outputs.registry }}/insurance-101:${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
+          build-args: |
+            VITE_CLERK_PUBLISHABLE_KEY=${{ vars.VITE_CLERK_PUBLISHABLE_KEY }}
+      - uses: aws-actions/amazon-ecs-render-task-definition@v1.9.1
+        id: task
+        with:
+          task-definition-family: insurance-101-prod
+          container-name: insurance-101
+          image: ${{ steps.ecr.outputs.registry }}/insurance-101@${{ steps.build.outputs.digest }}
+
+      - uses: aws-actions/amazon-ecs-deploy-task-definition@v2.6.4
+        with:
+          task-definition: ${{ steps.task.outputs.task-definition }}
+          cluster: bigbrother-ecs-prod
+          service: insurance-101-prod
+          wait-for-service-stability: true
